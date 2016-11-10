@@ -156,3 +156,42 @@ export function resetNewArticle() {
     type: RESET_NEW_ARTICLE
   }
 }
+
+// Update article
+export const UPDATE_ARTICLE = 'UPDATE_ARTICLE'
+export const UPDATE_ARTICLE_SUCCESS = 'UPDATE_ARTICLE_SUCCESS'
+export const UPDATE_ARTICLE_FAILURE = 'UPDATE_ARTICLE_FAILURE'
+export const RESET_UPDATED_ARTICLE = 'RESET_UPDATED_ARTICLE'
+
+export function updateArticle(articleParams, id) {
+  const request = axios({
+    method: 'PUT',
+    data: articleParams,
+    url: `${API_URL}/articles/${id}`
+  })
+
+  return {
+    type: UPDATE_ARTICLE,
+    payload: request
+  }
+}
+
+export function updateArticleSuccess(updatedArticle) {
+  return {
+    type: UPDATE_ARTICLE_SUCCESS,
+    payload: updatedArticle
+  }
+}
+
+export function updateArticleFailure(error) {
+  return {
+    type: UPDATE_ARTICLE_FAILURE,
+    payload: error
+  }
+}
+
+export function resetUpdatedArticle() {
+  return {
+    type: RESET_UPDATED_ARTICLE
+  }
+}

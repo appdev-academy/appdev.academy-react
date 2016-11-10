@@ -25,6 +25,7 @@ export default class Articles extends React.Component {
           <td>{ article.html_body }</td>
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+            <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
             <button className='delete' onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
           </td>
         </tr>
