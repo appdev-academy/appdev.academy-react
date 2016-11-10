@@ -117,3 +117,42 @@ export function resetActiveArticle() {
     type: RESET_ACTIVE_ARTICLE
   }
 }
+
+// Create article
+export const CREATE_ARTICLE = 'CREATE_ARTICLE'
+export const CREATE_ARTICLE_SUCCESS = 'CREATE_ARTICLE_SUCCESS'
+export const CREATE_ARTICLE_FAILURE = 'CREATE_ARTICLE_FAILURE'
+export const RESET_NEW_ARTICLE = 'RESET_NEW_ARTICLE'
+
+export function createArticle(articleParams) {
+  const request = axios({
+    method: 'POST',
+    data: articleParams,
+    url: `${API_URL}/articles`
+  })
+
+  return {
+    type: CREATE_ARTICLE,
+    payload: request
+  }
+}
+
+export function createArticleSuccess(newArticle) {
+  return {
+    type: CREATE_ARTICLE_SUCCESS,
+    payload: newArticle
+  }
+}
+
+export function createArticleFailure(error) {
+  return {
+    type: CREATE_ARTICLE_FAILURE,
+    payload: error
+  }
+}
+
+export function resetNewArticle() {
+  return {
+    type: RESET_NEW_ARTICLE
+  }
+}

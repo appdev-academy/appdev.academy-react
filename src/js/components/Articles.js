@@ -58,6 +58,7 @@ export default class Articles extends React.Component {
             { this.renderArticles(articles) }
           </tbody>
         </table>
+        <a href="/admin/articles/new">Create new</a>
       </div>
     )
   }
