@@ -2,12 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { Router, browserHistory } from 'react-router'
 
-import Root from './components/Root'
-
 // Redux
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
-// import allReducers from './redux/reducers/index'
+import allReducers from './redux/reducers/index'
 import thunk from 'redux-thunk'
 import promise from 'redux-promise'
 import createLogger from 'redux-logger'
@@ -20,7 +18,7 @@ let logger = createLogger({
 })
 
 let store = createStore(
-  // allReducers,
+  allReducers,
   applyMiddleware(thunk, promise, logger)
 )
 

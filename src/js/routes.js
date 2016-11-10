@@ -4,7 +4,7 @@ import { Route } from 'react-router'
 import Root from './components/Root'
 import NotFound from './components/NotFound'
 import Admin from './components/Admin'
-import Articles from './components/Articles'
+import Articles from './redux/containers/ArticlesContainer'
 
 export default (
   <Route path='/' component={ Root }>
