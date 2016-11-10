@@ -1,0 +1,31 @@
+{
+  "name": "appdev.academy",
+  "version": "0.1.0",
+  "description": "React.js frontend for appdev.academy website",
+  "author": "App Dev Academy",
+  "license": "MIT",
+  "repository": "https://github.com/appdev-academy/appdev.academy-react",
+  "dependencies": {
+    "react": "15.3.2",
+    "react-dom": "15.3.2",
+    "markdown-it": "latest"
+  },
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-sass": "latest",
+    "gulp-util": "latest",
+    "gulp-size": "latest",
+    "gulp-uglify": "latest",
+    "gulp-clean-css": "latest",
+    "watchify": "latest",
+    "browserify": "latest",
+    "babelify": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-plugin-transform-object-rest-spread": "latest",
+    "vinyl-buffer": "latest",
+    "vinyl-source-stream": "latest",
+    "browser-sync": "latest",
+    "connect-history-api-fallback": "latest"
+  }
+}
