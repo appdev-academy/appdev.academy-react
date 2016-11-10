@@ -78,3 +78,42 @@ export function resetDeletedArticle() {
     type: RESET_DELETED_ARTICLE
   }
 }
+
+// Show Article
+export const FETCH_ARTICLE = 'FETCH_ARTICLE'
+export const FETCH_ARTICLE_SUCCESS = 'FETCH_ARTICLE_SUCCESS'
+export const FETCH_ARTICLE_FAILURE = 'FETCH_ARTICLE_FAILURE'
+export const RESET_ACTIVE_ARTICLE = 'RESET_ACTIVE_ARTICLE'
+
+export function fetchArticle(articleID) {
+  let request = axios({
+    method: 'get',
+    url: `${API_URL}/articles/${articleID}`,
+    headers: []
+  })
+
+  return {
+    type: FETCH_ARTICLE,
+    payload: request
+  }
+}
+
+export function fetchArticleSuccess(activeArticle) {
+  return {
+    type: FETCH_ARTICLE_SUCCESS,
+    payload: activeArticle
+  }
+}
+
+export function fetchArticleFailure(error) {
+  return {
+    type: FETCH_ARTICLE_FAILURE,
+    payload: error
+  }
+}
+
+export function resetActiveArticle() {
+  return {
+    type: RESET_ACTIVE_ARTICLE
+  }
+}
