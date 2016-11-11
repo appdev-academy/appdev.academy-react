@@ -7,6 +7,7 @@
   "repository": "https://github.com/appdev-academy/appdev.academy-react",
   "dependencies": {
     "axios": "^0.15.2",
+    "classnames": "^2.2.5",
     "markdown-it": "^8.1.0",
     "react": "15.3.2",
     "react-dom": "15.3.2",

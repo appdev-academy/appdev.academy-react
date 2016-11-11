@@ -1,5 +1,6 @@
 import React from 'react'
 import MarkdownIt from 'markdown-it'
+import classNames from 'classnames'
 
 import Editor from './Redactor/Editor'
 import Preview from './Redactor/Preview'
@@ -15,7 +16,9 @@ export default class ArticleForm extends React.Component {
     super(props)
     this.state = {
       text: '',
-      htmlDocument: ''
+      htmlDocument: '',
+      showMarkdown: true,
+      showPreview: true
     }
   }
   
@@ -49,13 +52,53 @@ export default class ArticleForm extends React.Component {
     this.props.handleSubmit(articleParams)
   }
   
+  clickMarkdown() {
+    console.log('clickMarkdown');
+    this.setState({
+      showMarkdown: true,
+      showPreview: false
+    })
+  }
+  
+  clickPreview() {
+    console.log('clickPreview');
+    this.setState({
+      showMarkdown: false,
+      showPreview: true
+    })
+  }
+  
+  clickBoth() {
+    console.log('clickBoth');
+    this.setState({
+      showMarkdown: true,
+      showPreview: true
+    })
+  }
+  
   render () {
+    var markdownClass = classNames({
+      'editor': true,
+      'showMarkdown' : !this.state.showMarkdown
+    })
+    
+    var previewClass = classNames({
+      'preview': true,
+      'showPreview' : !this.state.showPreview
+    })
+    
     return (
       <div>
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input type='text' id='title' ref='title' />
         </div>
+        <div className='center'>
+          <a onClick={ this.clickMarkdown.bind(this) }>Markdown</a> /
+          <a onClick={ this.clickPreview.bind(this) }> Preview</a> /
+          <a onClick={ this.clickBoth.bind(this) }> Both</a>
+        </div>
+        //add classes...
         <Editor text={ this.state.text } onChange={ this.onChange.bind(this) } />
         <Preview htmlDocument={ this.state.htmlDocument } />
         <button onClick={ this.handleSubmit.bind(this) }>Submit</button>
