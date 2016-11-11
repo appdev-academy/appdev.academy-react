@@ -13,13 +13,15 @@ export default class Article extends React.Component {
   
   constructor(props) {
     super(props)
-    this.state = {
-      activeArticle: '',
-      htmlDocument: ''
-    }
   }
   
-  componentWillMount() {
+  componentDidMount() {
+    let dispatch = this.props.dispatch
+    let articleID = this.props.params.articleID
+    this.props.fetchArticle(dispatch, articleID)
+  }
+  
+  render() {
     let { article, loading, error } = this.props.activeArticle
     
     if (loading) {
@@ -30,24 +32,11 @@ export default class Article extends React.Component {
       return <span />
     }
     
-    this.setState({
-      activeArticle: article,
-      htmlDocument: markdown.render(article.body)
-    })
-  }
-  
-  componentDidMount() {
-    let dispatch = this.props.dispatch
-    let articleID = this.props.params.articleID
-    this.props.fetchArticle(dispatch, articleID)
-  }
-  
-  render() {
     return (
       <div>
-        <h3>{ this.state.activeArticle.id }</h3>
-        <h3>{ this.state.activeArticle.title }</h3>
-        <Preview htmlDocument={ this.state.htmlDocument } />
+        <h3>{ article.id }</h3>
+        <h3>{ article.title }</h3>
+        <Preview htmlDocument={ markdown.render(article.body) } />
       </div>
     )
   }

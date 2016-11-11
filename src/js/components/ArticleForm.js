@@ -21,9 +21,10 @@ export default class ArticleForm extends React.Component {
   
   // Set new text
   onChange(event) {
+    let newText = event.target.value
     this.setState({
-      text: event.target.value,
-      htmlDocument: markdown.render(this.state.text)
+      text: newText,
+      htmlDocument: markdown.render(newText)
     })
   }
   
