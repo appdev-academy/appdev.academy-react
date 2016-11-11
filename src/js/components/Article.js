@@ -1,6 +1,15 @@
 import React from 'react'
 
+import Preview from './Redactor/Preview'
+
 export default class Article extends React.Component {
+  
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: [].join('\n')
+    }
+  }
   
   componentDidMount() {
     let dispatch = this.props.dispatch
@@ -23,8 +32,7 @@ export default class Article extends React.Component {
       <div>
         <h3>{ article.id }</h3>
         <h3>{ article.title }</h3>
-        <h3>{ article.body }</h3>
-        <h3>{ article.html_body }</h3>
+        <Preview text={ article.body } />
       </div>
     )
   }

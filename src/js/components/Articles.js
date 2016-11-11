@@ -21,8 +21,6 @@ export default class Articles extends React.Component {
         <tr key={ article.id }>
           <td>{ article.id }</td>
           <td>{ article.title }</td>
-          <td>{ article.body }</td>
-          <td>{ article.html_body }</td>
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
             <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
@@ -50,8 +48,6 @@ export default class Articles extends React.Component {
             <tr>
               <td>ID</td>
               <td>Title</td>
-              <td>Body</td>
-              <td>HTML Body</td>
               <td>Actions</td>
             </tr>
           </thead>
