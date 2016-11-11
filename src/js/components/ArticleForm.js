@@ -11,25 +11,29 @@ let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
 export default class ArticleForm extends React.Component {
-  
   constructor(props) {
     super(props)
     this.state = {
-      text: [].join('\n')
+      text: '',
+      htmlDocument: ''
     }
   }
   
   // Set new text
   onChange(event) {
     this.setState({
-      text: event.target.value
+      text: event.target.value,
+      htmlDocument: markdown.render(this.state.text)
     })
   }
   
   setArticle(article) {
     if (article) {
       this.refs.title.value = article.title
-      this.state.text = article.body
+      this.setState({
+        text: article.body,
+        htmlDocument: markdown.render(article.body)
+      })
     }
   }
   
@@ -39,7 +43,7 @@ export default class ArticleForm extends React.Component {
     let articleParams = {
       title: this.refs.title.value,
       body: this.state.text,
-      html_body: markdown.render(this.state.text)
+      html_body: this.state.htmlDocument
     }
     this.props.handleSubmit(articleParams)
   }
@@ -52,7 +56,7 @@ export default class ArticleForm extends React.Component {
           <input type='text' id='title' ref='title' />
         </div>
         <Editor text={ this.state.text } onChange={ this.onChange.bind(this) } />
-        <Preview text={ this.state.text } />
+        <Preview htmlDocument={ this.state.htmlDocument } />
         <button onClick={ this.handleSubmit.bind(this) }>Submit</button>
       </div>
     )
