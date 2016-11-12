@@ -1,13 +1,6 @@
 import React from 'react'
-import MarkdownIt from 'markdown-it'
 
 import Preview from './Redactor/Preview'
-
-import videoPlugin from './Redactor/video'
-
-// Setup MarkdownIt parser with videos plugin
-let markdown = new MarkdownIt()
-markdown.use(videoPlugin)
 
 export default class Article extends React.Component {
   
@@ -36,7 +29,7 @@ export default class Article extends React.Component {
       <div>
         <h3>{ article.id }</h3>
         <h3>{ article.title }</h3>
-        <Preview htmlDocument={ markdown.render(article.body) } showType={ 'showFullScreen' } />
+        <Preview htmlDocument={ article.html_body } showType={ 'showFullScreen' } />
       </div>
     )
   }
