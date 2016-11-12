@@ -51,21 +51,18 @@ export default class ArticleForm extends React.Component {
   }
   
   clickMarkdown() {
-    console.log('clickMarkdown');
     this.setState({
       showType: 'markdown'
     })
   }
   
   clickPreview() {
-    console.log('clickPreview');
     this.setState({
       showType: 'preview'
     })
   }
   
   clickBoth() {
-    console.log('clickBoth');
     this.setState({
       showType: 'both'
     })
