@@ -36,7 +36,7 @@ export default class Article extends React.Component {
       <div>
         <h3>{ article.id }</h3>
         <h3>{ article.title }</h3>
-        <Preview htmlDocument={ markdown.render(article.body) } />
+        <Preview htmlDocument={ markdown.render(article.body) } showType={ 'showFullScreen' } />
       </div>
     )
   }

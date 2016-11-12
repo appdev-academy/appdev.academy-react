@@ -1,6 +1,6 @@
 @import 'video';
 
-.editor, .preview {
+.showHalfScreen {
   // Sizing, positioning
   display: inline-block;
   vertical-align: top;
@@ -29,14 +29,13 @@ textarea {
   font-size: 18px;
 }
 
-.showMarkdown {
-  
+.showFullScreen {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  height: 800px;
 }
 
-.showPreview {
-  
-}
-
-.showBoth {
-  
+.hidden {
+  display: none;
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import MarkdownIt from 'markdown-it'
-import classNames from 'classnames'
 
 import Editor from './Redactor/Editor'
 import Preview from './Redactor/Preview'
@@ -17,8 +16,7 @@ export default class ArticleForm extends React.Component {
     this.state = {
       text: '',
       htmlDocument: '',
-      showMarkdown: true,
-      showPreview: true
+      showType: 'both'
     }
   }
   
@@ -55,38 +53,37 @@ export default class ArticleForm extends React.Component {
   clickMarkdown() {
     console.log('clickMarkdown');
     this.setState({
-      showMarkdown: true,
-      showPreview: false
+      showType: 'markdown'
     })
   }
   
   clickPreview() {
     console.log('clickPreview');
     this.setState({
-      showMarkdown: false,
-      showPreview: true
+      showType: 'preview'
     })
   }
   
   clickBoth() {
     console.log('clickBoth');
     this.setState({
-      showMarkdown: true,
-      showPreview: true
+      showType: 'both'
     })
   }
   
   render () {
-    var markdownClass = classNames({
-      'editor': true,
-      'showMarkdown' : !this.state.showMarkdown
-    })
-    
-    var previewClass = classNames({
-      'preview': true,
-      'showPreview' : !this.state.showPreview
-    })
-    
+    var editorShow = ''
+    var previewShow = ''
+    if (this.state.showType == 'both') {
+      editorShow = 'showHalfScreen'
+      previewShow = 'showHalfScreen'
+    } else if (this.state.showType == 'markdown') {
+      editorShow = 'showFullScreen'
+      previewShow = 'hidden'
+    } else if (this.state.showType == 'preview') {
+      editorShow = 'hidden'
+      previewShow = 'showFullScreen'
+    }
     return (
       <div>
         <div className='form-group'>
@@ -98,9 +95,8 @@ export default class ArticleForm extends React.Component {
           <a onClick={ this.clickPreview.bind(this) }> Preview</a> /
           <a onClick={ this.clickBoth.bind(this) }> Both</a>
         </div>
-        //add classes...
-        <Editor text={ this.state.text } onChange={ this.onChange.bind(this) } />
-        <Preview htmlDocument={ this.state.htmlDocument } />
+        <Editor text={ this.state.text } onChange={ this.onChange.bind(this) } showType={ editorShow }/>
+        <Preview htmlDocument={ this.state.htmlDocument } showType={ previewShow }/>
         <button onClick={ this.handleSubmit.bind(this) }>Submit</button>
       </div>
     )
