@@ -6,9 +6,16 @@
   "license": "MIT",
   "repository": "https://github.com/appdev-academy/appdev.academy-react",
   "dependencies": {
+    "axios": "latest",
+    "markdown-it": "latest",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "markdown-it": "latest"
+    "react-redux": "latest",
+    "react-router": "latest",
+    "redux": "latest",
+    "redux-logger": "latest",
+    "redux-promise": "latest",
+    "redux-thunk": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
