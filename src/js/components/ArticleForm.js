@@ -69,18 +69,16 @@ export default class ArticleForm extends React.Component {
   }
   
   render () {
-    var editorShow = ''
-    var previewShow = ''
-    if (this.state.showType == 'both') {
-      editorShow = 'showHalfScreen'
-      previewShow = 'showHalfScreen'
-    } else if (this.state.showType == 'markdown') {
+    let editorShow = 'showHalfScreen'
+    let previewShow = 'showHalfScreen'
+    if (this.state.showType == 'markdown') {
       editorShow = 'showFullScreen'
       previewShow = 'hidden'
     } else if (this.state.showType == 'preview') {
       editorShow = 'hidden'
       previewShow = 'showFullScreen'
     }
+    
     return (
       <div>
         <div className='form-group'>
