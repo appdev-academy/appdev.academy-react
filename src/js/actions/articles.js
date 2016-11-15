@@ -30,3 +30,13 @@ export function deleteArticle(articleID) {
 
   return request
 }
+
+export function createArticle(articleParams) {
+  const request = axios({
+    method: 'POST',
+    data: articleParams,
+    url: `${API_URL}/articles`
+  })
+
+  return request
+}

@@ -59,6 +59,7 @@ let appState = observable({
             { this.renderArticles(appState.articles) }
           </tbody>
         </table>
+        <a href="/admin/articles/new">Create new</a>
       </div>
     )
   }
