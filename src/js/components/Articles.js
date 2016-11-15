@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { Link } from 'react-router'
+import { Link, browserHistory } from 'react-router'
 
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 
-import { fetchArticles } from '../actions/articles'
+import { fetchArticles, deleteArticle } from '../actions/articles'
 
 let appState = observable({
   articles: []
@@ -29,10 +29,16 @@ let appState = observable({
           <td>{ article.title }</td>
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+            <button onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
           </td>
         </tr>
       )
     })
+  }
+
+  deleteButtonClick(articleID) {
+    deleteArticle(articleID)
+    browserHistory.push('/admin/articles')
   }
 
   render() {

@@ -21,3 +21,12 @@ export function fetchArticle(articleID) {
 
   return request
 }
+
+export function deleteArticle(articleID) {
+  let request = axios({
+    method: 'delete',
+    url: `${API_URL}/articles/${articleID}`
+  })
+
+  return request
+}
