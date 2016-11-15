@@ -12,9 +12,8 @@ let appState = observable({
 })
 
 @observer export default class Articles extends React.Component {
-
-  constructor() {
-    super()
+  
+  componentDidMount() {
     fetchArticles().then(function (response) {
       appState.articles = response.data
     })
@@ -37,8 +36,11 @@ let appState = observable({
   }
 
   deleteButtonClick(articleID) {
-    deleteArticle(articleID)
-    browserHistory.push('/admin/articles')
+    deleteArticle(articleID).then((response) => {
+      fetchArticles().then((response) => {
+        appState.articles = response.data
+      })
+    })
   }
 
   render() {
