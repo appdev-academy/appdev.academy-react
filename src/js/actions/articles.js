@@ -40,3 +40,13 @@ export function createArticle(articleParams) {
 
   return request
 }
+
+export function updateArticle(articleParams, id) {
+  const request = axios({
+    method: 'PUT',
+    data: articleParams,
+    url: `${API_URL}/articles/${id}`
+  })
+
+  return request
+}

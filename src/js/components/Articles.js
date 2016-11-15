@@ -28,6 +28,7 @@ let appState = observable({
           <td>{ article.title }</td>
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+            <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
             <button onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
           </td>
         </tr>
