@@ -11,3 +11,13 @@ export function fetchArticles() {
 
   return request
 }
+
+export function fetchArticle(articleID) {
+  let request = axios({
+    method: 'get',
+    url: `${API_URL}/articles/${articleID}`,
+    headers: []
+  })
+
+  return request
+}

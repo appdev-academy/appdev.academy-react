@@ -1,9 +1,9 @@
 import React from 'react'
 
+import { Link } from 'react-router'
+
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-
-import DevTools from 'mobx-react-devtools'
 
 import { fetchArticles } from '../actions/articles'
 
@@ -27,6 +27,9 @@ let appState = observable({
         <tr key={ article.id }>
           <td>{ article.id }</td>
           <td>{ article.title }</td>
+          <td>
+            <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+          </td>
         </tr>
       )
     })
@@ -35,13 +38,13 @@ let appState = observable({
   render() {
     return (
       <div className='container'>
-        <DevTools />
         <h1>Articles</h1>
         <table>
           <thead>
             <tr>
               <td>ID</td>
               <td>Title</td>
+              <td>Actions</td>
             </tr>
           </thead>
           <tbody>
