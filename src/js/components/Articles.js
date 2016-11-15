@@ -1,17 +1,23 @@
 import React from 'react'
-import { Link } from 'react-router'
 
-export default class Articles extends React.Component {
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
 
-  componentDidMount() {
-    // Fetch list of articles
-    let dispatch = this.props.dispatch
-    this.props.fetchArticles(dispatch)
-  }
+import DevTools from 'mobx-react-devtools'
 
-  deleteButtonClick(articleID) {
-    let dispatch = this.props.dispatch
-    this.props.deleteArticle(dispatch, articleID)
+import { fetchArticles } from '../actions/articles'
+
+let appState = observable({
+  articles: []
+})
+
+@observer export default class Articles extends React.Component {
+
+  constructor() {
+    super()
+    fetchArticles().then(function (response) {
+      appState.articles = response.data
+    })
   }
 
   // Render list of Articles
@@ -21,41 +27,27 @@ export default class Articles extends React.Component {
         <tr key={ article.id }>
           <td>{ article.id }</td>
           <td>{ article.title }</td>
-          <td>
-            <Link to={ `/admin/articles/${article.id}` } >Show</Link>
-            <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
-            <button className='delete' onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
-          </td>
         </tr>
       )
     })
   }
 
   render() {
-    let { articles, loading, error } = this.props.articlesList
-
-    if (loading) {
-      return <div className="container"><h1>Articles</h1><h3>Loading...</h3></div>
-    } else if (error) {
-      return <div className="alert alert-danger">Error: {error.message}</div>
-    }
-
     return (
       <div className='container'>
+        <DevTools />
         <h1>Articles</h1>
         <table>
           <thead>
             <tr>
               <td>ID</td>
               <td>Title</td>
-              <td>Actions</td>
             </tr>
           </thead>
           <tbody>
-            { this.renderArticles(articles) }
+            { this.renderArticles(appState.articles) }
           </tbody>
         </table>
-        <a href="/admin/articles/new">Create new</a>
       </div>
     )
   }

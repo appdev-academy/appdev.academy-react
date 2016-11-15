@@ -4,18 +4,12 @@ import { Route } from 'react-router'
 import Root from './components/Root'
 import NotFound from './components/NotFound'
 import Admin from './components/Admin'
-import ArticlesContainer from './redux/containers/ArticlesContainer'
-import ArticleContainer from './redux/containers/ArticleContainer'
-import NewArticleContainer from './redux/containers/NewArticleContainer'
-import EditArticleContainer from './redux/containers/EditArticleContainer'
+import Articles from './components/Articles'
 
 export default (
   <Route path='/' component={ Root }>
     <Route path='admin' component={ Admin }>
-      <Route path='articles' component={ ArticlesContainer } />
-      <Route path='articles/new' component={ NewArticleContainer } />
-      <Route path='articles/:articleID/edit' component={ EditArticleContainer } />
-      <Route path='articles/:articleID' component={ ArticleContainer } />
+      <Route path='articles' component={ Articles } />
     </Route>
     <Route path='not-found' component={ NotFound } />
     <Route path='*' component={ NotFound } />
