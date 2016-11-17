@@ -5,10 +5,11 @@ import { inject, observer } from 'mobx-react';
 @inject('appState')
 @observer
 export default class Articles extends Component {
+  
   componentDidMount() {
     this.props.appState.loadArticles()
   }
-
+  
   // Render list of Articles
   renderArticles(articles) {
     return articles.map((article) => {
@@ -16,14 +17,13 @@ export default class Articles extends Component {
         <tr key={ article.id }>
           <td>{ article.id }</td>
           <td>{ article.title }</td>
-          <td>
-          </td>
         </tr>
       )
     })
   }
 
   render() {
+    console.log(this.props.appState.articles);
     return (
       <div className='container'>
         <h1>Articles</h1>
