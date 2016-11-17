@@ -10,6 +10,10 @@ export default class Articles extends Component {
     this.props.appState.loadArticles()
   }
   
+  deleteButtonClick(articleID) {
+    this.props.appState.deleteArticle(articleID)
+  }
+  
   // Render list of Articles
   renderArticles(articles) {
     return articles.map((article) => {
@@ -19,6 +23,7 @@ export default class Articles extends Component {
           <td>{ article.title }</td>
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+            <button onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
           </td>
         </tr>
       )

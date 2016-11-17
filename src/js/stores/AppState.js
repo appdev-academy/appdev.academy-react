@@ -29,4 +29,14 @@ export default class AppState {
       this.article = response.data
     })
   }
+  
+  @action deleteArticle(articleID) {
+    let request = axios({
+      method: 'delete',
+      url: `${API_URL}/articles/${articleID}`
+    })
+    request.then(() => {
+      this.loadArticles()
+    })
+  }
 }
