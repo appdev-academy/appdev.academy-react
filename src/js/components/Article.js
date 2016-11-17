@@ -13,7 +13,9 @@ export default class Article extends Component {
   
   componentDidMount() {
     let articleID = this.props.params.articleID
-    this.props.appState.fetchArticle(articleID)
+    this.props.appState.fetchArticle(articleID).then(response => {
+      this.props.appState.article = response.data
+    })
   }
   
   render() {

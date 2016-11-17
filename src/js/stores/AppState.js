@@ -25,9 +25,7 @@ export default class AppState {
       url: `${API_URL}/articles/${articleID}`,
       headers: []
     })
-    request.then((response) => {
-      this.article = response.data
-    })
+    return request
   }
   
   @action deleteArticle(articleID) {
@@ -45,6 +43,16 @@ export default class AppState {
       method: 'POST',
       data: articleParams,
       url: `${API_URL}/articles`
+    })
+
+    return request
+  }
+  
+  @action updateArticle(articleParams, id) {
+    const request = axios({
+      method: 'PUT',
+      data: articleParams,
+      url: `${API_URL}/articles/${id}`
     })
 
     return request
