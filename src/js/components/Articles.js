@@ -17,13 +17,15 @@ export default class Articles extends Component {
         <tr key={ article.id }>
           <td>{ article.id }</td>
           <td>{ article.title }</td>
+          <td>
+            <Link to={ `/admin/articles/${article.id}` } >Show</Link>
+          </td>
         </tr>
       )
     })
   }
 
   render() {
-    console.log(this.props.appState.articles);
     return (
       <div className='container'>
         <h1>Articles</h1>
