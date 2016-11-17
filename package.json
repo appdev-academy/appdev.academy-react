@@ -8,11 +8,11 @@
   "dependencies": {
     "axios": "latest",
     "markdown-it": "latest",
+    "mobx": "latest",
+    "mobx-react": "latest",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-router": "latest",
-    "mobx": "latest",
-    "mobx-react": "latest"
+    "react-router": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
