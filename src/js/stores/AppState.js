@@ -39,4 +39,14 @@ export default class AppState {
       this.loadArticles()
     })
   }
+  
+  @action createArticle(articleParams) {
+    const request = axios({
+      method: 'POST',
+      data: articleParams,
+      url: `${API_URL}/articles`
+    })
+
+    return request
+  }
 }

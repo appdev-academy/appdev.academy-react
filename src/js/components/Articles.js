@@ -46,6 +46,7 @@ export default class Articles extends Component {
             { this.renderArticles(this.props.appState.articles) }
           </tbody>
         </table>
+        <a href="/admin/articles/new">Create new</a>
       </div>
     )
   }
