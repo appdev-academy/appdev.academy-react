@@ -8,14 +8,11 @@
   "dependencies": {
     "axios": "latest",
     "markdown-it": "latest",
+    "mobx": "latest",
+    "mobx-react": "latest",
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "react-redux": "latest",
-    "react-router": "latest",
-    "redux": "latest",
-    "redux-logger": "latest",
-    "redux-promise": "latest",
-    "redux-thunk": "latest"
+    "react-router": "latest"
   },
   "devDependencies": {
     "gulp": "latest",
@@ -33,6 +30,9 @@
     "vinyl-buffer": "latest",
     "vinyl-source-stream": "latest",
     "browser-sync": "latest",
-    "connect-history-api-fallback": "latest"
+    "connect-history-api-fallback": "latest",
+    "babel-plugin-transform-decorators-legacy": "latest",
+    "babel-preset-stage-1": "latest",
+    "mobx-react-devtools": "latest"
   }
 }

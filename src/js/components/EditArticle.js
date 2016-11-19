@@ -1,24 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react';
+import { inject } from 'mobx-react';
 import ArticleForm from './ArticleForm'
 
+import { browserHistory } from 'react-router'
+
+@inject('appState')
 export default class EditArticle extends React.Component {
   
-  componentWillReceiveProps(nextProps) {
-    let article = nextProps.activeArticle.article
-    if (article) {
-      this.refs.articleForm.setArticle(article)
-    }
-  }
-  
   componentDidMount() {
-    let dispatch = this.props.dispatch
     let articleID = this.props.params.articleID
-    this.props.fetchArticle(dispatch, articleID)
+    let articleForm = this.refs.articleForm
+    this.props.appState.fetchArticle(articleID).then((response) => {
+      articleForm.setArticle(response.data)
+    })
   }
   
   handleSubmit(articleParams) {
-    let dispatch = this.props.dispatch
-    this.props.updateArticle(dispatch, articleParams, this.props.params.articleID)
+    this.props.appState.updateArticle(articleParams, this.props.params.articleID).then((response) => {
+      if (response.status == 200) {
+        browserHistory.push('/admin/articles')
+      }
+    })
   }
   
   render() {

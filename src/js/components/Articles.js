@@ -1,19 +1,19 @@
-import React from 'react'
-import { Link } from 'react-router'
+import React, { Component } from 'react';
+import { Link, browserHistory } from 'react-router'
+import { inject, observer } from 'mobx-react';
 
-export default class Articles extends React.Component {
-
+@inject('appState')
+@observer
+export default class Articles extends Component {
+  
   componentDidMount() {
-    // Fetch list of articles
-    let dispatch = this.props.dispatch
-    this.props.fetchArticles(dispatch)
+    this.props.appState.loadArticles()
   }
-
+  
   deleteButtonClick(articleID) {
-    let dispatch = this.props.dispatch
-    this.props.deleteArticle(dispatch, articleID)
+    this.props.appState.deleteArticle(articleID)
   }
-
+  
   // Render list of Articles
   renderArticles(articles) {
     return articles.map((article) => {
@@ -24,7 +24,7 @@ export default class Articles extends React.Component {
           <td>
             <Link to={ `/admin/articles/${article.id}` } >Show</Link>
             <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
-            <button className='delete' onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
+            <button onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
           </td>
         </tr>
       )
@@ -32,14 +32,6 @@ export default class Articles extends React.Component {
   }
 
   render() {
-    let { articles, loading, error } = this.props.articlesList
-
-    if (loading) {
-      return <div className="container"><h1>Articles</h1><h3>Loading...</h3></div>
-    } else if (error) {
-      return <div className="alert alert-danger">Error: {error.message}</div>
-    }
-
     return (
       <div className='container'>
         <h1>Articles</h1>
@@ -52,7 +44,7 @@ export default class Articles extends React.Component {
             </tr>
           </thead>
           <tbody>
-            { this.renderArticles(articles) }
+            { this.renderArticles(this.props.appState.articles) }
           </tbody>
         </table>
         <a href="/admin/articles/new">Create new</a>

@@ -18,8 +18,8 @@ var historyApiFallback = require('connect-history-api-fallback')
 var bundler = watchify(browserify('src/js/app.js', watchify.args));
 // Use ES6, React, Object rest spread (3 dots syntax)
 bundler.transform(babelify, {
-  presets: ["es2015", "react"],
-  plugins: ["transform-object-rest-spread"]
+  presets: ["es2015", "react", "stage-1"],
+  plugins: ["transform-decorators-legacy", "transform-object-rest-spread"]
 })
 
 function bundle() {

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react';
 import MarkdownIt from 'markdown-it'
 
 import Editor from './Redactor/Editor'
@@ -10,7 +10,7 @@ import videoPlugin from './Redactor/video'
 let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
-export default class ArticleForm extends React.Component {
+export default class ArticleForm extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -69,18 +69,16 @@ export default class ArticleForm extends React.Component {
   }
   
   render () {
-    var editorShow = ''
-    var previewShow = ''
-    if (this.state.showType == 'both') {
-      editorShow = 'showHalfScreen'
-      previewShow = 'showHalfScreen'
-    } else if (this.state.showType == 'markdown') {
+    let editorShow = 'showHalfScreen'
+    let previewShow = 'showHalfScreen'
+    if (this.state.showType == 'markdown') {
       editorShow = 'showFullScreen'
       previewShow = 'hidden'
     } else if (this.state.showType == 'preview') {
       editorShow = 'hidden'
       previewShow = 'showFullScreen'
     }
+    
     return (
       <div>
         <div className='form-group'>
