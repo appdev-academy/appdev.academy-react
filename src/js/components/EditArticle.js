@@ -6,12 +6,14 @@ import { browserHistory } from 'react-router'
 
 @inject('appState')
 export default class EditArticle extends React.Component {
-
+  
   componentDidMount() {
     let articleID = this.props.params.articleID
     let articleForm = this.refs.articleForm
     this.props.appState.fetchArticle(articleID).then((response) => {
-      articleForm.setArticle(response.data)
+      if (response.status == 200) {
+        articleForm.setArticle(response.data)
+      }
     })
   }
 
