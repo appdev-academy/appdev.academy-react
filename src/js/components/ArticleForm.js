@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import MarkdownIt from 'markdown-it'
 
 import Editor from './Redactor/Editor'
@@ -41,7 +41,7 @@ export default class ArticleForm extends Component {
   
   handleSubmit(event) {
     event.preventDefault()
-    
+
     let articleParams = {
       title: this.refs.title.value,
       body: this.state.text,

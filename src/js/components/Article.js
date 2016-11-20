@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
 
 import Preview from './Redactor/Preview'
 
@@ -14,8 +14,10 @@ export default class Article extends Component {
   componentDidMount() {
     let articleID = this.props.params.articleID
     this.props.appState.fetchArticle(articleID).then(response => {
-      this.props.appState.article = response.data
-    })
+      if (response.status == 200) {
+        this.props.appState.article = response.data
+      }
+    }).catch(() => {})
   }
   
   render() {

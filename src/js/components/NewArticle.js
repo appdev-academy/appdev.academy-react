@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { inject } from 'mobx-react';
+import React, { Component } from 'react'
+import { inject } from 'mobx-react'
 import { browserHistory } from 'react-router'
 
 import ArticleForm from './ArticleForm'
