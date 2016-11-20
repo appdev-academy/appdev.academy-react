@@ -24,7 +24,7 @@ export default class EditArticle extends React.Component {
       }
     })
   }
-
+  
   render() {
     return (
       <ArticleForm handleSubmit={ this.handleSubmit.bind(this) } ref='articleForm' />

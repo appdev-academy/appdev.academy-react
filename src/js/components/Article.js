@@ -6,11 +6,11 @@ import Preview from './Redactor/Preview'
 @inject('appState')
 @observer
 export default class Article extends Component {
-
+  
   constructor(props) {
     super(props)
   }
-
+  
   componentDidMount() {
     let articleID = this.props.params.articleID
     this.props.appState.fetchArticle(articleID).then(response => {
@@ -19,7 +19,7 @@ export default class Article extends Component {
       }
     }).catch(() => {})
   }
-
+  
   render() {
     let article = this.props.appState.article
     return (

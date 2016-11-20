@@ -6,7 +6,7 @@ import ArticleForm from './ArticleForm'
 
 @inject('appState')
 export default class NewArticle extends Component {
-
+  
   handleSubmit(articleParams) {
     this.props.appState.createArticle(articleParams).then((response) => {
       if (response.status == 200) {
@@ -14,7 +14,7 @@ export default class NewArticle extends Component {
       }
     })
   }
-
+  
   render() {
     return (
       <ArticleForm handleSubmit={ this.handleSubmit.bind(this) } />
