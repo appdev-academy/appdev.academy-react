@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Link, browserHistory } from 'react-router'
-import { inject, observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react'
 
 @inject('appState')
 @observer
 export default class Articles extends Component {
-  
+
   componentDidMount() {
     this.props.appState.loadArticles()
   }
-  
+
   deleteButtonClick(articleID) {
     this.props.appState.deleteArticle(articleID)
   }
-  
+
   // Render list of Articles
   renderArticles(articles) {
     return articles.map((article) => {

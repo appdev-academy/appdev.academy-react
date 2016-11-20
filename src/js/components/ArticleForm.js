@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import MarkdownIt from 'markdown-it'
 
 import Editor from './Redactor/Editor'
@@ -19,7 +19,7 @@ export default class ArticleForm extends Component {
       showType: 'both'
     }
   }
-  
+
   // Set new text
   onChange(event) {
     let newText = event.target.value
@@ -28,7 +28,7 @@ export default class ArticleForm extends Component {
       htmlDocument: markdown.render(newText)
     })
   }
-  
+
   setArticle(article) {
     if (article) {
       this.refs.title.value = article.title
@@ -38,10 +38,10 @@ export default class ArticleForm extends Component {
       })
     }
   }
-  
+
   handleSubmit(event) {
     event.preventDefault()
-    
+
     let articleParams = {
       title: this.refs.title.value,
       body: this.state.text,
@@ -49,25 +49,25 @@ export default class ArticleForm extends Component {
     }
     this.props.handleSubmit(articleParams)
   }
-  
+
   clickMarkdown() {
     this.setState({
       showType: 'markdown'
     })
   }
-  
+
   clickPreview() {
     this.setState({
       showType: 'preview'
     })
   }
-  
+
   clickBoth() {
     this.setState({
       showType: 'both'
     })
   }
-  
+
   render () {
     let editorShow = 'showHalfScreen'
     let previewShow = 'showHalfScreen'
@@ -78,7 +78,7 @@ export default class ArticleForm extends Component {
       editorShow = 'hidden'
       previewShow = 'showFullScreen'
     }
-    
+
     return (
       <div>
         <div className='form-group'>
