@@ -6,7 +6,7 @@ const API_URL = 'https://serene-ocean-15499.herokuapp.com/api/v1'
 export default class AppState {
   @observable articles = []
   @observable article = {}
-
+  
   @action loadArticles() {
     let request = axios({
       method: 'get',
@@ -19,7 +19,7 @@ export default class AppState {
       }
     })
   }
-
+  
   @action fetchArticle(articleID) {
     let request = axios({
       method: 'get',
@@ -28,7 +28,7 @@ export default class AppState {
     })
     return request
   }
-
+  
   @action deleteArticle(articleID) {
     let request = axios({
       method: 'delete',
@@ -38,24 +38,24 @@ export default class AppState {
       this.loadArticles()
     })
   }
-
+  
   @action createArticle(articleParams) {
     const request = axios({
       method: 'POST',
       data: articleParams,
       url: `${API_URL}/articles`
     })
-
+    
     return request
   }
-
+  
   @action updateArticle(articleParams, id) {
     const request = axios({
       method: 'PUT',
       data: articleParams,
       url: `${API_URL}/articles/${id}`
     })
-
+    
     return request
   }
 }

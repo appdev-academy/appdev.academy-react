@@ -41,7 +41,7 @@ export default class ArticleForm extends Component {
   
   handleSubmit(event) {
     event.preventDefault()
-
+    
     let articleParams = {
       title: this.refs.title.value,
       body: this.state.text,
