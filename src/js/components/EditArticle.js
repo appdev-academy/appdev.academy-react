@@ -16,7 +16,7 @@ export default class EditArticle extends React.Component {
       }
     })
   }
-
+  
   handleSubmit(articleParams) {
     this.props.appState.updateArticle(articleParams, this.props.params.articleID).then((response) => {
       if (response.status == 200) {
