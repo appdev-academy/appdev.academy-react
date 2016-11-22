@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import axios from 'axios'
 
-const API_URL = 'https://serene-ocean-15499.herokuapp.com/api/v1'
+const API_URL = 'http://new.appdev.academy/api/react'
 
 export default class AppState {
   @observable articles = []
