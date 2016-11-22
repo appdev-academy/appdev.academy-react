@@ -33,8 +33,8 @@ export default class ArticleForm extends Component {
     if (article) {
       this.refs.title.value = article.title
       this.setState({
-        text: article.body,
-        htmlDocument: markdown.render(article.body)
+        text: article.content,
+        htmlDocument: markdown.render(article.content)
       })
     }
   }
@@ -44,8 +44,8 @@ export default class ArticleForm extends Component {
     
     let articleParams = {
       title: this.refs.title.value,
-      body: this.state.text,
-      html_body: this.state.htmlDocument
+      content: this.state.text,
+      html_content: this.state.htmlDocument
     }
     this.props.handleSubmit(articleParams)
   }

@@ -26,7 +26,7 @@ export default class Article extends Component {
       <div>
         <h3>{ article.id }</h3>
         <h3>{ article.title }</h3>
-        <Preview htmlDocument={ article.html_body } showType={ 'showFullScreen' } />
+        <Preview htmlDocument={ article.html_content } showType={ 'showFullScreen' } />
       </div>
     )
   }

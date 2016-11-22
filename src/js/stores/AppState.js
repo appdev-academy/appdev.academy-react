@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx';
 import axios from 'axios'
 
-const API_URL = 'https://serene-ocean-15499.herokuapp.com/api/v1'
+const API_URL = 'http://new.appdev.academy/api/react'
 
 export default class AppState {
   @observable articles = []
@@ -54,6 +54,16 @@ export default class AppState {
       method: 'PUT',
       data: articleParams,
       url: `${API_URL}/articles/${id}`
+    })
+    
+    return request
+  }
+  
+  @action uploadPicture(pictureParams) {
+    const request = axios({
+      method: 'POST',
+      data: pictureParams,
+      url: `${API_URL}/article_images`
     })
     
     return request
