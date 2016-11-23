@@ -58,14 +58,4 @@ export default class AppState {
     
     return request
   }
-  
-  @action uploadPicture(pictureParams) {
-    const request = axios({
-      method: 'POST',
-      data: pictureParams,
-      url: `${API_URL}/article_images`
-    })
-    
-    return request
-  }
 }
