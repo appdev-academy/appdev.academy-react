@@ -1,7 +1,7 @@
 import { observable, action } from 'mobx'
 import axios from 'axios'
 
-const API_URL = 'http://new.appdev.academy/api/react'
+import { API_URL } from '../constants'
 
 export default class ArticleImagesStore {
   @observable images = []

@@ -1,6 +1,8 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
+import ArticleImageRow from './Row'
+
 @inject('articleImagesStore')
 @observer
 export default class ArticleImages extends React.Component {
@@ -34,6 +36,12 @@ export default class ArticleImages extends React.Component {
     })
   }
   
+  renderImages(images) {
+    return images.map((image, index) => {
+      return <ArticleImageRow key={ index } image={ image } />
+    })
+  }
+  
   render() {
     return (
       <div>
@@ -44,9 +52,19 @@ export default class ArticleImages extends React.Component {
           <input type='file' ref='fileUpload' />
         </div>
         <button type='button' onClick={ this.handleSubmit.bind(this) }>Upload</button>
-        { this.props.articleImagesStore.images.map((image, index) => {
-            return <p key={ index }>Thumb{ image.id } { image.thumb }</p>
-        })}
+        <table className='article-images'>
+          <thead>
+            <tr>
+              <td>Preview</td>
+              <td>Thumb URL</td>
+              <td>Regular URL</td>
+              <td>Actions</td>
+            </tr>
+          </thead>
+          <tbody>
+            { this.renderImages(this.props.articleImagesStore.images) }
+          </tbody>
+        </table>
       </div>
     )
   }
