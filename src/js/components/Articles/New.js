@@ -1,14 +1,14 @@
-import React, { Component } from 'react'
-import { inject } from 'mobx-react'
+import React from 'react'
 import { browserHistory } from 'react-router'
+import { inject } from 'mobx-react'
 
-import ArticleForm from './ArticleForm'
+import ArticleForm from './Form'
 
-@inject('appState')
-export default class NewArticle extends Component {
+@inject('articlesStore')
+export default class NewArticle extends React.Component {
   
   handleSubmit(articleParams) {
-    this.props.appState.createArticle(articleParams).then((response) => {
+    this.props.articlesStore.createArticle(articleParams).then((response) => {
       if (response.status == 200) {
         browserHistory.push('/admin/articles')
       }

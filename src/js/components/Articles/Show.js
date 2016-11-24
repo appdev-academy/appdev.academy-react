@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import Preview from './Redactor/Preview'
+import Preview from '../Redactor/Preview'
 
-@inject('appState')
+@inject('articlesStore')
 @observer
-export default class Article extends Component {
+export default class Article extends React.Component {
   
   constructor(props) {
     super(props)
@@ -13,15 +13,15 @@ export default class Article extends Component {
   
   componentDidMount() {
     let articleID = this.props.params.articleID
-    this.props.appState.fetchArticle(articleID).then(response => {
+    this.props.articlesStore.fetchArticle(articleID).then(response => {
       if (response.status == 200) {
-        this.props.appState.article = response.data
+        this.props.articlesStore.article = response.data
       }
-    }).catch(() => {})
+    })
   }
   
   render() {
-    let article = this.props.appState.article
+    let article = this.props.articlesStore.article
     return (
       <div>
         <h3>{ article.id }</h3>

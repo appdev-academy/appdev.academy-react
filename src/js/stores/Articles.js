@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const API_URL = 'http://new.appdev.academy/api/react'
 
-export default class AppState {
+export default class ArticlesStore {
   @observable articles = []
   @observable article = {}
   

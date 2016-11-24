@@ -1,16 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import MarkdownIt from 'markdown-it'
 
-import Editor from './Redactor/Editor'
-import Preview from './Redactor/Preview'
-
-import videoPlugin from './Redactor/video'
+import Editor from '../Redactor/Editor'
+import Preview from '../Redactor/Preview'
+import videoPlugin from '../Redactor/video'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
-export default class ArticleForm extends Component {
+export default class ArticleForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

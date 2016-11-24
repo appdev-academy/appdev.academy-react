@@ -6,14 +6,14 @@ import { Provider } from 'mobx-react'
 // Router
 import routes from './routes'
 
-import AppState from './stores/AppState';
-import ArticleImages from './stores/ArticleImages'
+import ArticlesStore from './stores/Articles';
+import ArticleImagesStore from './stores/ArticleImages'
 
-const appState = new AppState()
-const articleImages = new ArticleImages()
+const articlesStore = new ArticlesStore()
+const articleImagesStore = new ArticleImagesStore()
 
 ReactDOM.render(
-  <Provider appState={ appState } articleImages={ articleImages }>
+  <Provider articlesStore={ articlesStore } articleImagesStore={ articleImagesStore }>
     <Router history={ browserHistory } routes={ routes } />
   </Provider>,
   document.getElementById('body')

@@ -1,7 +1,7 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-@inject('articleImages')
+@inject('articleImagesStore')
 @observer
 export default class ArticleImages extends React.Component {
   
@@ -13,7 +13,7 @@ export default class ArticleImages extends React.Component {
   }
   
   componentDidMount() {
-    this.props.articleImages.loadArticleImages()
+    this.props.articleImagesStore.loadArticleImages()
   }
   
   handleSubmit() {
@@ -28,11 +28,9 @@ export default class ArticleImages extends React.Component {
     let data = new FormData()
     data.append('article_image[image]', file)
     
-    this.props.articleImages.uploadArticleImage(data).then((response) => {
-      this.props.articleImages.loadArticleImages()
+    this.props.articleImagesStore.uploadArticleImage(data).then((response) => {
+      this.props.articleImagesStore.loadArticleImages()
       console.log(response.data)
-    }).catch((error) => {
-      console.log(error.message)
     })
   }
   
@@ -46,7 +44,7 @@ export default class ArticleImages extends React.Component {
           <input type='file' ref='fileUpload' />
         </div>
         <button type='button' onClick={ this.handleSubmit.bind(this) }>Upload</button>
-        { this.props.articleImages.images.map((image, index) => {
+        { this.props.articleImagesStore.images.map((image, index) => {
             return <p key={ index }>Thumb{ image.id } { image.thumb }</p>
         })}
       </div>

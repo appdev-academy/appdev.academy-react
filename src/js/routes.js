@@ -1,16 +1,16 @@
 import React from 'react'
 import { Route } from 'react-router'
 
-import Root from './components/Root'
-import NotFound from './components/NotFound'
-import Admin from './components/Admin'
+import Root from './components/Root/Root'
+import NotFound from './components/Root/NotFound'
+import Admin from './components/Root/Admin'
 
-import Articles from './components/Articles'
-import Article from './components/Article'
-import NewArticle from './components/NewArticle'
-import EditArticle from './components/EditArticle'
+import Articles from './components/Articles/Index'
+import Article from './components/Articles/Show'
+import NewArticle from './components/Articles/New'
+import EditArticle from './components/Articles/Edit'
 
-import ArticleImages from './components/ArticleImages'
+import ArticleImages from './components/ArticleImages/Index'
 
 export default (
   <Route path='/' component={ Root }>

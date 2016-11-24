@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
-@inject('appState')
+@inject('articlesStore')
 @observer
-export default class Articles extends Component {
+export default class Articles extends React.Component {
   
   componentDidMount() {
-    this.props.appState.loadArticles()
+    this.props.articlesStore.loadArticles()
   }
   
   deleteButtonClick(articleID) {
-    this.props.appState.deleteArticle(articleID)
+    this.props.articlesStore.deleteArticle(articleID)
   }
   
   // Render list of Articles
@@ -44,7 +44,7 @@ export default class Articles extends Component {
             </tr>
           </thead>
           <tbody>
-            { this.renderArticles(this.props.appState.articles) }
+            { this.renderArticles(this.props.articlesStore.articles) }
           </tbody>
         </table>
         <a href="/admin/articles/new">Create new</a>

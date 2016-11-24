@@ -1,16 +1,16 @@
-import React, { Component } from 'react'
-import { inject } from 'mobx-react'
-import ArticleForm from './ArticleForm'
-
+import React from 'react'
 import { browserHistory } from 'react-router'
+import { inject } from 'mobx-react'
 
-@inject('appState')
+import ArticleForm from './Form'
+
+@inject('articlesStore')
 export default class EditArticle extends React.Component {
   
   componentDidMount() {
     let articleID = this.props.params.articleID
     let articleForm = this.refs.articleForm
-    this.props.appState.fetchArticle(articleID).then((response) => {
+    this.props.articlesStore.fetchArticle(articleID).then((response) => {
       if (response.status == 200) {
         articleForm.setArticle(response.data)
       }
@@ -18,7 +18,7 @@ export default class EditArticle extends React.Component {
   }
   
   handleSubmit(articleParams) {
-    this.props.appState.updateArticle(articleParams, this.props.params.articleID).then((response) => {
+    this.props.articlesStore.updateArticle(articleParams, this.props.params.articleID).then((response) => {
       if (response.status == 200) {
         browserHistory.push('/admin/articles')
       }
