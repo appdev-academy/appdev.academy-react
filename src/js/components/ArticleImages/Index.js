@@ -10,7 +10,8 @@ export default class ArticleImages extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      image: ''
+      image: '',
+      file: ''
     }
   }
   
@@ -18,21 +19,36 @@ export default class ArticleImages extends React.Component {
     this.props.articleImagesStore.loadArticleImages()
   }
   
-  handleSubmit() {
+  selectFile() {
+    this.refs.fileUpload.click()
+  }
+  
+  didSelectFile() {
     let file = this.refs.fileUpload.files[0]
-    var reader = new FileReader()
+    let reader = new FileReader()
     reader.onload = (event) => {
       this.setState({
-        image: event.target.result
+        image: event.target.result,
+        file: file
       })
     }
     reader.readAsDataURL(file)
+  }
+  
+  uploadSelectedFile() {
+    if (this.state.file == '') {
+      return
+    }
+    
     let data = new FormData()
-    data.append('article_image[image]', file)
+    data.append('article_image[image]', this.state.file)
     
     this.props.articleImagesStore.uploadArticleImage(data).then((response) => {
+      this.setState({
+        image: '',
+        file: ''
+      })
       this.props.articleImagesStore.loadArticleImages()
-      console.log(response.data)
     })
   }
   
@@ -45,13 +61,7 @@ export default class ArticleImages extends React.Component {
   render() {
     return (
       <div>
-        <h2>Article Images</h2>
-        <div className='form-group'>
-          <label htmlFor='file'>File</label>
-          <img src={ this.state.image } />
-          <input type='file' ref='fileUpload' />
-        </div>
-        <button type='button' onClick={ this.handleSubmit.bind(this) }>Upload</button>
+        <h2 className='center'>Article Images</h2>
         <table className='article-images'>
           <thead>
             <tr>
@@ -62,6 +72,24 @@ export default class ArticleImages extends React.Component {
             </tr>
           </thead>
           <tbody>
+            <tr className='new-article-image'>
+              <td>
+                <img src={ this.state.image } onClick={ this.selectFile.bind(this) } />
+                <input
+                  className='hidden'
+                  name='image'
+                  type='file'
+                  accept='image/png, image/jpeg, image/jpg'
+                  onChange={ this.didSelectFile.bind(this) }
+                  ref='fileUpload'
+                />
+              </td>
+              <td></td>
+              <td></td>
+              <td>
+                <button type='button' onClick={ this.uploadSelectedFile.bind(this) }>Upload</button>
+              </td>
+            </tr>
             { this.renderImages(this.props.articleImagesStore.images) }
           </tbody>
         </table>

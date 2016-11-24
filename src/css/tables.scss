@@ -1,0 +1,43 @@
+table.article-images {
+  width: 100%;
+  border: 1px solid #ddd;
+  
+  thead, td {
+    padding: 15px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  thead {
+    border-top: 1px solid #ddd;
+  }
+  
+  tr.article-image {
+    img {
+      width: 160px;
+      height: 120px;
+    }
+  }
+  
+  tr.new-article-image {
+    img {
+      position: relative;
+      width: 160px;
+      height: 120px;
+      cursor: pointer;
+    }
+    
+    img::after {
+      content: '+';
+      font-size: 60px;
+      position: absolute;
+      $width: 34px;
+      $height: 60px;
+      width: $width;
+      height: $height;
+      top: calc(50% - #{$height}/2);
+      left: calc(50% - #{$width}/2);
+    }
+  }
+}
