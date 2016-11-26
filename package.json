@@ -7,6 +7,7 @@
   "repository": "https://github.com/appdev-academy/appdev.academy-react",
   "dependencies": {
     "axios": "latest",
+    "classnames": "latest",
     "markdown-it": "latest",
     "mobx": "latest",
     "mobx-react": "latest",
