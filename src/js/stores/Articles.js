@@ -9,7 +9,7 @@ export default class ArticlesStore {
   
   @action loadArticles() {
     let request = axios({
-      method: 'get',
+      method: 'GET',
       url: `${API_URL}/articles`,
       headers: []
     })
@@ -22,21 +22,11 @@ export default class ArticlesStore {
   
   @action fetchArticle(articleID) {
     let request = axios({
-      method: 'get',
+      method: 'GET',
       url: `${API_URL}/articles/${articleID}`,
       headers: []
     })
     return request
-  }
-  
-  @action deleteArticle(articleID) {
-    let request = axios({
-      method: 'delete',
-      url: `${API_URL}/articles/${articleID}`
-    })
-    request.then(() => {
-      this.loadArticles()
-    })
   }
   
   @action createArticle(articleParams) {
@@ -57,5 +47,15 @@ export default class ArticlesStore {
     })
     
     return request
+  }
+  
+  @action deleteArticle(id) {
+    let request = axios({
+      method: 'DELETE',
+      url: `${API_URL}/articles/${id}`
+    })
+    request.then(() => {
+      this.loadArticles()
+    })
   }
 }

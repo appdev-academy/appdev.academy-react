@@ -8,7 +8,7 @@ export default class ArticleImagesStore {
   
   @action loadArticleImages() {
     let request = axios({
-      method: 'get',
+      method: 'GET',
       url: `${API_URL}/article_images`,
       headers: []
     })
@@ -27,5 +27,15 @@ export default class ArticleImagesStore {
     })
     
     return request
+  }
+  
+  @action delete(id) {
+    let request = axios({
+      method: 'DELETE',
+      url: `${API_URL}/article_images/${id}`
+    })
+    request.then((response) => {
+      this.loadArticleImages()
+    })
   }
 }

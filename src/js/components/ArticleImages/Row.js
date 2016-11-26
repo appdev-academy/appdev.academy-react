@@ -1,8 +1,17 @@
 import React from 'react'
+import { inject, observer } from 'mobx-react'
 
 import { IMAGE_BASE_URL } from '../../constants'
+import RedButton from '../Buttons/Red'
 
+@inject('articleImagesStore')
+@observer
 export default class Row extends React.Component {
+  
+  handleDelete() {
+    let articleImageID = this.props.image.id
+    this.props.articleImagesStore.delete(articleImageID)
+  }
   
   render() {
     let image = this.props.image
@@ -21,7 +30,10 @@ export default class Row extends React.Component {
           <a href={ regularURL }>{ regularURL }</a>
         </td>
         <td>
-          Actions
+          <RedButton
+            title='Delete'
+            onClick={ this.handleDelete.bind(this) }
+          />
         </td>
       </tr>
     )
