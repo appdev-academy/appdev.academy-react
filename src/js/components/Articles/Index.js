@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
+import DeleteButton from '../Buttons/Red'
+
 @inject('articlesStore')
 @observer
 export default class Index extends React.Component {
@@ -19,12 +21,14 @@ export default class Index extends React.Component {
     return articles.map((article) => {
       return (
         <tr key={ article.id }>
-          <td>{ article.id }</td>
           <td>{ article.title }</td>
-          <td>
-            <Link to={ `/admin/articles/${article.id}` } >Show</Link>
-            <Link to={ `/admin/articles/${article.id}/edit` } >Edit</Link>
-            <button onClick={ this.deleteButtonClick.bind(this, article.id) } >Delete</button>
+          <td className='actions left'>
+            <Link className='button blue' to={ `/admin/articles/${article.id}` }>Show</Link>
+            <Link className='button green' to={ `/admin/articles/${article.id}/edit` }>Edit</Link>
+            <DeleteButton
+              title='Delete'
+              onClick={ this.deleteButtonClick.bind(this, article.id)}
+            />
           </td>
         </tr>
       )
@@ -33,21 +37,25 @@ export default class Index extends React.Component {
   
   render() {
     return (
-      <div className='container'>
-        <h1>Articles</h1>
-        <table>
+      <div className='articles'>
+        <h2 className='center'>Articles</h2>
+        <table className='articles'>
           <thead>
             <tr>
-              <td>ID</td>
               <td>Title</td>
               <td>Actions</td>
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>Next awesome Article...</td>
+              <td>
+                <a className='button blue' href="/admin/articles/new">+ New Article</a>
+              </td>
+            </tr>
             { this.renderArticles(this.props.articlesStore.articles) }
           </tbody>
         </table>
-        <a href="/admin/articles/new">Create new</a>
       </div>
     )
   }
