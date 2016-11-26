@@ -7,7 +7,7 @@ export default class ArticlesStore {
   @observable articles = []
   @observable article = {}
   
-  @action loadArticles() {
+  @action fetchIndex() {
     let request = axios({
       method: 'GET',
       url: `${API_URL}/articles`,
@@ -20,42 +20,42 @@ export default class ArticlesStore {
     })
   }
   
-  @action fetchArticle(articleID) {
+  @action fetchShow(id) {
     let request = axios({
       method: 'GET',
-      url: `${API_URL}/articles/${articleID}`,
+      url: `${API_URL}/articles/${id}`,
       headers: []
     })
     return request
   }
   
-  @action createArticle(articleParams) {
+  @action create(params) {
     const request = axios({
       method: 'POST',
-      data: articleParams,
+      data: params,
       url: `${API_URL}/articles`
     })
     
     return request
   }
   
-  @action updateArticle(articleParams, id) {
+  @action update(id, params) {
     const request = axios({
       method: 'PUT',
-      data: articleParams,
+      data: params,
       url: `${API_URL}/articles/${id}`
     })
     
     return request
   }
   
-  @action deleteArticle(id) {
+  @action delete(id) {
     let request = axios({
       method: 'DELETE',
       url: `${API_URL}/articles/${id}`
     })
-    request.then(() => {
-      this.loadArticles()
+    request.then((response) => {
+      this.fetchIndex()
     })
   }
 }

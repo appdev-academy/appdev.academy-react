@@ -10,15 +10,16 @@ export default class Edit extends React.Component {
   componentDidMount() {
     let articleID = this.props.params.articleID
     let articleForm = this.refs.articleForm
-    this.props.articlesStore.fetchArticle(articleID).then((response) => {
+    this.props.articlesStore.fetchShow(articleID).then((response) => {
       if (response.status == 200) {
         articleForm.setArticle(response.data)
       }
     })
   }
   
-  handleSubmit(articleParams) {
-    this.props.articlesStore.updateArticle(articleParams, this.props.params.articleID).then((response) => {
+  handleSubmit(params) {
+    let articleID = this.props.params.articleID
+    this.props.articlesStore.update(articleID, params).then((response) => {
       if (response.status == 200) {
         browserHistory.push('/admin/articles')
       }

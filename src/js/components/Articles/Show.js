@@ -13,7 +13,7 @@ export default class Show extends React.Component {
   
   componentDidMount() {
     let articleID = this.props.params.articleID
-    this.props.articlesStore.fetchArticle(articleID).then(response => {
+    this.props.articlesStore.fetchShow(articleID).then(response => {
       if (response.status == 200) {
         this.props.articlesStore.article = response.data
       }

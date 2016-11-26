@@ -7,11 +7,11 @@ import { inject, observer } from 'mobx-react'
 export default class Index extends React.Component {
   
   componentDidMount() {
-    this.props.articlesStore.loadArticles()
+    this.props.articlesStore.fetchIndex()
   }
   
   deleteButtonClick(articleID) {
-    this.props.articlesStore.deleteArticle(articleID)
+    this.props.articlesStore.delete(articleID)
   }
   
   // Render list of Articles

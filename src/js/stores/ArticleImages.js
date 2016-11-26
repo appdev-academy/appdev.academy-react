@@ -6,7 +6,7 @@ import { API_URL } from '../constants'
 export default class ArticleImagesStore {
   @observable images = []
   
-  @action loadArticleImages() {
+  @action fetchIndex() {
     let request = axios({
       method: 'GET',
       url: `${API_URL}/article_images`,
@@ -19,7 +19,7 @@ export default class ArticleImagesStore {
     })
   }
   
-  @action uploadArticleImage(params) {
+  @action create(params) {
     const request = axios({
       method: 'POST',
       data: params,
@@ -35,7 +35,7 @@ export default class ArticleImagesStore {
       url: `${API_URL}/article_images/${id}`
     })
     request.then((response) => {
-      this.loadArticleImages()
+      this.fetchIndex()
     })
   }
 }

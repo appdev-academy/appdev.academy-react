@@ -17,7 +17,7 @@ export default class Index extends React.Component {
   }
   
   componentDidMount() {
-    this.props.articleImagesStore.loadArticleImages()
+    this.props.articleImagesStore.fetchIndex()
   }
   
   selectFile() {
@@ -44,12 +44,12 @@ export default class Index extends React.Component {
     let data = new FormData()
     data.append('article_image[image]', this.state.file)
     
-    this.props.articleImagesStore.uploadArticleImage(data).then((response) => {
+    this.props.articleImagesStore.create(data).then((response) => {
       this.setState({
         image: '',
         file: ''
       })
-      this.props.articleImagesStore.loadArticleImages()
+      this.props.articleImagesStore.fetchIndex()
     })
   }
   
