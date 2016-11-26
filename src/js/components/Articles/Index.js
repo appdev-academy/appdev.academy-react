@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 
 @inject('articlesStore')
 @observer
-export default class Articles extends React.Component {
+export default class Index extends React.Component {
   
   componentDidMount() {
     this.props.articlesStore.loadArticles()

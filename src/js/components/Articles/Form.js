@@ -9,7 +9,7 @@ import videoPlugin from '../Redactor/video'
 let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
-export default class ArticleForm extends React.Component {
+export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {

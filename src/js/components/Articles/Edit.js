@@ -2,10 +2,10 @@ import React from 'react'
 import { browserHistory } from 'react-router'
 import { inject } from 'mobx-react'
 
-import ArticleForm from './Form'
+import Form from './Form'
 
 @inject('articlesStore')
-export default class EditArticle extends React.Component {
+export default class Edit extends React.Component {
   
   componentDidMount() {
     let articleID = this.props.params.articleID
@@ -27,7 +27,7 @@ export default class EditArticle extends React.Component {
   
   render() {
     return (
-      <ArticleForm handleSubmit={ this.handleSubmit.bind(this) } ref='articleForm' />
+      <Form handleSubmit={ this.handleSubmit.bind(this) } ref='articleForm' />
     )
   }
 }

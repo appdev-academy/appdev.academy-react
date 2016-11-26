@@ -1,11 +1,11 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import ArticleImageRow from './Row'
+import Row from './Row'
 
 @inject('articleImagesStore')
 @observer
-export default class ArticleImages extends React.Component {
+export default class Index extends React.Component {
   
   constructor(props) {
     super(props)
@@ -54,7 +54,7 @@ export default class ArticleImages extends React.Component {
   
   renderImages(images) {
     return images.map((image, index) => {
-      return <ArticleImageRow key={ index } image={ image } />
+      return <Row key={ index } image={ image } />
     })
   }
   
@@ -66,8 +66,7 @@ export default class ArticleImages extends React.Component {
           <thead>
             <tr>
               <td>Preview</td>
-              <td>Thumb URL</td>
-              <td>Regular URL</td>
+              <td>Image URL</td>
               <td>Actions</td>
             </tr>
           </thead>
@@ -84,7 +83,6 @@ export default class ArticleImages extends React.Component {
                   ref='fileUpload'
                 />
               </td>
-              <td></td>
               <td></td>
               <td>
                 <button type='button' onClick={ this.uploadSelectedFile.bind(this) }>Upload</button>

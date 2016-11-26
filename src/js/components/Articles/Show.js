@@ -5,7 +5,7 @@ import Preview from '../Redactor/Preview'
 
 @inject('articlesStore')
 @observer
-export default class Article extends React.Component {
+export default class Show extends React.Component {
   
   constructor(props) {
     super(props)

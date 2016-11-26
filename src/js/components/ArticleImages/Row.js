@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IMAGE_BASE_URL } from '../../constants'
 
-export default class ArticleImageRow extends React.Component {
+export default class Row extends React.Component {
   
   render() {
     let image = this.props.image
@@ -15,10 +15,10 @@ export default class ArticleImageRow extends React.Component {
           <img src={ thumbURL } />
         </td>
         <td>
-          <a href={ thumbURL }>Thumb URL</a>
-        </td>
-        <td>
-          <a href={ regularURL }>Regular URL</a>
+          <a href={ thumbURL }>{ thumbURL }</a>
+          <br />
+          <br />
+          <a href={ regularURL }>{ regularURL }</a>
         </td>
         <td>
           Actions
@@ -28,6 +28,6 @@ export default class ArticleImageRow extends React.Component {
   }
 }
 
-ArticleImageRow.propTypes = {
+Row.propTypes = {
   image: React.PropTypes.object.isRequired
 }
