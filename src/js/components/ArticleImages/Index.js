@@ -2,6 +2,7 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 
 import Row from './Row'
+import GreenButton from '../Buttons/Green'
 
 @inject('articleImagesStore')
 @observer
@@ -85,7 +86,10 @@ export default class Index extends React.Component {
               </td>
               <td></td>
               <td>
-                <button type='button' onClick={ this.uploadSelectedFile.bind(this) }>Upload</button>
+                <GreenButton
+                  title='Upload'
+                  onClick={ this.uploadSelectedFile.bind(this) }
+                />
               </td>
             </tr>
             { this.renderImages(this.props.articleImagesStore.images) }
