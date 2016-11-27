@@ -88,10 +88,6 @@ strong {
   font-weight: bold;
 }
 
-code {
-  font-family: monospace;
-}
-
 pre {
   $padding: 20px;
   $border-width: 1px;
@@ -100,4 +96,10 @@ pre {
   width: calc(100% - 2*#{$padding} - 2*#{$border-width});
   border: $border-width dashed #2f6fab;
   background-color: #f9f9f9;
+  overflow-x: scroll;
+}
+
+code {
+  font-family: monospace;
+  padding-right: 20px;
 }

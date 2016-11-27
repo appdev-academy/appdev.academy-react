@@ -23,16 +23,19 @@ textarea {
   outline: none;
   border: none;
   width: 100%;
-  max-width: 100%;
   line-height: 40px;
   font-size: 18px;
 }
 
 .showFullScreen {
-  width: 800px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
 .hidden {
   display: none;
+}
+
+img {
+  width: 100%;
 }
