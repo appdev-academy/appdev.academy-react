@@ -1,10 +1,14 @@
 // Title font
 @font-face {
-  font-family: PlayfairDisplayBold;
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: normal;
   src: url('/fonts/playfair-display/bold.ttf');
 }
 @font-face {
-  font-family: PlayfairDisplayBoldItalic;
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: italic;
   src: url('/fonts/playfair-display/bold-italic.ttf');
 }
 
@@ -35,6 +39,7 @@
 }
 
 body {
+  font-family: Raleway;
   font-size: 18px;
   line-height: 1.5em;
 }
@@ -42,7 +47,9 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   margin: 40px 0;
-  font-family: PlayfairDisplayBoldItalic;
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: italic;
 }
 
 h1 {
@@ -70,7 +77,6 @@ h6 {
 }
 
 p {
-  font-family: Raleway;
   margin: 20px 0;
 }
 

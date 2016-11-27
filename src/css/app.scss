@@ -1,8 +1,9 @@
-@import 'reset';
-@import 'variables';
+@import '_reset';
+@import '_variables';
 
 @import 'buttons';
 @import 'containers';
+@import 'lists';
 @import 'tables';
 @import 'text';
 @import 'video';
