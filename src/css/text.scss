@@ -104,6 +104,15 @@ code {
   padding-right: 20px;
 }
 
+a {
+  text-decoration: none;
+  color: $main-color;
+}
+
+a:hover {
+  color: $main-color-dark;
+}
+
 .center {
   text-align: center;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route } from 'react-router'
+import { IndexRedirect, IndexRoute, Route } from 'react-router'
 
 import Root from './components/Root/Root'
 import NotFound from './components/Root/NotFound'
@@ -15,10 +15,13 @@ import ArticleImages from './components/ArticleImages/Index'
 export default (
   <Route path='/' component={ Root }>
     <Route path='admin' component={ Admin }>
-      <Route path='articles' component={ Articles } />
-      <Route path='articles/new' component={ NewArticle } />
-      <Route path='articles/:articleID/edit' component={ EditArticle } />
-      <Route path='articles/:articleID' component={ Article } />
+      <IndexRedirect to='articles' />
+      <Route path='articles'>
+        <IndexRoute component={ Articles } />
+        <Route path='new' component={ NewArticle } />
+        <Route path=':articleID/edit' component={ EditArticle } />
+        <Route path=':articleID' component={ Article } />
+      </Route>
       <Route path='article_images' component={ ArticleImages } />
     </Route>
     <Route path='not-found' component={ NotFound } />

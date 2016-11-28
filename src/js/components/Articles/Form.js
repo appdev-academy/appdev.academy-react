@@ -71,6 +71,7 @@ export default class Form extends React.Component {
     })
     
     let previewClasses = ClassNames({
+      'article-container': true,
       'full-width': this.state.showType == 'preview',
       'half-width': this.state.showType == 'editor'
     })
@@ -93,7 +94,7 @@ export default class Form extends React.Component {
           />
         </div>
         <div>
-          <Textarea className={ editorClasses } value={ this.state.text } onChange={ this.contentChanged.bind(this) } rows={ 3 }></Textarea>
+          <Textarea className={ editorClasses } value={ this.state.text } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
           <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlDocument }} />
         </div>
         <div className='actions center'>

@@ -11,9 +11,32 @@
 
 .admin-container {
   margin: 20px;
+  padding-top: $menu-height;
 }
 
 .article-container {
   max-width: 800px;
   margin: 0 auto;
+  
+  ul {
+    list-style-position: inside;
+    
+    li {
+      font-style: italic;
+    }
+    
+    li:before {
+      content: "•";
+      padding-right: 5px;
+    }
+  }
+  
+  ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+    
+    li {
+      font-style: italic;
+    }
+  }
 }

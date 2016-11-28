@@ -1,0 +1,21 @@
+.menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+  border-bottom: 2px solid $main-color;
+  
+  a {
+    display: inline-block;
+    line-height: $menu-height;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  a.active {
+    color: white;
+    background-color: $main-color;
+  }
+}
