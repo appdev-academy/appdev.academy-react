@@ -32,12 +32,8 @@ table.articles, table.article-images {
       content: '+';
       font-size: 60px;
       position: absolute;
-      $width: 34px;
-      $height: 60px;
-      width: $width;
-      height: $height;
-      top: calc(50% - #{$height}/2);
-      left: calc(50% - #{$width}/2);
+      top: 45px;
+      left: 65px;
     }
   }
 }

@@ -1,16 +1,23 @@
 .button {
   display: inline-block;
-  padding: 5px 10px;
-  border-radius: 50px;
-  border: 1px solid black;
+  padding: 10px 20px;
+  // Border
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
   outline: none;
-  // Text
-  font-size: 16px;
-  font-family: arial;
-  line-height: 22px;
+  // Font
+  font-family: Raleway;
+  font-weight: bold;
+  font-size: 0.75em;
+  line-height: 1.5em;
   text-decoration: none;
-  background-color: white;
   color: black;
+  // Background
+  background-color: white;
+  // Cursor
+  cursor: pointer;
 }
 
 .button:hover {
@@ -20,13 +27,11 @@
 }
 
 .button.small {
-  font-size: 14px;
-  line-height: 18px;
-  padding: 4px 8px;
+  padding: 5px 10px;
 }
 
 .button.blue {
-  border: 1px solid $main-color;
+  border-color: $main-color;
   color: $main-color;
 }
 
@@ -36,7 +41,7 @@
 }
 
 .button.red {
-  border: 1px solid $red-color;
+  border-color: $red-color;
   color: $red-color;
 }
 
@@ -46,7 +51,7 @@
 }
 
 .button.orange {
-  border: 1px solid $orange-color;
+  border-color: $orange-color;
   color: $orange-color;
 }
 
@@ -56,17 +61,13 @@
 }
 
 .button.green {
-  border: 1px solid $green-color;
+  border-color: $green-color;
   color: $green-color;
 }
 
 .button.green:hover, .button.green.selected {
   background-color: $green-color;
   color: white;
-}
-
-input[type=submit].button {
-  cursor: pointer;
 }
 
 // Fix wrong line-height for submit button in Firefox

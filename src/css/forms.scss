@@ -3,18 +3,19 @@ textarea {
   outline: none;
   border: none;
   width: 100%;
+  font-family: Raleway;
+  font-size: 1em;
   line-height: 30px;
-  font-size: 18px;
 }
 
-input.article-title {
+input.title {
   border: none;
   outline: none;
   text-align: center;
   font-family: PlayfairDisplay;
   font-weight: bold;
   font-style: italic;
-  font-size: 24px;
+  font-size: 2em;
   width: 100%;
   margin-bottom: 20px;
 }

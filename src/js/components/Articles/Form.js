@@ -1,11 +1,10 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
-import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 import OrangeButton from '../Buttons/Orange'
 
@@ -79,7 +78,7 @@ export default class Form extends React.Component {
     return (
       <div>
         <div className='form-group'>
-          <input type='text' ref='title' className='article-title' autoFocus={ true } />
+          <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>
         <div className='buttons center'>
           <OrangeButton
@@ -102,12 +101,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <BlueButton
-            title='Back to Articles'
-            onClick={() => {
-              browserHistory.push('/admin/articles')
-            }}
-          />
+          <Link className='button blue' to={ `/admin/articles` }>Back to Articles</Link>
         </div>
       </div>
     )

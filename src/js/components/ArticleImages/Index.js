@@ -88,7 +88,6 @@ export default class Index extends React.Component {
               <td>
                 <GreenButton
                   title='Upload'
-                  small={ true }
                   onClick={ this.uploadSelectedFile.bind(this) }
                 />
               </td>
