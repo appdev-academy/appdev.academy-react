@@ -1,9 +1,8 @@
 import React from 'react'
 import MarkdownIt from 'markdown-it'
+import Textarea from 'react-textarea-autosize'
 
-import Editor from '../Redactor/Editor'
-import Preview from '../Redactor/Preview'
-import videoPlugin from '../Redactor/video'
+import videoPlugin from '../../plugins/video'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
@@ -89,8 +88,8 @@ export default class Form extends React.Component {
           <a onClick={ this.clickPreview.bind(this) }> Preview</a> /
           <a onClick={ this.clickBoth.bind(this) }> Both</a>
         </div>
-        <Editor text={ this.state.text } onChange={ this.onChange.bind(this) } showType={ editorShow }/>
-        <Preview htmlDocument={ this.state.htmlDocument } showType={ previewShow }/>
+        <Textarea className={ editorShow } value={ this.state.text } onChange={ this.onChange.bind(this) } rows={ 3 }></Textarea>
+        <div className={ previewShow } dangerouslySetInnerHTML={{ __html: this.state.htmlDocument }} />
         <button onClick={ this.handleSubmit.bind(this) }>Submit</button>
       </div>
     )

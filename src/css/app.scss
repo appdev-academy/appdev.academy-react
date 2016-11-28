@@ -3,6 +3,7 @@
 
 @import 'buttons';
 @import 'containers';
+@import 'forms';
 @import 'lists';
 @import 'tables';
 @import 'text';
@@ -12,19 +13,6 @@
   display: inline-block;
   vertical-align: top;
   width: calc(50% - 1px);
-}
-
-.center {
-  text-align: center;
-}
-
-textarea {
-  box-sizing: border-box;
-  outline: none;
-  border: none;
-  width: 100%;
-  line-height: 40px;
-  font-size: 18px;
 }
 
 .showFullScreen {

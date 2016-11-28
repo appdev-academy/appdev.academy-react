@@ -8,13 +8,13 @@
   font-family: arial;
   line-height: 22px;
   text-decoration: none;
-  color: black;
   background-color: white;
+  color: black;
 }
 
 .button:hover {
   background-color: black;
-  color: #ffffff;
+  color: white;
   transition: all 0.25s;
 }
 
@@ -31,7 +31,7 @@
 
 .button.blue:hover {
   background-color: $main-color;
-  color: #ffffff;
+  color: white;
 }
 
 .button.red {
@@ -41,7 +41,7 @@
 
 .button.red:hover {
   background-color: $red-color;
-  color: #ffffff;
+  color: white;
 }
 
 .button.orange {
@@ -51,7 +51,7 @@
 
 .button.orange:hover {
   background-color: $orange-color;
-  color: #ffffff;
+  color: white;
 }
 
 .button.green {
@@ -61,7 +61,7 @@
 
 .button.green:hover {
   background-color: $green-color;
-  color: #ffffff;
+  color: white;
 }
 
 input[type=submit].button {
