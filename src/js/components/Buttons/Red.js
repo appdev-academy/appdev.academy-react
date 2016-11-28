@@ -1,12 +1,13 @@
 import React from 'react'
-import classNames from 'classnames'
+import ClassNames from 'classnames'
 
 export default class Red extends React.Component {
   
   render() {
-    let buttonClasses = classNames({
+    let buttonClasses = ClassNames({
       'button': true,
       'red': true,
+      'selected': this.props.selected,
       'small': this.props.small
     })
     
@@ -21,9 +22,11 @@ export default class Red extends React.Component {
 Red.propTypes = {
   title: React.PropTypes.string.isRequired,
   small: React.PropTypes.bool,
+  selected: React.PropTypes.bool,
   onClick: React.PropTypes.func.isRequired
 }
 
 Red.defaultProps = {
-  small: false
+  small: false,
+  selected: false
 }

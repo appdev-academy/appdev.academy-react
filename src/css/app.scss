@@ -9,17 +9,6 @@
 @import 'text';
 @import 'video';
 
-.showHalfScreen {
-  display: inline-block;
-  vertical-align: top;
-  width: calc(50% - 1px);
-}
-
-.showFullScreen {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
 .hidden {
   display: none;
 }

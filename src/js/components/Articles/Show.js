@@ -1,8 +1,6 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import Preview from '../Redactor/Preview'
-
 @inject('articlesStore')
 @observer
 export default class Show extends React.Component {
@@ -23,9 +21,7 @@ export default class Show extends React.Component {
   render() {
     let article = this.props.articlesStore.article
     return (
-      <div>
-        <Preview htmlDocument={ article.html_content } showType={ 'showFullScreen' } />
-      </div>
+      <div className='article-container' dangerouslySetInnerHTML={{ __html: article.html_content }} />
     )
   }
 }

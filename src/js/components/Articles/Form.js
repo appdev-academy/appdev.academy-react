@@ -1,8 +1,13 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
 import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
+import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
+import BlueButton from '../Buttons/Blue'
+import GreenButton from '../Buttons/Green'
+import OrangeButton from '../Buttons/Orange'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
@@ -14,12 +19,12 @@ export default class Form extends React.Component {
     this.state = {
       text: '',
       htmlDocument: '',
-      showType: 'both'
+      showType: 'editor'
     }
   }
   
   // Set new text
-  onChange(event) {
+  contentChanged(event) {
     let newText = event.target.value
     this.setState({
       text: newText,
@@ -48,9 +53,9 @@ export default class Form extends React.Component {
     this.props.handleSubmit(articleParams)
   }
   
-  clickMarkdown() {
+  clickEditor() {
     this.setState({
-      showType: 'markdown'
+      showType: 'editor'
     })
   }
   
@@ -60,37 +65,50 @@ export default class Form extends React.Component {
     })
   }
   
-  clickBoth() {
-    this.setState({
-      showType: 'both'
-    })
-  }
-  
   render () {
-    let editorShow = 'showHalfScreen'
-    let previewShow = 'showHalfScreen'
-    if (this.state.showType == 'markdown') {
-      editorShow = 'showFullScreen'
-      previewShow = 'hidden'
-    } else if (this.state.showType == 'preview') {
-      editorShow = 'hidden'
-      previewShow = 'showFullScreen'
-    }
+    let editorClasses = ClassNames({
+      'hidden': this.state.showType == 'preview',
+      'half-width': this.state.showType == 'editor'
+    })
+    
+    let previewClasses = ClassNames({
+      'full-width': this.state.showType == 'preview',
+      'half-width': this.state.showType == 'editor'
+    })
     
     return (
       <div>
         <div className='form-group'>
-          <label htmlFor='title'>Title</label>
-          <input type='text' id='title' ref='title' />
+          <input type='text' ref='title' className='article-title' autoFocus={ true } />
         </div>
-        <div className='center'>
-          <a onClick={ this.clickMarkdown.bind(this) }>Markdown</a> /
-          <a onClick={ this.clickPreview.bind(this) }> Preview</a> /
-          <a onClick={ this.clickBoth.bind(this) }> Both</a>
+        <div className='buttons center'>
+          <OrangeButton
+            title='Editor'
+            selected={ this.state.showType == 'editor' }
+            onClick={ this.clickEditor.bind(this) }
+          />
+          <GreenButton
+            title='Preview'
+            selected={ this.state.showType == 'preview' }
+            onClick={ this.clickPreview.bind(this) }
+          />
         </div>
-        <Textarea className={ editorShow } value={ this.state.text } onChange={ this.onChange.bind(this) } rows={ 3 }></Textarea>
-        <div className={ previewShow } dangerouslySetInnerHTML={{ __html: this.state.htmlDocument }} />
-        <button onClick={ this.handleSubmit.bind(this) }>Submit</button>
+        <div>
+          <Textarea className={ editorClasses } value={ this.state.text } onChange={ this.contentChanged.bind(this) } rows={ 3 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlDocument }} />
+        </div>
+        <div className='actions center'>
+          <GreenButton
+            title='Save'
+            onClick={ this.handleSubmit.bind(this) }
+          />
+          <BlueButton
+            title='Back to Articles'
+            onClick={() => {
+              browserHistory.push('/admin/articles')
+            }}
+          />
+        </div>
       </div>
     )
   }

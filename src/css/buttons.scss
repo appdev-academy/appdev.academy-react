@@ -3,6 +3,7 @@
   padding: 5px 10px;
   border-radius: 50px;
   border: 1px solid black;
+  outline: none;
   // Text
   font-size: 16px;
   font-family: arial;
@@ -29,7 +30,7 @@
   color: $main-color;
 }
 
-.button.blue:hover {
+.button.blue:hover, .button.blue.selected {
   background-color: $main-color;
   color: white;
 }
@@ -39,7 +40,7 @@
   color: $red-color;
 }
 
-.button.red:hover {
+.button.red:hover, .button.red.selected {
   background-color: $red-color;
   color: white;
 }
@@ -49,7 +50,7 @@
   color: $orange-color;
 }
 
-.button.orange:hover {
+.button.orange:hover, .button.orange.selected {
   background-color: $orange-color;
   color: white;
 }
@@ -59,7 +60,7 @@
   color: $green-color;
 }
 
-.button.green:hover {
+.button.green:hover, .button.green.selected {
   background-color: $green-color;
   color: white;
 }

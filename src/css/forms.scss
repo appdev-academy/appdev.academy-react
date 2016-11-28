@@ -6,3 +6,15 @@ textarea {
   line-height: 30px;
   font-size: 18px;
 }
+
+input.article-title {
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 24px;
+  width: 100%;
+  margin-bottom: 20px;
+}
