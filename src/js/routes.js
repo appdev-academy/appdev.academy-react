@@ -10,6 +10,8 @@ import Article from './components/Articles/Show'
 import NewArticle from './components/Articles/New'
 import EditArticle from './components/Articles/Edit'
 
+import Login from './components/Authentication/Login'
+
 import ArticleImages from './components/ArticleImages/Index'
 
 export default (
@@ -23,6 +25,7 @@ export default (
         <Route path=':articleID' component={ Article } />
       </Route>
       <Route path='article_images' component={ ArticleImages } />
+      <Route path='login' component={ Login } />
     </Route>
     <Route path='not-found' component={ NotFound } />
     <Route path='*' component={ NotFound } />
