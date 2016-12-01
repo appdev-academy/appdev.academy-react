@@ -8,17 +8,19 @@ import { inject, observer } from 'mobx-react'
 export default class Admin extends React.Component {
   
   componentDidMount() {
-    this.checkAccessToken(this.props.location.pathname)
+    let accessToken = this.props.sessionsStore.accessToken
+    let location = this.props.location.pathname
+    this.checkAccessToken(accessToken, location)
   }
   
   componentWillUpdate(nextProps, nextState) {
-    this.checkAccessToken(nextProps.location.pathname)
+    let accessToken = nextProps.sessionsStore.accessToken
+    let location = nextProps.location.pathname
+    this.checkAccessToken(accessToken, location)
   }
   
-  checkAccessToken(location) {
-    this.props.sessionsStore.getAccessToken()
-    let accessToken = this.props.sessionsStore.accessToken
-    if (this.props.sessionsStore.accessToken == null) {
+  checkAccessToken(accessToken, location) {
+    if (accessToken == null) {
       // accessToken is null
       if (location != '/admin/sign-in') {
         browserHistory.push('/admin/sign-in')

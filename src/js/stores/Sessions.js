@@ -10,10 +10,14 @@ export default class SessionsStore {
   @observable accessToken = null
   
   @action create(email, password) {
+    let params = {
+      email: email,
+      password: password
+    }
     let request = axios({
       method: 'POST',
       url: `${API_URL}/sessions`,
-      headers: []
+      params: params
     }).then((response) => {
       if (response.status == 200) {
         this.setAccessToken(response.data.access_token)
@@ -25,8 +29,8 @@ export default class SessionsStore {
     let accessToken = this.getAccessToken()
     let request = axios({
       method: 'DELETE',
-      url: `${API_URL}/sessions`,
-      headers: ['X-Browser-Token': accessToken]
+      url: `${API_URL}/sessions/destroy`,
+      headers: ['X-Access-Token': accessToken]
     }).then((response) => {
       if (response.status == 200) {
         this.removeAccessToken()
@@ -40,7 +44,6 @@ export default class SessionsStore {
   }
   
   getAccessToken() {
-    console.log('getAccessToken')
     let accessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY)
     this.accessToken = accessToken
     return accessToken
