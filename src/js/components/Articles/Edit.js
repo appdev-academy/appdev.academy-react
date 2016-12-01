@@ -1,10 +1,11 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
 
 @inject('articlesStore')
+@observer
 export default class Edit extends React.Component {
   
   componentDidMount() {

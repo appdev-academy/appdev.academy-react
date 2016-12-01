@@ -4,13 +4,12 @@ import { IndexRedirect, IndexRoute, Route } from 'react-router'
 import Root from './components/Root/Root'
 import NotFound from './components/Root/NotFound'
 import Admin from './components/Root/Admin'
+import SignIn from './components/Authentication/SignIn'
 
 import Articles from './components/Articles/Index'
 import Article from './components/Articles/Show'
 import NewArticle from './components/Articles/New'
 import EditArticle from './components/Articles/Edit'
-
-import Login from './components/Authentication/Login'
 
 import ArticleImages from './components/ArticleImages/Index'
 
@@ -25,7 +24,7 @@ export default (
         <Route path=':articleID' component={ Article } />
       </Route>
       <Route path='article_images' component={ ArticleImages } />
-      <Route path='login' component={ Login } />
+      <Route path='sign-in' component={ SignIn } />
     </Route>
     <Route path='not-found' component={ NotFound } />
     <Route path='*' component={ NotFound } />

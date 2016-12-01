@@ -1,12 +1,17 @@
 import React from 'react'
+import { browserHistory } from 'react-router'
+import { inject, observer } from 'mobx-react'
 
 import BlueButton from '../Buttons/Blue'
 
-export default class Login extends React.Component {
+@inject('sessionsStore')
+@observer
+export default class SignIn extends React.Component {
   
   handleSubmit() {
     let email = this.refs.email.value
     let password = this.refs.password.value
+    this.props.sessionsStore.setAccessToken('123')
     console.log('Submit email: ' + email + ' and password: ' + password);
   }
   

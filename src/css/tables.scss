@@ -32,8 +32,9 @@ table.articles, table.article-images {
       content: '+';
       font-size: 60px;
       position: absolute;
-      top: 45px;
-      left: 65px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
   }
 }
