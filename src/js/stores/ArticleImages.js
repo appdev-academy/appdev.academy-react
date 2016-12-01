@@ -4,15 +4,21 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class ArticleImagesStore {
-  @observable images = []
+  sessionsStore;
+  @observable images = [];
+  
+  constructor(sessionsStore) {
+    this.sessionsStore = sessionsStore
+  }
   
   @action fetchIndex() {
-    let request = axios({
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
       method: 'GET',
       url: `${API_URL}/article_images`,
-      headers: []
-    })
-    request.then((response) => {
+      data: null,
+      headers: headers
+    }).then((response) => {
       if (response.status == 200) {
         this.images = response.data
       }
@@ -20,21 +26,24 @@ export default class ArticleImagesStore {
   }
   
   @action create(params) {
-    const request = axios({
+    let headers = this.sessionsStore.getAuthHeaders()
+    let request = axios({
       method: 'POST',
+      url: `${API_URL}/article_images`,
       data: params,
-      url: `${API_URL}/article_images`
+      headers: headers
     })
-    
     return request
   }
   
   @action delete(id) {
-    let request = axios({
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
       method: 'DELETE',
-      url: `${API_URL}/article_images/${id}`
-    })
-    request.then((response) => {
+      url: `${API_URL}/article_images/${id}`,
+      data: null,
+      headers: headers
+    }).then((response) => {
       this.fetchIndex()
     })
   }

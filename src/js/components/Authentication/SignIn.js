@@ -11,7 +11,6 @@ export default class SignIn extends React.Component {
   handleSubmit() {
     let email = this.refs.email.value
     let password = this.refs.password.value
-    console.log('Submit email: ' + email + ' and password: ' + password);
     this.props.sessionsStore.create(email, password)
   }
   

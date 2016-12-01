@@ -6,7 +6,6 @@ import { API_URL } from '../constants'
 const ACCESS_TOKEN_KEY = 'access-token'
 
 export default class SessionsStore {
-  
   @observable accessToken = null
   
   @action create(email, password) {
@@ -52,5 +51,10 @@ export default class SessionsStore {
   removeAccessToken() {
     this.accessToken = null
     window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+  }
+  
+  getAuthHeaders() {
+    let accessToken = this.getAccessToken()
+    return { 'X-Access-Token': accessToken }
   }
 }

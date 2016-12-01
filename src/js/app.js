@@ -8,11 +8,11 @@ import routes from './routes'
 
 import ArticlesStore from './stores/Articles'
 import ArticleImagesStore from './stores/ArticleImages'
-import SesstionsStore from './stores/Sessions'
+import SessionsStore from './stores/Sessions'
 
-const articlesStore = new ArticlesStore()
-const articleImagesStore = new ArticleImagesStore()
-const sessionsStore = new SesstionsStore()
+const sessionsStore = new SessionsStore()
+const articlesStore = new ArticlesStore(sessionsStore)
+const articleImagesStore = new ArticleImagesStore(sessionsStore)
 
 ReactDOM.render(
   <Provider articlesStore={ articlesStore } articleImagesStore={ articleImagesStore } sessionsStore={ sessionsStore }>
