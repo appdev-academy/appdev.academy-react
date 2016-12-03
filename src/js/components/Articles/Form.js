@@ -16,8 +16,8 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      text: '',
-      htmlDocument: '',
+      content: '',
+      htmlContent: '',
       showType: 'editor'
     }
   }
@@ -26,8 +26,8 @@ export default class Form extends React.Component {
   contentChanged(event) {
     let newText = event.target.value
     this.setState({
-      text: newText,
-      htmlDocument: markdown.render(newText)
+      content: newText,
+      htmlContent: markdown.render(newText)
     })
   }
   
@@ -35,19 +35,18 @@ export default class Form extends React.Component {
     if (article) {
       this.refs.title.value = article.title
       this.setState({
-        text: article.content,
-        htmlDocument: markdown.render(article.content)
+        content: article.content,
+        htmlContent: markdown.render(article.content)
       })
     }
   }
   
   handleSubmit(event) {
     event.preventDefault()
-    
     let articleParams = {
       title: this.refs.title.value,
-      content: this.state.text,
-      html_content: this.state.htmlDocument
+      content: this.state.content,
+      html_content: this.state.htmlContent
     }
     this.props.handleSubmit(articleParams)
   }
@@ -94,8 +93,8 @@ export default class Form extends React.Component {
           />
         </div>
         <div>
-          <Textarea className={ editorClasses } value={ this.state.text } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
-          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlDocument }} />
+          <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         </div>
         <div className='actions center'>
           <GreenButton

@@ -8,6 +8,9 @@ import { inject, observer } from 'mobx-react'
 export default class Admin extends React.Component {
   
   componentDidMount() {
+    let accessToken = this.props.sessionsStore.accessToken
+    let location = this.props.location.pathname
+    this.checkAccessToken(accessToken, location)
     this.props.sessionsStore.getAccessToken()
   }
   
