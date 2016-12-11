@@ -3,7 +3,7 @@ table.articles, table.article-images {
   border: 1px solid #ddd;
   
   thead, td {
-    padding: 15px;
+    padding: 10px;
     text-align: left;
     vertical-align: middle;
     border-bottom: 1px solid #ddd;
@@ -11,6 +11,8 @@ table.articles, table.article-images {
   
   thead {
     border-top: 1px solid #ddd;
+    font-weight: bold;
+    font-style: italic;
   }
   
   tr.article-image {
