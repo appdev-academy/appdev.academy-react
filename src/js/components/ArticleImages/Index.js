@@ -63,7 +63,7 @@ export default class Index extends React.Component {
     return (
       <div>
         <h2 className='center'>Article Images</h2>
-        <table className='article-images'>
+        <table className='admin'>
           <thead>
             <tr>
               <td>Preview</td>

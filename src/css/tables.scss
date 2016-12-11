@@ -1,4 +1,4 @@
-table.articles, table.article-images {
+table.admin {
   width: 100%;
   border: 1px solid #ddd;
   
@@ -15,18 +15,17 @@ table.articles, table.article-images {
     font-style: italic;
   }
   
-  tr.article-image {
+  td {
     img {
+      position: relative;
       width: 160px;
       height: 120px;
+      display: block;
     }
   }
   
   tr.new-article-image {
     img {
-      position: relative;
-      width: 160px;
-      height: 120px;
       cursor: pointer;
     }
     

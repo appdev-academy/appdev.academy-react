@@ -39,7 +39,7 @@ export default class Index extends React.Component {
     return (
       <div className='articles'>
         <h2 className='center'>Articles</h2>
-        <table className='articles'>
+        <table className='admin'>
           <thead>
             <tr>
               <td>Title</td>
