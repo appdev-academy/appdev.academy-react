@@ -8,18 +8,6 @@ textarea {
   line-height: 30px;
 }
 
-input.title {
-  border: none;
-  outline: none;
-  text-align: center;
-  font-family: PlayfairDisplay;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 2em;
-  width: 100%;
-  margin-bottom: 20px;
-}
-
 .form-group {
   margin-bottom: 20px;
   
@@ -34,6 +22,18 @@ input.title {
     font-size: 0.75em;
     line-height: 1.2em;
   }
+}
+
+input[type=text].title {
+  border: none;
+  outline: none;
+  text-align: center;
+  font-family: PlayfairDisplay;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 2em;
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .login-form {

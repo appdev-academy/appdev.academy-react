@@ -50,7 +50,7 @@ export default class Index extends React.Component {
             <tr>
               <td>Next awesome Article...</td>
               <td>
-                <a className='button blue' href="/admin/articles/new">+ New Article</a>
+                <Link className='button blue' to='/admin/articles/new'>+ New Article</Link>
               </td>
             </tr>
             { this.renderArticles(this.props.articlesStore.articles) }
