@@ -9,47 +9,31 @@ import Form from './Form'
 export default class Edit extends React.Component {
   
   componentDidMount() {
-    console.log('componentDidMount');
     // Make sure Page is among allowed ones
     let slug = this.props.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
       browserHistory.push('/admin/pages')
     }
     // Fetch Page to edit
-    this.props.pagesStore.fetchShow(slug)
-    let page = this.props.pagesStore.page
-    console.log('Page: ', JSON.stringify(page));
-    
-    setTimeout(() => {
-      let page = this.props.pagesStore.page
-      console.log('Page: ', JSON.stringify(page));
-    },1000)
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps');
-    let slug = this.props.params.slug
-    let page = nextProps.pagesStore.page
-    if (!page || page == {}) { return }
-    
-    this.refs.pageForm.setPage(pageToEdit)
+    this.props.pagesStore.fetchShow(slug).then((response) => {
+      if (response.status == 200) {
+        this.refs.pageForm.setPage(response.data)
+      }
+    })
   }
   
   handleSubmit(params) {
-    // let articleID = this.props.params.articleID
-    // this.props.articlesStore.update(articleID, params).then((response) => {
-    //   if (response.status == 200) {
-    //     browserHistory.push('/admin/articles')
-    //   }
-    // })
+    let slug = this.props.params.slug
+    this.props.pagesStore.update(slug, params).then((response) => {
+      if (response.status == 200) {
+        browserHistory.push('/admin/pages')
+      }
+    })
   }
   
   render() {
     return (
-      <div>
-        <h2>{ this.props.pagesStore.page.slug }</h2>
-        <Form handleSubmit={ this.handleSubmit.bind(this) } ref='pageForm' />
-      </div>
+      <Form handleSubmit={ this.handleSubmit.bind(this) } ref='pageForm' />
     )
   }
 }

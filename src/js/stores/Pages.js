@@ -7,7 +7,6 @@ export default class PagesStore {
   allowedPages = ['about', 'contacts', 'home']
   sessionsStore;
   @observable pages = []
-  @observable page = {}
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
@@ -28,18 +27,14 @@ export default class PagesStore {
   }
   
   @action fetchShow(slug) {
-    this.page = {}
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'GET',
       url: `${API_URL}/pages/${slug}`,
       data: null,
       headers: headers
-    }).then((response) => {
-      if (response.status == 200) {
-        this.page = response.data
-      }
     })
+    return request
   }
   
   @action update(slug, params) {

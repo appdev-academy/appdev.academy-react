@@ -16,42 +16,39 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      page: {
-        slug: 'Lo',
-        content: '',
-        htmlContent: ''
-      },
+      slug: '',
+      content: '',
+      htmlContent: '',
       showType: 'editor'
     }
+  }
+  
+  setPage(page) {
+    if (!page || page === {}) {
+      return
+    }
+    this.setState({
+      slug: page.slug,
+      content: page.content,
+      htmlContent: page.html_content
+    })
   }
   
   contentChanged(event) {
     // Get new Markdown text
     let newText = event.target.value
     // Update page
-    let page = this.state.page
-    page.content = newText
-    page.htmlContent = markdown.render(newText)
-    // Set new state
     this.setState({
-      page: page
+      content: newText,
+      htmlContent: markdown.render(newText)
     })
-  }
-  
-  setPage(page) {
-    console.log('Set Page');
-    if (page) {
-      this.setState({
-        page: page
-      })
-    }
   }
   
   handleSubmit(event) {
     event.preventDefault()
     let pageParams = {
-      content: this.state.page.content,
-      html_content: this.state.page.htmlContent
+      content: this.state.content,
+      html_content: this.state.htmlContent
     }
     this.props.handleSubmit(pageParams)
   }
@@ -80,12 +77,12 @@ export default class Form extends React.Component {
       'half-width': this.state.showType == 'editor'
     })
     
-    let slug = this.state.page.slug
+    let slug = this.state.slug
     let capitalizedSlug = slug.charAt(0).toUpperCase() + slug.slice(1)
     
     return (
       <div>
-        <h1 className='center'>Edit { capitalizedSlug }</h1>
+        <h2 className='center'>Edit { capitalizedSlug } page</h2>
         <div className='buttons center'>
           <OrangeButton
             title='Editor'
@@ -99,8 +96,8 @@ export default class Form extends React.Component {
           />
         </div>
         <div>
-          <Textarea className={ editorClasses } value={ this.state.page.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
-          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.page.htmlContent }} />
+          <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         </div>
         <div className='actions center'>
           <GreenButton

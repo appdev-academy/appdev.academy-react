@@ -6,29 +6,32 @@ import { inject, observer } from 'mobx-react'
 @observer
 export default class Show extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      htmlContent: ''
+    }
+  }
+  
   componentDidMount() {
-    // Fetch all Pages
-    this.props.pagesStore.fetchIndex()
     // Make sure Page is among allowed ones
     let slug = this.props.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
       browserHistory.push('/admin/pages')
     }
+    // Fetch Page to show
+    this.props.pagesStore.fetchShow(slug).then((response) => {
+      if (response.status == 200) {
+        this.setState({
+          htmlContent: response.data.html_content
+        })
+      }
+    })
   }
   
   render() {
-    let slug = this.props.params.slug
-    
-    let pageContent = ''
-    let page = this.props.pagesStore.pages.find(page => page.slug === slug)
-    if (page) {
-      pageContent = page.html_content
-    }
-    
     return (
-      <div>
-        <div className='article-container' dangerouslySetInnerHTML={{ __html: pageContent }} />
-      </div>
+      <div className='article-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
     )
   }
 }
