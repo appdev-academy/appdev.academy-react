@@ -5,10 +5,6 @@ import { inject, observer } from 'mobx-react'
 @observer
 export default class Show extends React.Component {
   
-  constructor(props) {
-    super(props)
-  }
-  
   componentDidMount() {
     let articleID = this.props.params.articleID
     this.props.articlesStore.fetchShow(articleID).then(response => {

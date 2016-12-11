@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, browserHistory } from 'react-router'
+import { Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import DeleteButton from '../Buttons/Red'
