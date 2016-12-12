@@ -9,9 +9,12 @@
   margin: 0 auto;
 }
 
+.root-container {
+  padding-top: $menu-height;
+}
+
 .admin-container {
   margin: 20px;
-  padding-top: $menu-height;
 }
 
 .article-container {

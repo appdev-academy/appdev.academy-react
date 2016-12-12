@@ -3,19 +3,19 @@ import { IndexRedirect, IndexRoute, Route } from 'react-router'
 
 import Root from './components/Shared/Root'
 import NotFound from './components/Shared/NotFound'
+
 import Admin from './components/Admin/Index'
 import AdminSignIn from './components/Admin/Authentication/SignIn'
-
 import AdminArticles from './components/Admin/Articles/Index'
 import AdminArticle from './components/Admin/Articles/Show'
 import AdminNewArticle from './components/Admin/Articles/New'
 import AdminEditArticle from './components/Admin/Articles/Edit'
-
 import AdminArticleImages from './components/Admin/ArticleImages/Index'
-
 import AdminPages from './components/Admin/Pages/Index'
 import AdminPage from './components/Admin/Pages/Show'
 import AdminEditPage from './components/Admin/Pages/Edit'
+
+import ShowPage from './components/Frontend/Pages/Show'
 
 export default (
   <Route path='/' component={ Root }>
@@ -35,7 +35,9 @@ export default (
       </Route>
       <Route path='sign-in' component={ AdminSignIn } />
     </Route>
+    <IndexRedirect to='home' />
     <Route path='not-found' component={ NotFound } />
+    <Route path=':slug' component={ ShowPage } />
     <Route path='*' component={ NotFound } />
   </Route>
 )
