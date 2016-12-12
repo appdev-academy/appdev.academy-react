@@ -4,9 +4,9 @@ import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
-import videoPlugin from '../../plugins/video'
-import GreenButton from '../Buttons/Green'
-import OrangeButton from '../Buttons/Orange'
+import videoPlugin from '../../../plugins/video'
+import GreenButton from '../../Buttons/Green'
+import OrangeButton from '../../Buttons/Orange'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
@@ -16,39 +16,41 @@ export default class Form extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      slug: '',
       content: '',
       htmlContent: '',
       showType: 'editor'
     }
   }
   
-  // Set new text
+  setPage(page) {
+    if (!page || page === {}) {
+      return
+    }
+    this.setState({
+      slug: page.slug,
+      content: page.content,
+      htmlContent: page.html_content
+    })
+  }
+  
   contentChanged(event) {
+    // Get new Markdown text
     let newText = event.target.value
+    // Update page
     this.setState({
       content: newText,
       htmlContent: markdown.render(newText)
     })
   }
   
-  setArticle(article) {
-    if (article) {
-      this.refs.title.value = article.title
-      this.setState({
-        content: article.content,
-        htmlContent: markdown.render(article.content)
-      })
-    }
-  }
-  
   handleSubmit(event) {
     event.preventDefault()
-    let articleParams = {
-      title: this.refs.title.value,
+    let pageParams = {
       content: this.state.content,
       html_content: this.state.htmlContent
     }
-    this.props.handleSubmit(articleParams)
+    this.props.handleSubmit(pageParams)
   }
   
   clickEditor() {
@@ -75,11 +77,12 @@ export default class Form extends React.Component {
       'half-width': this.state.showType == 'editor'
     })
     
+    let slug = this.state.slug
+    let capitalizedSlug = slug.charAt(0).toUpperCase() + slug.slice(1)
+    
     return (
       <div>
-        <div className='form-group'>
-          <input type='text' ref='title' className='title' autoFocus={ true } />
-        </div>
+        <h2 className='center'>Edit { capitalizedSlug } page</h2>
         <div className='buttons center'>
           <OrangeButton
             title='Editor'
@@ -101,7 +104,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/admin/articles` }>Back to Articles</Link>
+          <Link className='button blue' to={ `/admin/pages` }>Back to Pages</Link>
         </div>
       </div>
     )

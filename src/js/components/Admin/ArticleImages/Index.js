@@ -2,7 +2,7 @@ import React from 'react'
 import { inject, observer } from 'mobx-react'
 
 import Row from './Row'
-import GreenButton from '../Buttons/Green'
+import GreenButton from '../../Buttons/Green'
 
 @inject('articleImagesStore')
 @observer

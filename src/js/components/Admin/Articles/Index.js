@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
-import RedButton from '../Buttons/Red'
-import GreenButton from '../Buttons/Green'
-import OrangeButton from '../Buttons/Orange'
+import RedButton from '../../Buttons/Red'
+import GreenButton from '../../Buttons/Green'
+import OrangeButton from '../../Buttons/Orange'
 
 @inject('articlesStore')
 @observer

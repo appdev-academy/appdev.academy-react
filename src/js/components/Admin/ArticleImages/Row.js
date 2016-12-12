@@ -1,8 +1,8 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import { IMAGE_BASE_URL } from '../../constants'
-import RedButton from '../Buttons/Red'
+import { IMAGE_BASE_URL } from '../../../constants'
+import RedButton from '../../Buttons/Red'
 
 @inject('articleImagesStore')
 @observer
