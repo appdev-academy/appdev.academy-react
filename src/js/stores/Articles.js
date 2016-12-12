@@ -27,6 +27,7 @@ export default class ArticlesStore {
   }
   
   @action fetchShow(id) {
+    this.article = {}
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'GET',

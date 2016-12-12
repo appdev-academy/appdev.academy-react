@@ -43,3 +43,9 @@
     }
   }
 }
+
+.articles-container {
+  li {
+    border-bottom: 1px solid $main-color;
+  }
+}
