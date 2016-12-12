@@ -70,4 +70,28 @@ export default class ArticlesStore {
       this.fetchIndex()
     })
   }
+  
+  @action publish(id) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
+      method: 'POST',
+      url: `${API_URL}/articles/${id}/publish`,
+      data: null,
+      headers: headers
+    }).then((response) => {
+      this.fetchIndex()
+    })
+  }
+  
+  @action hide(id) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
+      method: 'POST',
+      url: `${API_URL}/articles/${id}/hide`,
+      data: null,
+      headers: headers
+    }).then((response) => {
+      this.fetchIndex()
+    })
+  }
 }
