@@ -13,6 +13,8 @@
     "mobx-react": "latest",
     "react": "15.3.2",
     "react-dom": "15.3.2",
+    "react-dnd": "latest",
+    "react-dnd-html5-backend": "latest",
     "react-router": "latest",
     "react-textarea-autosize": "latest"
   },
