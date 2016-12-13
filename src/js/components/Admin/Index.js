@@ -42,7 +42,7 @@ export default class Admin extends React.Component {
     })
     
     return (
-      <div className='admin-container' >
+      <div>
         <div className={ adminMenuClassNames }>
           <Link to={ '/admin/articles' } activeClassName='active'>Articles</Link>
           <Link to={ '/admin/article_images' } activeClassName='active'>Article Images</Link>

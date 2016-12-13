@@ -13,16 +13,40 @@ let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
 export default class Form extends React.Component {
+  
   constructor(props) {
     super(props)
     this.state = {
+      preview: '',
+      htmlPreview: '',
       content: '',
       htmlContent: '',
       showType: 'editor'
     }
   }
   
-  // Set new text
+  setArticle(article) {
+    if (article) {
+      this.refs.title.value = article.title
+      this.setState({
+        preview: article.preview,
+        htmlPreview: markdown.render(article.preview),
+        content: article.content,
+        htmlContent: markdown.render(article.content)
+      })
+    }
+  }
+  
+  previewChanged(event) {
+    // Get new Markdown text
+    let newText = event.target.value
+    // Update page
+    this.setState({
+      preview: newText,
+      htmlPreview: markdown.render(newText)
+    })
+  }
+  
   contentChanged(event) {
     let newText = event.target.value
     this.setState({
@@ -31,20 +55,12 @@ export default class Form extends React.Component {
     })
   }
   
-  setArticle(article) {
-    if (article) {
-      this.refs.title.value = article.title
-      this.setState({
-        content: article.content,
-        htmlContent: markdown.render(article.content)
-      })
-    }
-  }
-  
   handleSubmit(event) {
     event.preventDefault()
     let articleParams = {
       title: this.refs.title.value,
+      preview: this.state.preview,
+      html_preview: this.state.htmlPreview,
       content: this.state.content,
       html_content: this.state.htmlContent
     }
@@ -93,6 +109,12 @@ export default class Form extends React.Component {
           />
         </div>
         <div>
+          <h2 className='center'>Preview</h2>
+          <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
+        </div>
+        <div>
+          <h2 className='center'>Content</h2>
           <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
           <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         </div>

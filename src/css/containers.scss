@@ -11,9 +11,6 @@
 
 .root-container {
   padding-top: $menu-height;
-}
-
-.admin-container {
   margin: 20px;
 }
 
@@ -44,8 +41,10 @@
   }
 }
 
-.articles-container {
-  li {
+ol.list-of-articles {
+  > li {
     border-bottom: 1px solid $main-color;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 }

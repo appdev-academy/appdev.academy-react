@@ -13,10 +13,9 @@ export default class Index extends React.Component {
   renderArticles(articles) {
     return articles.map((article) => {
       return (
-        <li key={ article.id }>
-          <h3>
-            <Link to={ `/articles/${article.id}` }>{ article.title }</Link>
-          </h3>
+        <li className='article-container' key={ article.id }>
+          <Link className='article-title' to={ `/articles/${article.id}` }>{ article.title }</Link>
+          <div dangerouslySetInnerHTML={{ __html: article.html_preview }} />
         </li>
       )
     })
@@ -28,9 +27,9 @@ export default class Index extends React.Component {
     })
     
     return (
-      <div className='articles-container full-width'>
+      <div className='full-width'>
         <h2 className='center'>Articles</h2>
-        <ol>
+        <ol className='list-of-articles'>
           { this.renderArticles(articles) }
         </ol>
       </div>
