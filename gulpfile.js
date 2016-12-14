@@ -33,10 +33,11 @@ function bundle() {
 }
 
 function minBundle() {
+  process.env.NODE_ENV = 'production';
   browserify('src/js/app.js')
     .transform(babelify, {
-      presets: ["es2015", "react"],
-      plugins: ["transform-object-rest-spread"]
+      presets: ["es2015", "react", "stage-1"],
+      plugins: ["transform-decorators-legacy", "transform-object-rest-spread"]
     })
     .bundle()
     .pipe(source('app.js'))
