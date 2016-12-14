@@ -95,4 +95,16 @@ export default class ArticlesStore {
       this.fetchIndex()
     })
   }
+  
+  @action sort(articleIDs) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
+      method: 'POST',
+      url: `${API_URL}/articles/sort`,
+      data: { article_ids: articleIDs },
+      headers: headers
+    }).then((response) => {
+      this.fetchIndex()
+    })
+  }
 }

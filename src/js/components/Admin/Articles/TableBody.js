@@ -8,11 +8,8 @@ import TableRow from './TableRow'
 @DragDropContext(HTML5Backend)
 export default class TableBody extends React.Component {
   
-  moveRow(dragIndex, hoverIndex) {
-    // let articles = this.props.articles
-    // let article = articles[dragIndex]
-    console.log('dragIndex: ' + dragIndex + 'hoverIndex: ' + hoverIndex)
-    // console.log("Moved article: " + article.title)
+  moveRow(startIndex, dropIndex) {
+    this.props.moveArticle(startIndex, dropIndex)
   }
   
   render() {
