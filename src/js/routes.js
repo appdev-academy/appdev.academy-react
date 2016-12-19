@@ -15,6 +15,7 @@ import AdminPages from './components/Admin/Pages/Index'
 import AdminPage from './components/Admin/Pages/Show'
 import AdminEditPage from './components/Admin/Pages/Edit'
 
+import HomePage from './components/Frontend/Pages/Home'
 import ShowPage from './components/Frontend/Pages/Show'
 import ArticlesIndex from './components/Frontend/Articles/Index'
 import ArticleShow from './components/Frontend/Articles/Show'
@@ -37,7 +38,7 @@ export default (
       </Route>
       <Route path='sign-in' component={ AdminSignIn } />
     </Route>
-    <IndexRedirect to='home' />
+    <IndexRoute component={ HomePage } />
     <Route path='articles'>
       <IndexRoute component={ ArticlesIndex } />
       <Route path=':articleID' component={ ArticleShow } />

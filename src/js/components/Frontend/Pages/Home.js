@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 
 @inject('pagesStore')
 @observer
-export default class Show extends React.Component {
+export default class Home extends React.Component {
   
   constructor(props) {
     super(props)
@@ -14,24 +14,7 @@ export default class Show extends React.Component {
   }
   
   componentDidMount() {
-    // Make sure Page is among allowed ones
-    let slug = this.props.params.slug
-    if (this.props.pagesStore.allowedPages.includes(slug)) {
-      this.fetchPage(slug)
-    } else {
-      browserHistory.push('/home')
-    }
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    let slug = nextProps.params.slug
-    if (slug) {
-      this.fetchPage(slug)
-    }
-  }
-  
-  fetchPage(slug) {
-    this.props.pagesStore.fetchShow(slug).then((response) => {
+    this.props.pagesStore.fetchShow('home').then((response) => {
       if (response.status == 200) {
         this.setState({
           htmlContent: response.data.html_content

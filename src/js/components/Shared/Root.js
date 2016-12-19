@@ -1,6 +1,6 @@
 import React from 'react'
 import classNames from 'classNames'
-import { browserHistory, Link } from 'react-router'
+import { browserHistory, IndexLink, Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 @inject('sessionsStore')
@@ -13,10 +13,10 @@ export default class Root extends React.Component {
     if (!isAdmin) {
       menu = (
         <div className='menu'>
-          <Link to={ '/home' } activeClassName='active'>Home</Link>
-          <Link to={ '/articles' } activeClassName='active'>Blog</Link>
-          <Link to={ '/about' } activeClassName='active'>About</Link>
-          <Link to={ '/contacts' } activeClassName='active'>Contacts</Link>
+          <IndexLink to='/' activeClassName='active'>Home</IndexLink>
+          <Link to='/articles' activeClassName='active'>Blog</Link>
+          <Link to='/about' activeClassName='active'>About</Link>
+          <Link to='/contacts' activeClassName='active'>Contacts</Link>
         </div>
       )
     }
