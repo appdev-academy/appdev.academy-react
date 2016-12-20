@@ -4,6 +4,8 @@
   top: 0;
   width: 100%;
   z-index: 1;
+  white-space: nowrap;
+  overflow-x: auto;
   background-color: white;
   border-bottom: 2px solid $main-color;
   
