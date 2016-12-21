@@ -41,7 +41,7 @@ export default (
     <IndexRoute component={ HomePage } />
     <Route path='articles'>
       <IndexRoute component={ ArticlesIndex } />
-      <Route path=':articleID' component={ ArticleShow } />
+      <Route path=':articleID-:slug' component={ ArticleShow } />
     </Route>
     <Route path=':slug' component={ ShowPage } />
     <Route path='not-found' component={ NotFound } />

@@ -10,11 +10,21 @@ export default class Index extends React.Component {
     this.props.articlesStore.fetchIndex()
   }
   
+  slugify(text) {
+    return text.toLowerCase()
+      .replace(/\s+/g, '-')           // Replace spaces with -
+      .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+      .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+      .replace(/^-+/, '')             // Trim - from start of text
+      .replace(/-+$/, '')             // Trim - from end of text
+  }
+  
   renderArticles(articles) {
     return articles.map((article) => {
+      let slug = this.slugify(article.title)
       return (
         <li className='article-container' key={ article.id }>
-          <Link className='article-title' to={ `/articles/${article.id}` }>{ article.title }</Link>
+          <Link className='article-title' to={ `/articles/${article.id}-${slug}` }>{ article.title }</Link>
           <div dangerouslySetInnerHTML={{ __html: article.html_preview }} />
         </li>
       )
