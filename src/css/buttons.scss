@@ -96,3 +96,10 @@ input::-moz-focus-inner {
     margin-right: 0px;
   }
 }
+
+.share-buttons {
+  > div {
+    display: inline-block;
+    margin-right: 10px;
+  }
+}

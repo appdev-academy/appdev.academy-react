@@ -16,6 +16,7 @@
     "react-dnd": "latest",
     "react-dnd-html5-backend": "latest",
     "react-router": "latest",
+    "react-share": "latest",
     "react-textarea-autosize": "latest"
   },
   "devDependencies": {

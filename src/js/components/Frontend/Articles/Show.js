@@ -1,5 +1,23 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
+import {
+  ShareButtons,
+  generateShareIcon
+} from 'react-share'
+
+const {
+  TwitterShareButton,
+  FacebookShareButton,
+  GooglePlusShareButton,
+  LinkedinShareButton,
+  VKShareButton,
+} = ShareButtons
+
+const TwitterIcon = generateShareIcon('twitter')
+const FacebookIcon = generateShareIcon('facebook')
+const GooglePlusIcon = generateShareIcon('google')
+const LinkedinIcon = generateShareIcon('linkedin')
+const VKIcon = generateShareIcon('vk')
 
 @inject('articlesStore')
 @observer
@@ -14,6 +32,30 @@ export default class Show extends React.Component {
     })
   }
   
+  renderShareButtons() {
+    let article = this.props.articlesStore.article
+    let articleURL = location.href
+    return (
+      <div className='share-buttons'>
+        <TwitterShareButton url={ articleURL } title={ article.title }>
+          <TwitterIcon size={ 48 } round />
+        </TwitterShareButton>
+        <FacebookShareButton url={ articleURL } title={ article.title }>
+          <FacebookIcon size={ 48 } round />
+        </FacebookShareButton>
+        <GooglePlusShareButton url={ articleURL }>
+          <GooglePlusIcon size={ 48} round />
+        </GooglePlusShareButton>
+        <LinkedinShareButton url={ articleURL } title={ article.title }>
+          <LinkedinIcon size={ 48 } round />
+        </LinkedinShareButton>
+        <VKShareButton url={ articleURL } title={ article.title }>
+          <VKIcon size={ 48 } round />
+        </VKShareButton>
+      </div>
+    )
+  }
+  
   render() {
     let article = this.props.articlesStore.article
     let authorName = ''
@@ -26,6 +68,7 @@ export default class Show extends React.Component {
         <div>Published by { authorName } on { article.published_at }</div>
         <div>last update on { article.updated_at }</div>
         <div dangerouslySetInnerHTML={{ __html: article.html_content }} />
+        { this.renderShareButtons() }
       </div>
     )
   }
