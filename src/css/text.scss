@@ -45,11 +45,17 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-  margin: 40px 0;
   font-family: PlayfairDisplay;
   font-weight: bold;
   font-style: italic;
+}
+
+h1, h2 {
+  margin: 40px 0;
+}
+
+h3, h4, h5, h6 {
+  margin: 20px 0;
 }
 
 h1 {
