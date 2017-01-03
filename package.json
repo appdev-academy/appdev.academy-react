@@ -23,6 +23,7 @@
   "devDependencies": {
     "gulp": "latest",
     "gulp-sass": "latest",
+    "gulp-rename": "latest",
     "gulp-util": "latest",
     "gulp-size": "latest",
     "gulp-uglify": "latest",

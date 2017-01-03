@@ -1,6 +1,7 @@
 var gulp = require('gulp');
 var sass = require('gulp-sass');
-var gutil = require('gulp-util');
+var rename = require('gulp-rename');
+var util = require('gulp-util');
 var size = require('gulp-size')
 var uglify = require('gulp-uglify')
 var cleanCSS = require('gulp-clean-css');
@@ -24,7 +25,7 @@ bundler.transform(babelify, {
 
 function bundle() {
   return bundler.bundle()
-    .on('error', gutil.log.bind(gutil, 'Browserify Error'))
+    .on('error', util.log.bind(util, 'Browserify Error'))
     .pipe(source('app.js'))
     .pipe(buffer())
     .pipe(size())
@@ -79,7 +80,19 @@ gulp.task('copy-html', function() {
     .pipe(browserSync.stream({ once: true }));
 });
 
-gulp.task('default', ['js', 'sass', 'copy-html'], function() {
+// Copy constants depending on environment
+gulp.task('copy-constants-development', function() {
+  gulp.src('src/js/constants-development.js')
+    .pipe(rename({ basename: 'constants'}))
+    .pipe(gulp.dest('src/js'));
+});
+gulp.task('copy-constants-production', function() {
+  gulp.src('src/js/constants-production.js')
+    .pipe(rename({ basename: 'constants'}))
+    .pipe(gulp.dest('src/js'));
+});
+
+gulp.task('default', ['copy-constants-development', 'js', 'sass', 'copy-html'], function() {
   browserSync({
     server: {
       baseDir: 'dist',
@@ -92,4 +105,4 @@ gulp.task('default', ['js', 'sass', 'copy-html'], function() {
   gulp.watch('src/index.html', ['copy-html']);
 });
 
-gulp.task('build', ['min-js', 'min-sass', 'copy-html'], function() {});
+gulp.task('build', ['copy-constants-production', 'min-js', 'min-sass', 'copy-html'], function() {});
