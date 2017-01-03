@@ -22,7 +22,6 @@ export default class TableBody extends React.Component {
             <TableRow
               key={ article.id }
               article={ article }
-              deleteButtonClick={ (articleID) => { this.props.deleteButtonClick(articleID) }}
               publishButtonClick={ (articleID) => { this.props.publishButtonClick(articleID) }}
               hideButtonClick={ (articleID) => { this.props.hideButtonClick(articleID) }}
               id={ article.id }

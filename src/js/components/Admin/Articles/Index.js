@@ -42,7 +42,6 @@ export default class Index extends React.Component {
           </thead>
           <TableBody
             articles={ this.props.articlesStore.articles }
-            deleteButtonClick={ (articleID) => { this.props.articlesStore.delete(articleID) }}
             publishButtonClick={ (articleID) => { this.props.articlesStore.publish(articleID) }}
             hideButtonClick={ (articleID) => { this.props.articlesStore.hide(articleID) }}
             moveArticle={ this.moveArticle.bind(this) }

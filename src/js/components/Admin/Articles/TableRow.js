@@ -3,7 +3,6 @@ import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router'
 import { DragSource, DropTarget } from 'react-dnd'
 
-import RedButton from '../../Buttons/Red'
 import GreenButton from '../../Buttons/Green'
 import OrangeButton from '../../Buttons/Orange'
 
@@ -85,10 +84,6 @@ export default class TableRow extends React.Component {
         <td className='actions left'>
           <Link className='button blue' to={ `/admin/articles/${article.id}` }>Show</Link>
           <Link className='button green' to={ `/admin/articles/${article.id}/edit` }>Edit</Link>
-          <RedButton
-            title='Delete'
-            onClick={ () => { this.props.deleteButtonClick(article.id) }}
-          />
         </td>
         <td className='actions left'>
           { publishButton }
