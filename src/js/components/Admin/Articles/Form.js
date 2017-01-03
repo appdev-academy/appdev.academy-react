@@ -28,6 +28,7 @@ export default class Form extends React.Component {
   setArticle(article) {
     if (article) {
       this.refs.title.value = article.title
+      this.refs.imageURL.value = article.image_url
       this.setState({
         preview: article.preview,
         htmlPreview: markdown.render(article.preview),
@@ -59,6 +60,7 @@ export default class Form extends React.Component {
     event.preventDefault()
     let articleParams = {
       title: this.refs.title.value,
+      image_url: this.refs.imageURL.value,
       preview: this.state.preview,
       html_preview: this.state.htmlPreview,
       content: this.state.content,
@@ -95,6 +97,10 @@ export default class Form extends React.Component {
       <div>
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='imageURL'>Image URL</label>
+          <input type='text' id='imageURL' ref='imageURL' />
         </div>
         <div className='buttons center'>
           <OrangeButton

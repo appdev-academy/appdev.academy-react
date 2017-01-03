@@ -19,7 +19,7 @@ export default class Show extends React.Component {
     if (this.props.pagesStore.allowedPages.includes(slug)) {
       this.fetchPage(slug)
     } else {
-      browserHistory.push('/home')
+      browserHistory.push('/')
     }
   }
   

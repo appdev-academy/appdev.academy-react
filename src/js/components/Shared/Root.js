@@ -16,6 +16,7 @@ export default class Root extends React.Component {
           <IndexLink to='/' activeClassName='active'>Home</IndexLink>
           <Link to='/articles' activeClassName='active'>Blog</Link>
           <Link to='/about' activeClassName='active'>About</Link>
+          <Link to='/portfolio' activeClassName='active'>Portfolio</Link>
           <Link to='/contacts' activeClassName='active'>Contacts</Link>
         </div>
       )
