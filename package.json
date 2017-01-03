@@ -15,6 +15,7 @@
     "react-dom": "15.3.2",
     "react-dnd": "latest",
     "react-dnd-html5-backend": "latest",
+    "react-ga": "latest",
     "react-router": "latest",
     "react-share": "latest",
     "react-textarea-autosize": "latest"
