@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
-import Projects from './Projects'
+import Projects from './Projects/Index'
 
 @inject('pagesStore')
 @observer

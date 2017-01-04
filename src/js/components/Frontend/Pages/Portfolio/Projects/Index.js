@@ -24,7 +24,7 @@ export default class Index extends React.Component {
       let slug = this.slugify(project.title)
       return (
         <li className='project-container' key={ project.id }>
-          <Link className='project-title' to={ `/projects/${project.id}-${slug}` }>{ project.title }</Link>
+          <Link className='project-title' to={ `/portfolio/projects/${project.id}-${slug}` }>{ project.title }</Link>
           <div dangerouslySetInnerHTML={{ __html: project.html_preview }} />
         </li>
       )

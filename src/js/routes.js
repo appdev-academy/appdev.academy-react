@@ -19,11 +19,12 @@ import AdminProject from './components/Admin/Projects/Show'
 import AdminNewProject from './components/Admin/Projects/New'
 import AdminEditProject from './components/Admin/Projects/Edit'
 
-import HomePage from './components/Frontend/Pages/Home'
-import PortfolioPage from './components/Frontend/Pages/Portfolio/Index'
-import ShowPage from './components/Frontend/Pages/Show'
 import ArticlesIndex from './components/Frontend/Articles/Index'
 import ArticleShow from './components/Frontend/Articles/Show'
+import PageHome from './components/Frontend/Pages/Home'
+import PageShow from './components/Frontend/Pages/Show'
+import PortfolioIndex from './components/Frontend/Pages/Portfolio/Index'
+import PortfolioShow from './components/Frontend/Pages/Portfolio/Projects/Show'
 
 export default (
   <Route path='/' component={ Root }>
@@ -49,15 +50,19 @@ export default (
       </Route>
       <Route path='sign-in' component={ AdminSignIn } />
     </Route>
-    <IndexRoute component={ HomePage } />
+    <IndexRoute component={ PageHome } />
     <Route path='articles'>
       <IndexRoute component={ ArticlesIndex } />
       <Route path=':articleID-:slug' component={ ArticleShow } />
     </Route>
     <Route path='portfolio'>
-      <IndexRoute component={ PortfolioPage } />
+      <IndexRoute component={ PortfolioIndex } />
+      <Route path='projects'>
+        <IndexRedirect to='/portfolio' />
+        <Route path=':projectID-:slug' component={ PortfolioShow } />
+      </Route>
     </Route>
-    <Route path=':slug' component={ ShowPage } />
+    <Route path=':slug' component={ PageShow } />
     <Route path='not-found' component={ NotFound } />
     <Route path='*' component={ NotFound } />
   </Route>
