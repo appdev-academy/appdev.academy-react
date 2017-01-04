@@ -64,7 +64,21 @@ export default class Show extends React.Component {
       authorName = article.author.full_name
     }
     let metaTitle = 'App Dev Academy | ' + article.title
-    let helmet = <Helmet title={ metaTitle } />
+    let helmet = (
+      <Helmet
+        title={ metaTitle }
+        meta={[
+          { name: 'twitter:card', content: 'summary_large_image' },
+          { name: 'twitter:site', content: '@AppDev_Academy' },
+          { name: 'twitter:creator', content: '@MaksymSkliarov' },
+          { name: 'twitter:title', content: article.title },
+          
+          { name: 'og:url', content: window.location.href },
+          { name: 'og:type', content: 'article' },
+          { name: 'og:title', content: article.title },
+        ]}
+      />
+    )
     if (article.image_url) {
       helmet = (
         <Helmet
@@ -80,6 +94,9 @@ export default class Show extends React.Component {
             { name: 'og:type', content: 'article' },
             { name: 'og:title', content: article.title },
             { name: 'og:image', content: article.image_url }
+          ]}
+          link={[
+            { rel: 'image_src', href: article.image_url }
           ]}
         />
       )
