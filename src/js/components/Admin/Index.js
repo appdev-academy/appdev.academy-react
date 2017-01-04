@@ -45,7 +45,7 @@ export default class Admin extends React.Component {
       <div>
         <div className={ adminMenuClassNames }>
           <Link to={ '/admin/articles' } activeClassName='active'>Articles</Link>
-          <Link to={ '/admin/article_images' } activeClassName='active'>Article Images</Link>
+          <Link to={ '/admin/images' } activeClassName='active'>Images</Link>
           <Link to={ '/admin/pages' } activeClassName='active'>Pages</Link>
           <Link to={ '/admin/projects' } activeClassName='active'>Projects</Link>
         </div>

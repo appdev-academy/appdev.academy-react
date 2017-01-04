@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class ArticleImagesStore {
+export default class ImagesStore {
   sessionsStore;
   @observable images = [];
   
@@ -15,7 +15,7 @@ export default class ArticleImagesStore {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'GET',
-      url: `${API_URL}/article_images`,
+      url: `${API_URL}/images`,
       data: null,
       headers: headers
     }).then((response) => {
@@ -29,7 +29,7 @@ export default class ArticleImagesStore {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'POST',
-      url: `${API_URL}/article_images`,
+      url: `${API_URL}/images`,
       data: params,
       headers: headers
     })
@@ -40,7 +40,7 @@ export default class ArticleImagesStore {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'DELETE',
-      url: `${API_URL}/article_images/${id}`,
+      url: `${API_URL}/images/${id}`,
       data: null,
       headers: headers
     }).then((response) => {

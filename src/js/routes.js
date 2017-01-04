@@ -10,7 +10,7 @@ import AdminArticles from './components/Admin/Articles/Index'
 import AdminArticle from './components/Admin/Articles/Show'
 import AdminNewArticle from './components/Admin/Articles/New'
 import AdminEditArticle from './components/Admin/Articles/Edit'
-import AdminArticleImages from './components/Admin/ArticleImages/Index'
+import AdminImages from './components/Admin/Images/Index'
 import AdminPages from './components/Admin/Pages/Index'
 import AdminPage from './components/Admin/Pages/Show'
 import AdminEditPage from './components/Admin/Pages/Edit'
@@ -35,7 +35,7 @@ export default (
         <Route path=':articleID/edit' component={ AdminEditArticle } />
         <Route path=':articleID' component={ AdminArticle } />
       </Route>
-      <Route path='article_images' component={ AdminArticleImages } />
+      <Route path='images' component={ AdminImages } />
       <Route path='pages'>
         <IndexRoute component={ AdminPages } />
         <Route path=':slug/edit' component={ AdminEditPage } />

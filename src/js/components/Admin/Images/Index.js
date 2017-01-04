@@ -4,7 +4,7 @@ import { inject, observer } from 'mobx-react'
 import Row from './Row'
 import GreenButton from '../../Buttons/Green'
 
-@inject('articleImagesStore')
+@inject('imagesStore')
 @observer
 export default class Index extends React.Component {
   
@@ -17,7 +17,7 @@ export default class Index extends React.Component {
   }
   
   componentDidMount() {
-    this.props.articleImagesStore.fetchIndex()
+    this.props.imagesStore.fetchIndex()
   }
   
   selectFile() {
@@ -44,12 +44,12 @@ export default class Index extends React.Component {
     let data = new FormData()
     data.append('article_image[image]', this.state.file)
     
-    this.props.articleImagesStore.create(data).then((response) => {
+    this.props.imagesStore.create(data).then((response) => {
       this.setState({
         image: '',
         file: ''
       })
-      this.props.articleImagesStore.fetchIndex()
+      this.props.imagesStore.fetchIndex()
     })
   }
   
@@ -92,7 +92,7 @@ export default class Index extends React.Component {
                 />
               </td>
             </tr>
-            { this.renderImages(this.props.articleImagesStore.images) }
+            { this.renderImages(this.props.imagesStore.images) }
           </tbody>
         </table>
       </div>

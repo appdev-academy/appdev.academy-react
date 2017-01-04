@@ -4,13 +4,13 @@ import { inject, observer } from 'mobx-react'
 import { IMAGE_BASE_URL } from '../../../constants'
 import RedButton from '../../Buttons/Red'
 
-@inject('articleImagesStore')
+@inject('imagesStore')
 @observer
 export default class Row extends React.Component {
   
   handleDelete() {
     let articleImageID = this.props.image.id
-    this.props.articleImagesStore.delete(articleImageID)
+    this.props.imagesStore.delete(articleImageID)
   }
   
   render() {
