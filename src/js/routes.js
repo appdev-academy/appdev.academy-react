@@ -14,6 +14,10 @@ import AdminArticleImages from './components/Admin/ArticleImages/Index'
 import AdminPages from './components/Admin/Pages/Index'
 import AdminPage from './components/Admin/Pages/Show'
 import AdminEditPage from './components/Admin/Pages/Edit'
+import AdminProjects from './components/Admin/Projects/Index'
+import AdminProject from './components/Admin/Projects/Show'
+import AdminNewProject from './components/Admin/Projects/New'
+import AdminEditProject from './components/Admin/Projects/Edit'
 
 import HomePage from './components/Frontend/Pages/Home'
 import ShowPage from './components/Frontend/Pages/Show'
@@ -35,6 +39,12 @@ export default (
         <IndexRoute component={ AdminPages } />
         <Route path=':slug/edit' component={ AdminEditPage } />
         <Route path=':slug' component={ AdminPage } />
+      </Route>
+      <Route path='projects'>
+        <IndexRoute component={ AdminProjects } />
+        <Route path='new' component={ AdminNewProject } />
+        <Route path=':projectID/edit' component={ AdminEditProject } />
+        <Route path=':projectID' component={ AdminProject } />
       </Route>
       <Route path='sign-in' component={ AdminSignIn } />
     </Route>
