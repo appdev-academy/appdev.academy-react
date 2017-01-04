@@ -42,7 +42,7 @@ export default class Index extends React.Component {
     }
     
     let data = new FormData()
-    data.append('article_image[image]', this.state.file)
+    data.append('image[image]', this.state.file)
     
     this.props.imagesStore.create(data).then((response) => {
       this.setState({
