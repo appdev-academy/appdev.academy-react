@@ -20,6 +20,7 @@ import AdminNewProject from './components/Admin/Projects/New'
 import AdminEditProject from './components/Admin/Projects/Edit'
 
 import HomePage from './components/Frontend/Pages/Home'
+import PortfolioPage from './components/Frontend/Pages/Portfolio/Index'
 import ShowPage from './components/Frontend/Pages/Show'
 import ArticlesIndex from './components/Frontend/Articles/Index'
 import ArticleShow from './components/Frontend/Articles/Show'
@@ -52,6 +53,9 @@ export default (
     <Route path='articles'>
       <IndexRoute component={ ArticlesIndex } />
       <Route path=':articleID-:slug' component={ ArticleShow } />
+    </Route>
+    <Route path='portfolio'>
+      <IndexRoute component={ PortfolioPage } />
     </Route>
     <Route path=':slug' component={ ShowPage } />
     <Route path='not-found' component={ NotFound } />
