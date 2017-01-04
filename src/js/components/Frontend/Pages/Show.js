@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
@@ -41,8 +42,14 @@ export default class Show extends React.Component {
   }
   
   render() {
+    let slug = this.props.params.slug
+    let metaTitle = 'App Dev Academy | ' + slug.charAt(0).toUpperCase() + slug.slice(1)
+    
     return (
-      <div className='article-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+      <div>
+        <Helmet title={ metaTitle } />
+        <div className='article-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+      </div>
     )
   }
 }

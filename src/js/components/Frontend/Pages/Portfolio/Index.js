@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
@@ -28,6 +29,7 @@ export default class Portfolio extends React.Component {
   render() {
     return (
       <div>
+        <Helmet title='App Dev Academy | Portfolio' />
         <div className='article-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         <Projects />
       </div>

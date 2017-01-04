@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import classNames from 'classNames'
 import { browserHistory, IndexLink, Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
@@ -24,6 +25,7 @@ export default class Root extends React.Component {
     
     return (
       <div className='root-container'>
+        <Helmet title='App Dev Academy' />
         { menu }
         { this.props.children }
       </div>

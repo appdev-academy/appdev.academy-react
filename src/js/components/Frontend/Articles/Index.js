@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { browserHistory, Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
@@ -38,6 +39,7 @@ export default class Index extends React.Component {
     
     return (
       <div className='full-width'>
+      <Helmet title='App Dev Academy | Blog' />
         <h2 className='center'>Articles</h2>
         <ol className='list-of-articles'>
           { this.renderArticles(articles) }

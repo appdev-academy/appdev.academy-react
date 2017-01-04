@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { inject, observer } from 'mobx-react'
 import {
   ShareButtons,
@@ -62,8 +63,11 @@ export default class Show extends React.Component {
     if (article.author) {
       authorName = article.author.full_name
     }
+    let metaTitle = 'App Dev Academy | ' + article.title
+    
     return (
       <div className='article-container'>
+        <Helmet title={ metaTitle } />
         <h2 className='center'>{ article.title }</h2>
         <div>Published by { authorName } on { article.published_at }</div>
         <div>last update on { article.updated_at }</div>
