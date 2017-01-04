@@ -64,10 +64,25 @@ export default class Show extends React.Component {
       authorName = article.author.full_name
     }
     let metaTitle = 'App Dev Academy | ' + article.title
+    let helmet = <Helmet title={ metaTitle } />
+    if (article.image_url) {
+      helmet = (
+        <Helmet
+          title={ metaTitle }
+          meta={[
+            { name: 'twitter:card', content: 'summary_large_image' },
+            { name: 'twitter:site', content: '@AppDev_Academy' },
+            { name: 'twitter:creator', content: '@MaksymSkliarov' },
+            { name: 'twitter:title', content: article.title },
+            { name: 'twitter:image', content: article.image_url }
+          ]}
+        />
+      )
+    }
     
     return (
       <div className='article-container'>
-        <Helmet title={ metaTitle } />
+        { helmet }
         <h2 className='center'>{ article.title }</h2>
         <div>Published by { authorName } on { article.published_at }</div>
         <div>last update on { article.updated_at }</div>
