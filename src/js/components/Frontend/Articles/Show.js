@@ -74,7 +74,12 @@ export default class Show extends React.Component {
             { name: 'twitter:site', content: '@AppDev_Academy' },
             { name: 'twitter:creator', content: '@MaksymSkliarov' },
             { name: 'twitter:title', content: article.title },
-            { name: 'twitter:image', content: article.image_url }
+            { name: 'twitter:image', content: article.image_url },
+            
+            { name: 'og:url', content: window.location.href },
+            { name: 'og:type', content: 'article' },
+            { name: 'og:title', content: article.title },
+            { name: 'og:image', content: article.image_url }
           ]}
         />
       )
