@@ -27,6 +27,7 @@ export default class Index extends React.Component {
         <li className='article-container' key={ article.id }>
           <Link className='article-title' to={ `/articles/${article.id}-${slug}` }>{ article.title }</Link>
           <div dangerouslySetInnerHTML={{ __html: article.html_preview }} />
+          <Link className='button blue' to={ `/articles/${article.id}-${slug}` }>Read more...</Link>
         </li>
       )
     })

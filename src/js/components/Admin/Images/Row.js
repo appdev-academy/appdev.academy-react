@@ -20,16 +20,19 @@ export default class Row extends React.Component {
     let originalURL = IMAGE_BASE_URL + image.original
     
     return (
-      <tr className='article-image'>
+      <tr>
         <td>
           <img src={ thumbURL } />
         </td>
         <td>
-          <a href={ thumbURL }> Thumbnail URL </a>
+          <span>Thumb URL: </span>
+          <a href={ thumbURL }>{ thumbURL} </a>
           <br />
-          <a href={ regularURL }> Regular URL </a>
+          <span>Regular URL: </span>
+          <a href={ regularURL }>{ regularURL }</a>
           <br />
-          <a href={ originalURL }> Original URL </a>
+          <span>Original URL: </span>
+          <a href={ originalURL }>{ originalURL }</a>
         </td>
         <td>
           <RedButton
