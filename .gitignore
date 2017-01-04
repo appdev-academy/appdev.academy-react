@@ -3,3 +3,4 @@ node_modules
 dist/app.css
 dist/app.js
 dist/index.html
+src/js/constants.js
