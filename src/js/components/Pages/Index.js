@@ -19,8 +19,8 @@ export default class Index extends React.Component {
         <tr key={ page.id }>
           <td>{ capitalizedSlug }</td>
           <td className='actions left'>
-            <Link className='button blue' to={ `/admin/pages/${page.slug}` }>Show</Link>
-            <Link className='button green' to={ `/admin/pages/${page.slug}/edit` }>Edit</Link>
+            <Link className='button blue' to={ `/pages/${page.slug}` }>Show</Link>
+            <Link className='button green' to={ `/pages/${page.slug}/edit` }>Edit</Link>
           </td>
         </tr>
       )

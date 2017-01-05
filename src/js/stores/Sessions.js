@@ -43,9 +43,11 @@ export default class SessionsStore {
   }
   
   getAccessToken() {
-    let accessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY)
-    this.accessToken = accessToken
-    return accessToken
+    if (!this.accessToken) {
+      let accessToken = window.localStorage.getItem(ACCESS_TOKEN_KEY)
+      this.accessToken = accessToken
+    }
+    return this.accessToken
   }
   
   removeAccessToken() {

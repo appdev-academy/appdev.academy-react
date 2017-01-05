@@ -29,7 +29,7 @@ export default class Index extends React.Component {
     return (
       <div className='articles'>
         <h2 className='center'>Articles</h2>
-        <Link className='button blue' to='/admin/articles/new'>+ New Article</Link>
+        <Link className='button blue' to='/articles/new'>+ New Article</Link>
         <br />
         <br />
         <table className='admin'>

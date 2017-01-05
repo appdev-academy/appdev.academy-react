@@ -12,7 +12,7 @@ export default class Edit extends React.Component {
     // Make sure Page is among allowed ones
     let slug = this.props.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
-      browserHistory.push('/admin/pages')
+      browserHistory.push('/pages')
     }
     // Fetch Page to edit
     this.props.pagesStore.fetchShow(slug).then((response) => {
@@ -26,7 +26,7 @@ export default class Edit extends React.Component {
     let slug = this.props.params.slug
     this.props.pagesStore.update(slug, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/admin/pages')
+        browserHistory.push('/pages')
       }
     })
   }

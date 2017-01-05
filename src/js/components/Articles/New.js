@@ -10,7 +10,7 @@ export default class New extends React.Component {
   handleSubmit(articleParams) {
     this.props.articlesStore.create(articleParams).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/admin/articles')
+        browserHistory.push('/articles')
       }
     })
   }

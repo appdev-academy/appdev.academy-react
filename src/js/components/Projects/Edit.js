@@ -22,7 +22,7 @@ export default class Edit extends React.Component {
     let projectID = this.props.params.projectID
     this.props.projectsStore.update(projectID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/admin/projects')
+        browserHistory.push('/projects')
       }
     })
   }

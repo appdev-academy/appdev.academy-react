@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ReactGA from 'react-ga'
 import { Router, browserHistory } from 'react-router'
 import { Provider } from 'mobx-react'
 
@@ -19,17 +18,9 @@ const imagesStore = new ImagesStore(sessionsStore)
 const pagesStore = new PagesStore(sessionsStore)
 const projectsStore = new ProjectsStore(sessionsStore)
 
-// Initialize Google Analytics
-ReactGA.initialize('UA-46802250-3')
-
-// Track pageviews with Google Analytics
-function trackPageview() {
-  ReactGA.pageview(window.location.pathname)
-}
-
 ReactDOM.render(
   <Provider articlesStore={ articlesStore } imagesStore={ imagesStore } pagesStore={ pagesStore } projectsStore= { projectsStore } sessionsStore={ sessionsStore }>
-    <Router history={ browserHistory } routes={ routes } onUpdate={ trackPageview } />
+    <Router history={ browserHistory } routes={ routes } />
   </Provider>,
   document.getElementById('body')
 )

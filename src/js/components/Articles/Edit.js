@@ -22,7 +22,7 @@ export default class Edit extends React.Component {
     let articleID = this.props.params.articleID
     this.props.articlesStore.update(articleID, params).then((response) => {
       if (response.status == 200) {
-        browserHistory.push('/admin/articles')
+        browserHistory.push('/articles')
       }
     })
   }

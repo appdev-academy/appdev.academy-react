@@ -17,7 +17,7 @@ export default class Show extends React.Component {
     // Make sure Page is among allowed ones
     let slug = this.props.params.slug
     if (!this.props.pagesStore.allowedPages.includes(slug)) {
-      browserHistory.push('/admin/pages')
+      browserHistory.push('/pages')
     }
     // Fetch Page to show
     this.props.pagesStore.fetchShow(slug).then((response) => {

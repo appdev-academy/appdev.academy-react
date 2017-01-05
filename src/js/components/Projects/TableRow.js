@@ -3,8 +3,8 @@ import { findDOMNode } from 'react-dom'
 import { Link } from 'react-router'
 import { DragSource, DropTarget } from 'react-dnd'
 
-import GreenButton from '../../Buttons/Green'
-import OrangeButton from '../../Buttons/Orange'
+import GreenButton from '../Buttons/Green'
+import OrangeButton from '../Buttons/Orange'
 
 const style = {
   border: '1px dashed gray',
@@ -42,14 +42,14 @@ const cardTarget = {
 }
 
 @DropTarget(
-  "ARTICLE_ROW",
+  "PROJECT_ROW",
   cardTarget,
   connect => ({
     connectDropTarget: connect.dropTarget()
   })
 )
 @DragSource(
-  "ARTICLE_ROW",
+  "PROJECT_ROW",
   cardSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
@@ -72,18 +72,18 @@ export default class TableRow extends React.Component {
     const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
     
-    let article = this.props.article
-    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(article.id) }} />
-    if (article.published_at && !article.is_hidden) {
-      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(article.id) }} />
+    let project = this.props.project
+    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(project.id) }} />
+    if (!project.is_hidden) {
+      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(project.id) }} />
     }
     
     return connectDragSource(connectDropTarget(
-      <tr key={ article.id }>
-        <td>{ article.title }</td>
+      <tr key={ project.id }>
+        <td>{ project.title }</td>
         <td className='actions left'>
-          <Link className='button blue' to={ `/admin/articles/${article.id}` }>Show</Link>
-          <Link className='button green' to={ `/admin/articles/${article.id}/edit` }>Edit</Link>
+          <Link className='button blue' to={ `/projects/${project.id}` }>Show</Link>
+          <Link className='button green' to={ `/projects/${project.id}/edit` }>Edit</Link>
         </td>
         <td className='actions left'>
           { publishButton }

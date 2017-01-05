@@ -4,40 +4,51 @@ import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
-import videoPlugin from '../../../plugins/video'
-import GreenButton from '../../Buttons/Green'
-import OrangeButton from '../../Buttons/Orange'
+import videoPlugin from '../../plugins/video'
+import GreenButton from '../Buttons/Green'
+import OrangeButton from '../Buttons/Orange'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
 markdown.use(videoPlugin)
 
 export default class Form extends React.Component {
+  
   constructor(props) {
     super(props)
     this.state = {
-      slug: '',
+      preview: '',
+      htmlPreview: '',
       content: '',
       htmlContent: '',
       showType: 'editor'
     }
   }
   
-  setPage(page) {
-    if (!page || page === {}) {
-      return
+  setProject(project) {
+    if (project) {
+      this.refs.title.value = project.title
+      this.setState({
+        preview: project.preview,
+        htmlPreview: markdown.render(project.preview),
+        content: project.content,
+        htmlContent: markdown.render(project.content)
+      })
     }
+  }
+  
+  previewChanged(event) {
+    // Get new Markdown text
+    let newText = event.target.value
+    // Update page
     this.setState({
-      slug: page.slug,
-      content: page.content,
-      htmlContent: page.html_content
+      preview: newText,
+      htmlPreview: markdown.render(newText)
     })
   }
   
   contentChanged(event) {
-    // Get new Markdown text
     let newText = event.target.value
-    // Update page
     this.setState({
       content: newText,
       htmlContent: markdown.render(newText)
@@ -46,11 +57,14 @@ export default class Form extends React.Component {
   
   handleSubmit(event) {
     event.preventDefault()
-    let pageParams = {
+    let projectParams = {
+      title: this.refs.title.value,
+      preview: this.state.preview,
+      html_preview: this.state.htmlPreview,
       content: this.state.content,
       html_content: this.state.htmlContent
     }
-    this.props.handleSubmit(pageParams)
+    this.props.handleSubmit(projectParams)
   }
   
   clickEditor() {
@@ -72,17 +86,16 @@ export default class Form extends React.Component {
     })
     
     let previewClasses = ClassNames({
-      'article-container': true,
+      'project-container': true,
       'full-width': this.state.showType == 'preview',
       'half-width': this.state.showType == 'editor'
     })
     
-    let slug = this.state.slug
-    let capitalizedSlug = slug.charAt(0).toUpperCase() + slug.slice(1)
-    
     return (
       <div>
-        <h2 className='center'>Edit { capitalizedSlug } page</h2>
+        <div className='form-group'>
+          <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
         <div className='buttons center'>
           <OrangeButton
             title='Editor'
@@ -96,6 +109,12 @@ export default class Form extends React.Component {
           />
         </div>
         <div>
+          <h2 className='center'>Preview</h2>
+          <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
+          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
+        </div>
+        <div>
+          <h2 className='center'>Content</h2>
           <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
           <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         </div>
@@ -104,7 +123,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/admin/pages` }>Back to Pages</Link>
+          <Link className='button blue' to={ `/projects` }>Back to Projects</Link>
         </div>
       </div>
     )

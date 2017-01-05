@@ -4,9 +4,9 @@ import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
-import videoPlugin from '../../../plugins/video'
-import GreenButton from '../../Buttons/Green'
-import OrangeButton from '../../Buttons/Orange'
+import videoPlugin from '../../plugins/video'
+import GreenButton from '../Buttons/Green'
+import OrangeButton from '../Buttons/Orange'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
@@ -129,7 +129,7 @@ export default class Form extends React.Component {
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
           />
-          <Link className='button blue' to={ `/admin/articles` }>Back to Articles</Link>
+          <Link className='button blue' to={ `/articles` }>Back to Articles</Link>
         </div>
       </div>
     )
