@@ -12,7 +12,13 @@ export default class Index extends React.Component {
   
   // Render list of Pages
   renderPages(pages) {
-    return pages.map((page) => {
+    let sortedPages = pages.sort((first, second) => {
+      let firstSlug = first.slug.toLowerCase()
+      let secondSlug = second.slug.toLowerCase()
+      return (firstSlug < secondSlug) ? -1 : (firstSlug > secondSlug) ? 1 : 0
+    })
+    
+    return sortedPages.map((page) => {
       let capitalizedSlug = page.slug.charAt(0).toUpperCase() + page.slug.slice(1)
       
       return (
