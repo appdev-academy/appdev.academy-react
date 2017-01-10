@@ -5,8 +5,8 @@ import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
+import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
-import OrangeButton from '../Buttons/Orange'
 
 // Setup MarkdownIt parser with videos plugin
 let markdown = new MarkdownIt()
@@ -103,12 +103,12 @@ export default class Form extends React.Component {
           <input type='text' id='imageURL' ref='imageURL' />
         </div>
         <div className='buttons center'>
-          <OrangeButton
+          <BlueButton
             title='Editor'
             selected={ this.state.showType == 'editor' }
             onClick={ this.clickEditor.bind(this) }
           />
-          <GreenButton
+          <BlueButton
             title='Preview'
             selected={ this.state.showType == 'preview' }
             onClick={ this.clickPreview.bind(this) }
