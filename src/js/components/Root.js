@@ -47,6 +47,7 @@ export default class Root extends React.Component {
     if (location != '/sign-in') {
       adminMenu = (
         <div className={ adminMenuClassNames }>
+          <IndexLink to={ '/' } activeClassName='active'>Dashboard</IndexLink>
           <Link to={ '/articles' } activeClassName='active'>Articles</Link>
           <Link to={ '/images' } activeClassName='active'>Images</Link>
           <Link to={ '/pages' } activeClassName='active'>Pages</Link>

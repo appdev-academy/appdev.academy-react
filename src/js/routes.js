@@ -5,6 +5,7 @@ import Root from './components/Root'
 import NotFound from './components/NotFound'
 
 import SignIn from './components/Authentication/SignIn'
+import Dashboards from './components/Dashboards/Main'
 import Articles from './components/Articles/Index'
 import Article from './components/Articles/Show'
 import NewArticle from './components/Articles/New'
@@ -20,7 +21,7 @@ import EditProject from './components/Projects/Edit'
 
 export default (
   <Route path='/' component={ Root }>
-    <IndexRoute component={ Articles } />
+    <IndexRoute component={ Dashboards } />
     <Route path='articles'>
       <IndexRoute component={ Articles } />
       <Route path='new' component={ NewArticle } />
