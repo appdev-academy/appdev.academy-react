@@ -4,7 +4,7 @@ import { observable, action } from 'mobx'
 import { API_URL } from '../constants'
 
 export default class PagesStore {
-  allowedPages = ['about', 'contacts', 'home', 'portfolio']
+  allowedPages = ['about', 'contacts', 'guides', 'home', 'open-source', 'portfolio']
   sessionsStore;
   @observable pages = []
   
