@@ -31,6 +31,10 @@ export default class Root extends React.Component {
     }
   }
   
+  signOut() {
+    this.props.sessionsStore.delete()
+  }
+  
   render() {
     let adminMenuClassNames = classNames({
       admin: true,
@@ -47,6 +51,7 @@ export default class Root extends React.Component {
           <Link to={ '/images' } activeClassName='active'>Images</Link>
           <Link to={ '/pages' } activeClassName='active'>Pages</Link>
           <Link to={ '/projects' } activeClassName='active'>Projects</Link>
+          <a href='#logout' onClick={ () => { this.signOut() } }>Sign Out</a>
         </div>
       )
     }

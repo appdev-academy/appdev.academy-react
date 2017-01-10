@@ -25,11 +25,11 @@ export default class SessionsStore {
   }
   
   @action delete() {
-    let accessToken = this.getAccessToken()
+    let headers = this.getAuthHeaders()
     let request = axios({
       method: 'DELETE',
       url: `${API_URL}/sessions/destroy`,
-      headers: ['X-Access-Token': accessToken]
+      headers: headers
     }).then((response) => {
       if (response.status == 200) {
         this.removeAccessToken()
@@ -51,8 +51,8 @@ export default class SessionsStore {
   }
   
   removeAccessToken() {
-    this.accessToken = null
     window.localStorage.removeItem(ACCESS_TOKEN_KEY)
+    this.accessToken = null
   }
   
   getAuthHeaders() {
