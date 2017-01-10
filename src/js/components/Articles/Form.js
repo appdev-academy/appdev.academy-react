@@ -28,6 +28,7 @@ export default class Form extends React.Component {
   setArticle(article) {
     if (article) {
       this.refs.title.value = article.title
+      this.refs.shortDescription.value = article.short_description
       this.refs.imageURL.value = article.image_url
       this.setState({
         preview: article.preview,
@@ -60,6 +61,7 @@ export default class Form extends React.Component {
     event.preventDefault()
     let articleParams = {
       title: this.refs.title.value,
+      short_description: this.refs.shortDescription.value,
       image_url: this.refs.imageURL.value,
       preview: this.state.preview,
       html_preview: this.state.htmlPreview,
@@ -97,6 +99,10 @@ export default class Form extends React.Component {
       <div>
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='shortDescription'>Short description (for SEO and sharing to social networks)</label>
+          <input type='text' id='shortDescription' ref='shortDescription' />
         </div>
         <div className='form-group'>
           <label htmlFor='imageURL'>Image URL</label>
