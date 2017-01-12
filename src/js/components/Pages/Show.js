@@ -1,5 +1,5 @@
 import React from 'react'
-import { browserHistory } from 'react-router'
+import { browserHistory, Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 @inject('pagesStore')
@@ -30,8 +30,16 @@ export default class Show extends React.Component {
   }
   
   render() {
+    let slug = this.props.params.slug
+    
     return (
-      <div className='article-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+      <div className='article-container'>
+        <div dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+        <div className='actions left'>
+          <Link to={ `/pages/${slug}/edit` } className='button orange'>Edit</Link>
+          <Link to={ '/pages/' } className='button blue'>Back to Pages</Link>
+        </div>
+      </div>
     )
   }
 }

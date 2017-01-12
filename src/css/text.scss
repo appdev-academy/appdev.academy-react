@@ -84,6 +84,15 @@ h6 {
 
 p {
   margin: 20px 0;
+  
+  code {
+    display: inline-block;
+    background-color: #f0f0f0;
+    border-radius: 2px;
+    border: 1px solid #c0c0c0;
+    padding: 0 5px;
+    margin: 2px 0;
+  }
 }
 
 em {
@@ -103,11 +112,14 @@ pre {
   border: $border-width dashed #2f6fab;
   background-color: #f9f9f9;
   overflow-x: scroll;
+  
+  code {
+    padding-right: 20px;
+  }
 }
 
 code {
   font-family: monospace;
-  padding-right: 20px;
 }
 
 a {

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 @inject('projectsStore')
@@ -16,10 +17,15 @@ export default class Show extends React.Component {
   
   render() {
     let project = this.props.projectsStore.project
+    
     return (
       <div className='project-container'>
         <h2 className='center'>{ project.title }</h2>
         <div dangerouslySetInnerHTML={{ __html: project.html_content }} />
+        <div className='actions left'>
+          <Link to={ `/projects/${project.id}/edit` } className='button orange'>Edit</Link>
+          <Link to={ '/projects/' } className='button blue'>Back to Projects</Link>
+        </div>
       </div>
     )
   }
