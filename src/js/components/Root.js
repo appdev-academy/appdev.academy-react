@@ -26,7 +26,7 @@ export default class Root extends React.Component {
     } else {
       // accessToken is present
       if (location == '/sign-in') {
-        browserHistory.push('/articles')
+        browserHistory.push('/')
       }
     }
   }
