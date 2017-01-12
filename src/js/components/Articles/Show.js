@@ -21,7 +21,7 @@ export default class Show extends React.Component {
       <div className='article-container'>
         <h2 className='center'>{ article.title }</h2>
         <div dangerouslySetInnerHTML={{ __html: article.html_content }} />
-        <div className='actions left'>
+        <div className='actions center'>
           <Link to={ `/articles/${article.id}/edit` } className='button orange'>Edit</Link>
           <Link to={ '/articles/' } className='button blue'>Back to Articles</Link>
         </div>

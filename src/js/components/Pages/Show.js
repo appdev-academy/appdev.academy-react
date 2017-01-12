@@ -35,7 +35,7 @@ export default class Show extends React.Component {
     return (
       <div className='article-container'>
         <div dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
-        <div className='actions left'>
+        <div className='actions center'>
           <Link to={ `/pages/${slug}/edit` } className='button orange'>Edit</Link>
           <Link to={ '/pages/' } className='button blue'>Back to Pages</Link>
         </div>
