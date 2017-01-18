@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class ImagesStore {
+export default class Images {
   sessionsStore;
   @observable images = [];
   

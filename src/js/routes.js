@@ -4,20 +4,36 @@ import { IndexRedirect, IndexRoute, Route } from 'react-router'
 import Root from './components/Root'
 import NotFound from './components/NotFound'
 
+// Authentication
 import SignIn from './components/Authentication/SignIn'
+
+// Dashboard
 import Dashboards from './components/Dashboards/Main'
+
+// Articles
 import Articles from './components/Articles/Index'
 import Article from './components/Articles/Show'
 import NewArticle from './components/Articles/New'
 import EditArticle from './components/Articles/Edit'
+
+// Images
 import Images from './components/Images/Index'
+
+// Pages
 import Pages from './components/Pages/Index'
 import Page from './components/Pages/Show'
 import EditPage from './components/Pages/Edit'
+
+// Projects
 import Projects from './components/Projects/Index'
 import Project from './components/Projects/Show'
 import NewProject from './components/Projects/New'
 import EditProject from './components/Projects/Edit'
+
+// Topics
+import Topics from './components/Topics/Index'
+import NewTopic from './components/Topics/New'
+import EditTopic from './components/Topics/Edit'
 
 export default (
   <Route path='/' component={ Root }>
@@ -39,6 +55,11 @@ export default (
       <Route path='new' component={ NewProject } />
       <Route path=':projectID/edit' component={ EditProject } />
       <Route path=':projectID' component={ Project } />
+    </Route>
+    <Route path='topics'>
+      <IndexRoute component={ Topics } />
+      <Route path='new' component={ NewTopic } />
+      <Route path=':topicID/edit' component={ EditTopic } />
     </Route>
     <Route path='sign-in' component={ SignIn } />
     <Route path='not-found' component={ NotFound } />

@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class DashboardsStore {
+export default class Dashboards {
   sessionsStore;
   @observable main = {};
   

@@ -42,14 +42,14 @@ const cardTarget = {
 }
 
 @DropTarget(
-  "ARTICLE_ROW",
+  "TOPIC_ROW",
   cardTarget,
   connect => ({
     connectDropTarget: connect.dropTarget()
   })
 )
 @DragSource(
-  "ARTICLE_ROW",
+  "TOPIC_ROW",
   cardSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
@@ -72,21 +72,20 @@ export default class TableRow extends React.Component {
     const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
     
-    let article = this.props.article
-    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(article.id) }} />
-    if (article.published_at && !article.is_hidden) {
-      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(article.id) }} />
+    let topic = this.props.topic
+    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(topic.id) }} />
+    if (!topic.is_hidden) {
+      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(topic.id) }} />
     }
     
     return connectDragSource(connectDropTarget(
-      <tr key={ article.id }>
-        <td>{ article.id }</td>
-        <td>{ article.title }</td>
-        <td>{ article.slug }</td>
-        <td>{ article.position }</td>
+      <tr key={ topic.id }>
+        <td>{ topic.id }</td>
+        <td>{ topic.title }</td>
+        <td>{ topic.slug }</td>
+        <td>{ topic.position }</td>
         <td className='actions left'>
-          <Link className='button blue' to={ `/articles/${article.id}` }>Show</Link>
-          <Link className='button green' to={ `/articles/${article.id}/edit` }>Edit</Link>
+          <Link className='button green' to={ `/topics/${topic.id}/edit` }>Edit</Link>
         </td>
         <td className='actions left'>
           { publishButton }

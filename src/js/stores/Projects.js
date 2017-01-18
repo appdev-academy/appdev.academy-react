@@ -3,7 +3,7 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class ProjectsStore {
+export default class Projects {
   sessionsStore;
   @observable projects = []
   @observable project = {}

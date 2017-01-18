@@ -35,7 +35,10 @@ export default class Index extends React.Component {
         <table className='admin'>
           <thead>
             <tr>
+              <td>ID</td>
               <td>Title</td>
+              <td>Slug</td>
+              <td>Position</td>
               <td>Actions</td>
               <td>Publish</td>
             </tr>

@@ -3,10 +3,9 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class Articles {
+export default class TopicsStore {
   sessionsStore;
-  @observable articles = []
-  @observable article = {}
+  @observable topics = []
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
@@ -16,12 +15,12 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'GET',
-      url: `${API_URL}/articles`,
+      url: `${API_URL}/topics`,
       data: null,
       headers: headers
     }).then((response) => {
       if (response.status == 200) {
-        this.articles = response.data
+        this.topics = response.data
       }
     })
   }
@@ -30,7 +29,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'GET',
-      url: `${API_URL}/articles/${id}`,
+      url: `${API_URL}/topics/${id}`,
       data: null,
       headers: headers
     })
@@ -41,7 +40,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'POST',
-      url: `${API_URL}/articles`,
+      url: `${API_URL}/topics`,
       data: params,
       headers: headers
     })
@@ -52,7 +51,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'PUT',
-      url: `${API_URL}/articles/${id}`,
+      url: `${API_URL}/topics/${id}`,
       data: params,
       headers: headers
     })
@@ -63,7 +62,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'DELETE',
-      url: `${API_URL}/articles/${id}`,
+      url: `${API_URL}/topics/${id}`,
       data: null,
       headers: headers
     }).then((response) => {
@@ -75,7 +74,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/articles/${id}/publish`,
+      url: `${API_URL}/topics/${id}/publish`,
       data: null,
       headers: headers
     }).then((response) => {
@@ -87,7 +86,7 @@ export default class Articles {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/articles/${id}/hide`,
+      url: `${API_URL}/topics/${id}/hide`,
       data: null,
       headers: headers
     }).then((response) => {
@@ -95,12 +94,12 @@ export default class Articles {
     })
   }
   
-  @action sort(articleIDs) {
+  @action sort(topicIDs) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/articles/sort`,
-      data: { article_ids: articleIDs },
+      url: `${API_URL}/topics/sort`,
+      data: { topic_ids: topicIDs },
       headers: headers
     }).then((response) => {
       this.fetchIndex()

@@ -48,10 +48,11 @@ export default class Root extends React.Component {
       adminMenu = (
         <div className={ adminMenuClassNames }>
           <IndexLink to={ '/' } activeClassName='active'>Dashboard</IndexLink>
-          <Link to={ '/articles' } activeClassName='active'>Articles</Link>
           <Link to={ '/images' } activeClassName='active'>Images</Link>
+          <Link to={ '/articles' } activeClassName='active'>Articles</Link>
           <Link to={ '/pages' } activeClassName='active'>Pages</Link>
           <Link to={ '/projects' } activeClassName='active'>Projects</Link>
+          <Link to={ '/topics' } activeClassName='active'>Topics</Link>
           <a href='#logout' onClick={ () => { this.signOut() } }>Sign Out</a>
         </div>
       )

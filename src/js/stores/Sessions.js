@@ -5,7 +5,7 @@ import { API_URL } from '../constants'
 
 const ACCESS_TOKEN_KEY = 'access-token'
 
-export default class SessionsStore {
+export default class Sessions {
   @observable accessToken = null
   
   @action create(email, password) {
