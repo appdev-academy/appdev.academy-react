@@ -40,6 +40,11 @@ import Screencasts from './components/Screencasts/Index'
 import NewScreencast from './components/Screencasts/New'
 import EditScreencast from './components/Screencasts/Edit'
 
+// Lessons
+import Lessons from './components/Lessons/Index'
+import NewLesson from './components/Lessons/New'
+import EditLesson from './components/Lessons/Edit'
+
 export default (
   <Route path='/' component={ Root }>
     <IndexRoute component={ Dashboards } />
@@ -71,6 +76,11 @@ export default (
           <Route path='new' component={ NewScreencast } />
           <Route path=':screencastID'>
             <Route path='edit' component={ EditScreencast } />
+            <Route path='lessons'>
+              <IndexRoute component={ Lessons } />
+              <Route path='new' component={ NewLesson } />
+              <Route path=':lessonID/edit' component={ EditLesson } />
+            </Route>
           </Route>
         </Route>
       </Route>

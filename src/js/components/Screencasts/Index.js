@@ -20,11 +20,11 @@ export default class Index extends React.Component {
     
     let topicID = this.props.params.topicID
     
-    let screencastIDs = this.props.screencastsStore.screencasts.map((article) => article.id)
+    let screencastIDs = this.props.screencastsStore.screencasts.map((screencast) => screencast.id)
     let draggedScreencastID = screencastIDs[startIndex]
     screencastIDs.splice(startIndex, 1)
     screencastIDs.splice(dropIndex, 0, draggedScreencastID)
-    // Sort Screncasts on server (assign position property to each Screncast according to order of IDs)
+    // Sort Screencasts on server (assign position property to each Screencast according to order of IDs)
     this.props.screencastsStore.sort(topicID, screencastIDs)
   }
   
@@ -33,8 +33,8 @@ export default class Index extends React.Component {
     
     return (
       <div className='screencasts'>
-        <h2 className='center'>Screncasts</h2>
-        <Link className='button blue' to={ `/topics/${topicID}/screencasts/new` }>+ New Screncast</Link>
+        <h2 className='center'>Screencasts</h2>
+        <Link className='button blue' to={ `/topics/${topicID}/screencasts/new` }>+ New Screencast</Link>
         <br />
         <br />
         <table className='admin'>

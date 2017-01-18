@@ -9,6 +9,7 @@ import routes from './routes'
 import ArticlesStore from './stores/Articles'
 import DashboardsStore from './stores/Dashboards'
 import ImagesStore from './stores/Images'
+import LessonsStore from './stores/Lessons'
 import PagesStore from './stores/Pages'
 import ProjectsStore from './stores/Projects'
 import ScreencastsStore from './stores/Screencasts'
@@ -19,6 +20,7 @@ const sessionsStore = new SessionsStore()
 const articlesStore = new ArticlesStore(sessionsStore)
 const dashboardsStore = new DashboardsStore(sessionsStore)
 const imagesStore = new ImagesStore(sessionsStore)
+const lessonsStore = new LessonsStore(sessionsStore)
 const pagesStore = new PagesStore(sessionsStore)
 const projectsStore = new ProjectsStore(sessionsStore)
 const screencastsStore = new ScreencastsStore(sessionsStore)
@@ -28,6 +30,7 @@ ReactDOM.render(
   <Provider articlesStore={ articlesStore }
             dashboardsStore= { dashboardsStore }
             imagesStore={ imagesStore }
+            lessonsStore={ lessonsStore }
             pagesStore={ pagesStore }
             projectsStore= { projectsStore }
             screencastsStore = { screencastsStore }

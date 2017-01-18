@@ -42,20 +42,21 @@ const cardTarget = {
 }
 
 @DropTarget(
-  "SCREENCAST_ROW",
+  "LESSON_ROW",
   cardTarget,
   connect => ({
     connectDropTarget: connect.dropTarget()
   })
 )
 @DragSource(
-  "SCREENCAST_ROW",
+  "LESSON_ROW",
   cardSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   })
 )
+
 export default class TableRow extends React.Component {
   
   static propTypes = {
@@ -72,21 +73,20 @@ export default class TableRow extends React.Component {
     const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
     
-    let screencast = this.props.screencast
-    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(screencast.topic_id, screencast.id) }} />
-    if (!screencast.is_hidden) {
-      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(screencast.topic_id, screencast.id) }} />
+    let lesson = this.props.lesson
+    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(lesson.screencast_id, lesson.id) }} />
+    if (!lesson.is_hidden) {
+      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(lesson.screencast_id, lesson.id) }} />
     }
     
     return connectDragSource(connectDropTarget(
-      <tr key={ screencast.id }>
-        <td>{ screencast.id }</td>
-        <td>{ screencast.title }</td>
-        <td>{ screencast.slug }</td>
-        <td>{ screencast.position }</td>
+      <tr key={ lesson.id }>
+        <td>{ lesson.id }</td>
+        <td>{ lesson.title }</td>
+        <td>{ lesson.slug }</td>
+        <td>{ lesson.position }</td>
         <td className='actions left'>
-          <Link className='button green' to={ `/topics/${screencast.topic_id}/screencasts/${screencast.id}/edit` }>Edit</Link>
-          <Link className='button blue' to={ `/topics/${screencast.topic_id}/screencasts/${screencast.id}/lessons` }>Lessons</Link>
+          <Link className='button green' to={ `/topics/${lesson.topic_id}/screencasts/${lesson.screencast_id}/lessons/${lesson.id}/edit` }>Edit</Link>
         </td>
         <td className='actions left'>
           { publishButton }
