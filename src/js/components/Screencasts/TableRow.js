@@ -42,14 +42,14 @@ const cardTarget = {
 }
 
 @DropTarget(
-  "TOPIC_ROW",
+  "SCREENCAST_ROW",
   cardTarget,
   connect => ({
     connectDropTarget: connect.dropTarget()
   })
 )
 @DragSource(
-  "TOPIC_ROW",
+  "SCREENCAST_ROW",
   cardSource,
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),
@@ -72,21 +72,20 @@ export default class TableRow extends React.Component {
     const { text, isDragging, connectDragSource, connectDropTarget } = this.props;
     const opacity = isDragging ? 0 : 1;
     
-    let topic = this.props.topic
-    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(topic.id) }} />
-    if (!topic.is_hidden) {
-      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(topic.id) }} />
+    let screencast = this.props.screencast
+    let publishButton = <GreenButton title='Publish' onClick={ () => { this.props.publishButtonClick(screencast.topic_id, screencast.id) }} />
+    if (!screencast.is_hidden) {
+      publishButton = <OrangeButton title='Hide' onClick={ () => { this.props.hideButtonClick(screencast.topic_id, screencast.id) }} />
     }
     
     return connectDragSource(connectDropTarget(
-      <tr key={ topic.id }>
-        <td>{ topic.id }</td>
-        <td>{ topic.title }</td>
-        <td>{ topic.slug }</td>
-        <td>{ topic.position }</td>
+      <tr key={ screencast.id }>
+        <td>{ screencast.id }</td>
+        <td>{ screencast.title }</td>
+        <td>{ screencast.slug }</td>
+        <td>{ screencast.position }</td>
         <td className='actions left'>
-          <Link className='button green' to={ `/topics/${topic.id}/edit` }>Edit</Link>
-          <Link className='button blue' to={ `/topics/${topic.id}/screencasts` }>Screencasts</Link>
+          <Link className='button green' to={ `/topics/${screencast.topic_id}/screencasts/${screencast.id}/edit` }>Edit</Link>
         </td>
         <td className='actions left'>
           { publishButton }

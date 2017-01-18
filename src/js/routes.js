@@ -35,6 +35,11 @@ import Topics from './components/Topics/Index'
 import NewTopic from './components/Topics/New'
 import EditTopic from './components/Topics/Edit'
 
+// Screencasts
+import Screencasts from './components/Screencasts/Index'
+import NewScreencast from './components/Screencasts/New'
+import EditScreencast from './components/Screencasts/Edit'
+
 export default (
   <Route path='/' component={ Root }>
     <IndexRoute component={ Dashboards } />
@@ -59,7 +64,16 @@ export default (
     <Route path='topics'>
       <IndexRoute component={ Topics } />
       <Route path='new' component={ NewTopic } />
-      <Route path=':topicID/edit' component={ EditTopic } />
+      <Route path=':topicID'>
+        <Route path='edit' component={ EditTopic } />
+        <Route path='screencasts'>
+          <IndexRoute component={ Screencasts } />
+          <Route path='new' component={ NewScreencast } />
+          <Route path=':screencastID'>
+            <Route path='edit' component={ EditScreencast } />
+          </Route>
+        </Route>
+      </Route>
     </Route>
     <Route path='sign-in' component={ SignIn } />
     <Route path='not-found' component={ NotFound } />

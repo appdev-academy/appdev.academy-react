@@ -3,24 +3,25 @@ import { observable, action } from 'mobx'
 
 import { API_URL } from '../constants'
 
-export default class Topics {
+export default class Screencasts {
   sessionsStore;
-  @observable topics = []
+  @observable screencasts = []
   
   constructor(sessionsStore) {
     this.sessionsStore = sessionsStore
   }
   
-  @action fetchIndex() {
+  @action fetchIndex(topicID) {
+    this.screencasts = []
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'GET',
-      url: `${API_URL}/topics`,
+      url: `${API_URL}/topics/${topicID}/screencasts`,
       data: null,
       headers: headers
     }).then((response) => {
       if (response.status == 200) {
-        this.topics = response.data
+        this.screencasts = response.data
       }
     })
   }
@@ -29,18 +30,18 @@ export default class Topics {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'GET',
-      url: `${API_URL}/topics/${id}`,
+      url: `${API_URL}/screencasts/${id}`,
       data: null,
       headers: headers
     })
     return request
   }
   
-  @action create(params) {
+  @action create(topicID, params) {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'POST',
-      url: `${API_URL}/topics`,
+      url: `${API_URL}/topics/${topicID}/screencasts`,
       data: params,
       headers: headers
     })
@@ -51,58 +52,58 @@ export default class Topics {
     let headers = this.sessionsStore.getAuthHeaders()
     let request = axios({
       method: 'PUT',
-      url: `${API_URL}/topics/${id}`,
+      url: `${API_URL}/screencasts/${id}`,
       data: params,
       headers: headers
     })
     return request
   }
   
-  @action delete(id) {
+  @action delete(topicID, id) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'DELETE',
-      url: `${API_URL}/topics/${id}`,
+      url: `${API_URL}/screencasts/${id}`,
       data: null,
       headers: headers
     }).then((response) => {
-      this.fetchIndex()
+      this.fetchIndex(topicID)
     })
   }
   
-  @action publish(id) {
+  @action publish(topicID, id) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/topics/${id}/publish`,
+      url: `${API_URL}/screencasts/${id}/publish`,
       data: null,
       headers: headers
     }).then((response) => {
-      this.fetchIndex()
+      this.fetchIndex(topicID)
     })
   }
   
-  @action hide(id) {
+  @action hide(topicID, id) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/topics/${id}/hide`,
+      url: `${API_URL}/screencasts/${id}/hide`,
       data: null,
       headers: headers
     }).then((response) => {
-      this.fetchIndex()
+      this.fetchIndex(topicID)
     })
   }
   
-  @action sort(topicIDs) {
+  @action sort(topicID, screencastsIDs) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
-      url: `${API_URL}/topics/sort`,
-      data: { topic_ids: topicIDs },
+      url: `${API_URL}/topics/${topicID}/screencasts/sort`,
+      data: { screencast_ids: screencastsIDs },
       headers: headers
     }).then((response) => {
-      this.fetchIndex()
+      this.fetchIndex(topicID)
     })
   }
 }
