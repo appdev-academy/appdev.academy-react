@@ -33,7 +33,7 @@ export default class Show extends React.Component {
     let slug = this.props.params.slug
     
     return (
-      <div>
+      <div className='full-width'>
         <div className='page-container' dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         <div className='actions center'>
           <Link to={ `/pages/${slug}/edit` } className='button orange'>Edit</Link>

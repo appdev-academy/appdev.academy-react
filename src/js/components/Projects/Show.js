@@ -19,9 +19,9 @@ export default class Show extends React.Component {
     let project = this.props.projectsStore.project
     
     return (
-      <div className='project-container'>
+      <div className='full-width'>
         <h2 className='center'>{ project.title }</h2>
-        <div dangerouslySetInnerHTML={{ __html: project.html_content }} />
+        <div className='project-container' dangerouslySetInnerHTML={{ __html: project.html_content }} />
         <div className='actions center'>
           <Link to={ `/projects/${project.id}/edit` } className='button orange'>Edit</Link>
           <Link to={ '/projects/' } className='button blue'>Back to Projects</Link>
