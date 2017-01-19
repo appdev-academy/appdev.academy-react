@@ -1,15 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router'
-import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
+
 import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
 // Setup MarkdownIt parser with videos plugin
-let markdown = new MarkdownIt()
+let markdown = require('markdown-it')({
+  linkify: true
+})
 markdown.use(videoPlugin)
 
 export default class Form extends React.Component {
