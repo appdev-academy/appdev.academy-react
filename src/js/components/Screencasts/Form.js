@@ -92,7 +92,7 @@ export default class Form extends React.Component {
     })
     
     let previewClasses = ClassNames({
-      'article-container': true,
+      'screencast-container': true,
       'full-width': this.state.showType == 'preview',
       'half-width': this.state.showType == 'editor'
     })

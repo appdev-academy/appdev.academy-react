@@ -15,10 +15,7 @@
   min-width: 300px;
 }
 
-.article-container, .project-container {
-  max-width: 800px;
-  margin: 0 auto;
-  
+.article-container, .lesson-container, .page-container, .project-container, .screencast-container {
   ul {
     list-style-position: inside;
     
@@ -42,7 +39,7 @@
   }
 }
 
-ol.list-of-articles {
+ol.articles, ol.pages, ol.projects, ol.lessons, ol.screencasts {
   > li {
     border-bottom: 1px solid $main-color;
     padding-top: 25px;
