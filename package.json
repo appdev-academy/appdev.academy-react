@@ -11,12 +11,13 @@
     "markdown-it": "latest",
     "mobx": "latest",
     "mobx-react": "latest",
-    "react": "15.3.2",
-    "react-dom": "15.3.2",
+    "react": "15.5.4",
+    "react-dom": "15.5.4",
     "react-dnd": "latest",
     "react-dnd-html5-backend": "latest",
     "react-router": "latest",
     "react-share": "latest",
+    "react-tag-input": "latest",
     "react-textarea-autosize": "latest"
   },
   "devDependencies": {

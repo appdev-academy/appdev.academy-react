@@ -14,6 +14,7 @@ import PagesStore from './stores/Pages'
 import ProjectsStore from './stores/Projects'
 import ScreencastsStore from './stores/Screencasts'
 import SessionsStore from './stores/Sessions'
+import TagsStore from './stores/Tags'
 import TopicsStore from './stores/Topics'
 
 const sessionsStore = new SessionsStore()
@@ -24,18 +25,21 @@ const lessonsStore = new LessonsStore(sessionsStore)
 const pagesStore = new PagesStore(sessionsStore)
 const projectsStore = new ProjectsStore(sessionsStore)
 const screencastsStore = new ScreencastsStore(sessionsStore)
+const tagsStore = new TagsStore(sessionsStore)
 const topicsStore = new TopicsStore(sessionsStore)
 
 ReactDOM.render(
-  <Provider articlesStore={ articlesStore }
-            dashboardsStore= { dashboardsStore }
-            imagesStore={ imagesStore }
-            lessonsStore={ lessonsStore }
-            pagesStore={ pagesStore }
-            projectsStore= { projectsStore }
-            screencastsStore = { screencastsStore }
-            sessionsStore={ sessionsStore }
-            topicsStore= { topicsStore }
+  <Provider
+    articlesStore={ articlesStore }
+    dashboardsStore= { dashboardsStore }
+    imagesStore={ imagesStore }
+    lessonsStore={ lessonsStore }
+    pagesStore={ pagesStore }
+    projectsStore= { projectsStore }
+    screencastsStore = { screencastsStore }
+    sessionsStore={ sessionsStore }
+    tagsStore= { tagsStore }
+    topicsStore= { topicsStore }
   >
     <Router history={ browserHistory } routes={ routes } />
   </Provider>,
