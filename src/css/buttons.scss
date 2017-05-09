@@ -1,8 +1,8 @@
 .button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 5px 10px;
   // Border
-  border-radius: 10px;
+  border-radius: 5px;
   border-width: 2px;
   border-style: solid;
   border-color: black;
@@ -27,7 +27,7 @@
 }
 
 .button.small {
-  padding: 5px 10px;
+  padding: 0px 5px;
 }
 
 .button.blue {

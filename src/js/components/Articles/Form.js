@@ -133,7 +133,7 @@ export default class Form extends React.Component {
     let suggestions = this.props.allTags.map(tag => tag.title)
     
     return (
-      <div>
+      <div className='column'>
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>
@@ -171,15 +171,31 @@ export default class Form extends React.Component {
         </div>
         <div>
           <h2 className='center'>Preview</h2>
-          <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
-          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
+          <div>
+            <Textarea className={ editorClasses } value={ this.state.preview } onChange={ this.previewChanged.bind(this) } rows={ 5 }></Textarea>
+            <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlPreview }} />
+          </div>
+        </div>
+        <div className='buttons center'>
+          <BlueButton
+            title='Editor'
+            selected={ this.state.showType == 'editor' }
+            onClick={ this.clickEditor.bind(this) }
+          />
+          <BlueButton
+            title='Preview'
+            selected={ this.state.showType == 'preview' }
+            onClick={ this.clickPreview.bind(this) }
+          />
         </div>
         <div>
           <h2 className='center'>Content</h2>
-          <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
-          <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+          <div>
+            <Textarea className={ editorClasses } value={ this.state.content } onChange={ this.contentChanged.bind(this) } rows={ 10 }></Textarea>
+            <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
+          </div>
         </div>
-        <div className='actions center'>
+        <div className='actions left'>
           <GreenButton
             title='Save'
             onClick={ this.handleSubmit.bind(this) }

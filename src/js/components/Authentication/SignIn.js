@@ -36,7 +36,6 @@ export default class SignIn extends React.Component {
           </div>
           <BlueButton
             title='Sign In'
-            small={ true }
             onClick={ this.handleSubmit.bind(this) }
           />
         </form>
