@@ -24,10 +24,6 @@
   ul {
     list-style-position: inside;
     
-    li {
-      font-style: italic;
-    }
-    
     li:before {
       content: "•";
       padding-right: 5px;
@@ -35,12 +31,8 @@
   }
   
   ol {
-    list-style-type: decimal;
     list-style-position: inside;
-    
-    li {
-      font-style: italic;
-    }
+    list-style-type: decimal;
   }
 }
 
