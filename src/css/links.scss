@@ -1,8 +1,15 @@
 a {
+  text-decoration: none;
+  color: $main-color;
+  
   &.article-title,
   &.project-title {
     font-family: PlayfairDisplay;
     font-size: 1.5em;
     font-weight: normal;
+  }
+  
+  &:hover {
+    text-decoration: underline;
   }
 }

@@ -14,10 +14,12 @@
     line-height: $menu-height;
     padding-left: 20px;
     padding-right: 20px;
-  }
-  
-  a.active {
-    color: white;
-    background-color: $main-color;
+    
+    &.active,
+    &:hover {
+      text-decoration: none;
+      color: white;
+      background-color: $main-color;
+    }
   }
 }
