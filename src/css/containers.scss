@@ -38,8 +38,8 @@
 
 ol.articles, ol.pages, ol.projects, ol.lessons, ol.screencasts {
   > li {
-    border-bottom: 1px solid $main-color;
-    padding-top: 25px;
-    padding-bottom: 25px;
+    border-bottom: 2px solid $main-color;
+    margin-top: 60px;
+    padding-bottom: 60px;
   }
 }

@@ -103,6 +103,16 @@ strong {
   font-weight: bold;
 }
 
+span {
+  &.tag {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background-color: $main-color;
+    color: white;
+  }
+}
+
 pre {
   $padding: 20px;
   $border-width: 1px;
