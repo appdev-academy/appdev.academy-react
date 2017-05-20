@@ -9,6 +9,13 @@ import Form from './Form'
 @observer
 export default class Edit extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: []
+    }
+  }
+  
   componentDidMount() {
     let articleID = this.props.params.articleID
     let articleForm = this.refs.articleForm
@@ -25,14 +32,21 @@ export default class Edit extends React.Component {
       if (response.status == 200) {
         browserHistory.push('/articles')
       }
+    }).catch((error) => {
+      if (error.response && error.response.data && error.response.data.errors) {
+        this.setState({
+          errors: error.response.data.errors
+        })
+      }
     })
   }
   
   render() {
     return (
       <Form
-        allTags={ this.props.tagsStore.tags }
         tagsStore={ this.props.tagsStore }
+        allTags={ this.props.tagsStore.tags }
+        errors={ this.state.errors }
         handleSubmit={ this.handleSubmit.bind(this) }
         ref='articleForm'
       />

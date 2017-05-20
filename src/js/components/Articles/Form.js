@@ -131,8 +131,22 @@ export default class Form extends React.Component {
     
     let suggestions = this.props.allTags.map(tag => tag.title)
     
+    let errorsList = null;
+    if (this.props.errors.length) {
+      errorsList = (
+        <ul className='errors'>
+          { this.props.errors.map((error, index) => {
+            return (
+              <li key={index}>{ error }</li>
+            )
+          })}
+        </ul>
+      )
+    }
+    
     return (
       <div className='column'>
+        { errorsList }
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>

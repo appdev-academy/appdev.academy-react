@@ -73,3 +73,20 @@ ol.screencasts {
     transform: translate(-50%, -50%);
   }
 }
+
+ul.errors {
+  list-style-position: inside;
+  
+  padding: 5px;
+  border: 2px solid $red-color;
+  border-radius: 5px;
+  
+  li {
+    color: $red-color;
+  }
+  
+  li:before {
+    content: "•";
+    padding-right: 5px;
+  }
+}
