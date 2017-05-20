@@ -92,7 +92,6 @@ export default class Form extends React.Component {
   // Form submition
   handleSubmit(event) {
     event.preventDefault()
-    console.log('Tags: ' + this.state.tags.map(tag => tag.title).join(','));
     let articleParams = {
       title: this.refs.title.value,
       short_description: this.refs.shortDescription.value,
@@ -156,6 +155,13 @@ export default class Form extends React.Component {
             handleAddition={ this.addTag.bind(this) }
             handleDrag={ this.dragTag.bind(this) }
           />
+        </div>
+        <div className='actions left'>
+          <GreenButton
+            title='Save'
+            onClick={ this.handleSubmit.bind(this) }
+          />
+          <Link className='button blue' to={ `/articles` }>Back to Articles</Link>
         </div>
         <div className='buttons center'>
           <BlueButton

@@ -5,6 +5,7 @@ import { DragSource, DropTarget } from 'react-dnd'
 
 import GreenButton from '../Buttons/Green'
 import OrangeButton from '../Buttons/Orange'
+import RedButton from '../Buttons/Red'
 
 const style = {
   border: '1px dashed gray',
@@ -87,6 +88,7 @@ export default class TableRow extends React.Component {
         <td className='actions left'>
           <Link className='button blue' to={ `/articles/${article.id}` }>Show</Link>
           <Link className='button green' to={ `/articles/${article.id}/edit` }>Edit</Link>
+          <RedButton title='Delete' onClick={ () => { this.props.deleteButtonClick(article.id) }} />
         </td>
         <td className='actions left'>
           { publishButton }

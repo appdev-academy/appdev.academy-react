@@ -20,7 +20,11 @@
   min-width: 300px;
 }
 
-.article-container, .lesson-container, .page-container, .project-container, .screencast-container {
+.article-container,
+.lesson-container,
+.page-container,
+.project-container,
+.screencast-container {
   ul {
     list-style-position: inside;
     
@@ -36,10 +40,36 @@
   }
 }
 
-ol.articles, ol.pages, ol.projects, ol.lessons, ol.screencasts {
+ol.articles,
+ol.pages,
+ol.projects,
+ol.lessons,
+ol.screencasts {
   > li {
     border-bottom: 2px solid $main-color;
     margin-top: 60px;
     padding-bottom: 60px;
+  }
+}
+
+.confirmation-dialog {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: white;
+  
+  &.show {
+    display: block;
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
