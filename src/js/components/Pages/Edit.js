@@ -8,6 +8,13 @@ import Form from './Form'
 @observer
 export default class Edit extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: []
+    }
+  }
+  
   componentDidMount() {
     // Make sure Page is among allowed ones
     let slug = this.props.params.slug
@@ -28,12 +35,22 @@ export default class Edit extends React.Component {
       if (response.status == 200) {
         browserHistory.push('/pages')
       }
+    }).catch((error) => {
+      if (error.response && error.response.data && error.response.data.errors) {
+        this.setState({
+          errors: error.response.data.errors
+        })
+      }
     })
   }
   
   render() {
     return (
-      <Form handleSubmit={ this.handleSubmit.bind(this) } ref='pageForm' />
+      <Form
+        errors={ this.state.errors }
+        handleSubmit={ this.handleSubmit.bind(this) }
+        ref='pageForm'
+      />
     )
   }
 }

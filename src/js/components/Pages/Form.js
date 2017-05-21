@@ -4,7 +4,7 @@ import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
-
+import ErrorsList from '../ErrorsList'
 import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
@@ -83,7 +83,10 @@ export default class Form extends React.Component {
     let capitalizedSlug = slug.charAt(0).toUpperCase() + slug.slice(1)
     
     return (
-      <div>
+      <div className='column'>
+        <ErrorsList
+          errors={ this.props.errors }
+        />
         <h2 className='center'>Edit { capitalizedSlug } page</h2>
         <div className='buttons center'>
           <BlueButton

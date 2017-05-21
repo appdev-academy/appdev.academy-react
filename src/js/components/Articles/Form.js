@@ -7,6 +7,7 @@ import Textarea from 'react-textarea-autosize'
 import { WithContext as ReactTags } from 'react-tag-input'
 
 import videoPlugin from '../../plugins/video'
+import ErrorsList from '../ErrorsList'
 import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
@@ -131,22 +132,11 @@ export default class Form extends React.Component {
     
     let suggestions = this.props.allTags.map(tag => tag.title)
     
-    let errorsList = null;
-    if (this.props.errors.length) {
-      errorsList = (
-        <ul className='errors'>
-          { this.props.errors.map((error, index) => {
-            return (
-              <li key={index}>{ error }</li>
-            )
-          })}
-        </ul>
-      )
-    }
-    
     return (
       <div className='column'>
-        { errorsList }
+        <ErrorsList
+          errors={ this.props.errors }
+        />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>
