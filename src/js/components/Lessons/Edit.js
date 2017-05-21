@@ -8,6 +8,13 @@ import Form from './Form'
 @observer
 export default class Edit extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: []
+    }
+  }
+  
   componentDidMount() {
     let lessonID = this.props.params.lessonID
     let lessonForm = this.refs.lessonForm
@@ -27,12 +34,19 @@ export default class Edit extends React.Component {
       if (response.status == 200) {
         browserHistory.push(`/topics/${topicID}/screencasts/${screencastID}/lessons`)
       }
+    }).catch((error) => {
+      if (error.response && error.response.data && error.response.data.errors) {
+        this.setState({
+          errors: error.response.data.errors
+        })
+      }
     })
   }
   
   render() {
     return (
       <Form
+        errors={ this.state.errors }
         params={ this.props.params }
         handleSubmit={ this.handleSubmit.bind(this) } ref='lessonForm'
       />
