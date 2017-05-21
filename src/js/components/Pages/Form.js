@@ -84,9 +84,7 @@ export default class Form extends React.Component {
     
     return (
       <div className='column'>
-        <ErrorsList
-          errors={ this.props.errors }
-        />
+        <ErrorsList errors={ this.props.errors } />
         <h2 className='center'>Edit { capitalizedSlug } page</h2>
         <div className='buttons center'>
           <BlueButton

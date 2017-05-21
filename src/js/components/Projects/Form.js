@@ -5,6 +5,7 @@ import Textarea from 'react-textarea-autosize'
 import ClassNames from 'classnames'
 
 import videoPlugin from '../../plugins/video'
+import ErrorsList from '../ErrorsList'
 import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
@@ -92,7 +93,8 @@ export default class Form extends React.Component {
     })
     
     return (
-      <div>
+      <div className='column'>
+        <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>
