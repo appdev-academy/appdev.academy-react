@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router'
 
+import ErrorsList from '../ErrorsList'
 import BlueButton from '../Buttons/Blue'
 import GreenButton from '../Buttons/Green'
 
@@ -24,7 +25,8 @@ export default class Form extends React.Component {
   
   render () {
     return (
-      <div>
+      <div className='column'>
+        <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
           <label htmlFor='title'>Title</label>
           <input type='text' ref='title' id='title' autoFocus={ true } />

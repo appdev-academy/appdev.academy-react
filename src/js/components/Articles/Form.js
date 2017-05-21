@@ -134,9 +134,7 @@ export default class Form extends React.Component {
     
     return (
       <div className='column'>
-        <ErrorsList
-          errors={ this.props.errors }
-        />
+        <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
         </div>

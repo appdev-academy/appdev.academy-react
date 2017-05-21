@@ -8,6 +8,13 @@ import Form from './Form'
 @observer
 export default class Edit extends React.Component {
   
+  constructor(props) {
+    super(props)
+    this.state = {
+      errors: []
+    }
+  }
+  
   componentDidMount() {
     let topicID = this.props.params.topicID
     let topicForm = this.refs.topicForm
@@ -24,12 +31,22 @@ export default class Edit extends React.Component {
       if (response.status == 200) {
         browserHistory.push('/topics')
       }
+    }).catch((error) => {
+      if (error.response && error.response.data && error.response.data.errors) {
+        this.setState({
+          errors: error.response.data.errors
+        })
+      }
     })
   }
   
   render() {
     return (
-      <Form handleSubmit={ this.handleSubmit.bind(this) } ref='topicForm' />
+      <Form
+        errors={ this.state.errors }
+        handleSubmit={ this.handleSubmit.bind(this) }
+        ref='topicForm'
+      />
     )
   }
 }
