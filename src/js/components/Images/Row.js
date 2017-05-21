@@ -37,7 +37,7 @@ export default class Row extends React.Component {
         <td>
           <RedButton
             title='Delete'
-            onClick={ this.handleDelete.bind(this) }
+            onClick={ () => { this.props.deleteButtonClick(this.props.image.id) }}
           />
         </td>
       </tr>

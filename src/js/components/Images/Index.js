@@ -1,8 +1,9 @@
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import Row from './Row'
+import ConfirmationDialog from '../ConfirmationDialog'
 import GreenButton from '../Buttons/Green'
+import Row from './Row'
 
 @inject('imagesStore')
 @observer
@@ -12,7 +13,9 @@ export default class Index extends React.Component {
     super(props)
     this.state = {
       image: '',
-      file: ''
+      file: '',
+      deleteConfirmationDialogShow: false,
+      deleteConfirmationDialogEntityID: null
     }
   }
   
@@ -53,9 +56,37 @@ export default class Index extends React.Component {
     })
   }
   
+  showDeleteConfirmationDialog(entityID) {
+    this.setState({
+      deleteConfirmationDialogShow: true,
+      deleteConfirmationDialogEntityID: entityID
+    })
+  }
+  
+  hideDeleteConfirmationDialog() {
+    this.setState({
+      deleteConfirmationDialogShow: false,
+      deleteConfirmationDialogEntityID: null
+    })
+  }
+  
+  deleteButtonClick() {
+    this.props.imagesStore.delete(this.state.deleteConfirmationDialogEntityID);
+    this.setState({
+      deleteConfirmationDialogShow: false,
+      deleteConfirmationDialogEntityID: null
+    })
+  }
+  
   renderImages(images) {
     return images.map((image, index) => {
-      return <Row key={ index } image={ image } />
+      return (
+        <Row
+          key={ index }
+          image={ image }
+          deleteButtonClick={ (entityID) => { this.showDeleteConfirmationDialog(entityID) }}
+        />
+      )
     })
   }
   
@@ -95,6 +126,13 @@ export default class Index extends React.Component {
             { this.renderImages(this.props.imagesStore.images) }
           </tbody>
         </table>
+        <ConfirmationDialog
+          text='Are you sure you want to delete this image?'
+          show={ this.state.deleteConfirmationDialogShow }
+          destructive={ true }
+          okButtonClick={ () => { this.deleteButtonClick() }}
+          cancelButtonClick= { () => { this.hideDeleteConfirmationDialog() }}
+        />
       </div>
     )
   }
