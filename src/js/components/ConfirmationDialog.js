@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import PropTypes from 'prop-types'
+import React from 'react'
 import ClassNames from 'classnames'
 
 import BlueButton from './Buttons/Blue'
@@ -51,11 +52,11 @@ export default class ConfirmationDialog extends React.Component {
 }
 
 ConfirmationDialog.propTypes = {
-  actionName: React.PropTypes.string.isRequired,
-  destructive: React.PropTypes.bool,
-  entityName: React.PropTypes.string.isRequired,
-  entityTitle: React.PropTypes.string,
-  show: React.PropTypes.bool
+  actionName: PropTypes.string.isRequired,
+  destructive: PropTypes.bool,
+  entityName: PropTypes.string.isRequired,
+  entityTitle: PropTypes.string,
+  show: PropTypes.bool
 }
 
 ConfirmationDialog.defaultProps = {

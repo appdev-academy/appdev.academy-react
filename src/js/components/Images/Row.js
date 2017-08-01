@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
@@ -46,5 +47,5 @@ export default class Row extends React.Component {
 }
 
 Row.propTypes = {
-  image: React.PropTypes.object.isRequired
+  image: PropTypes.object.isRequired
 }

@@ -127,10 +127,11 @@ export default class Index extends React.Component {
           </tbody>
         </table>
         <ConfirmationDialog
-          text='Are you sure you want to delete this image?'
+          actionName='delete'
+          entityName='image'
           show={ this.state.deleteConfirmationDialogShow }
           destructive={ true }
-          okButtonClick={ () => { this.deleteButtonClick() }}
+          actionButtonClick={ () => { this.deleteButtonClick() }}
           cancelButtonClick= { () => { this.hideDeleteConfirmationDialog() }}
         />
       </div>

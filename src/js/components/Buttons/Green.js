@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 import React from 'react'
 import ClassNames from 'classnames'
 
@@ -20,10 +21,10 @@ export default class Green extends React.Component {
 }
 
 Green.propTypes = {
-  title: React.PropTypes.string.isRequired,
-  small: React.PropTypes.bool,
-  selected: React.PropTypes.bool,
-  onClick: React.PropTypes.func.isRequired
+  title: PropTypes.string.isRequired,
+  small: PropTypes.bool,
+  selected: PropTypes.bool,
+  onClick: PropTypes.func.isRequired
 }
 
 Green.defaultProps = {
