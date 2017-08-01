@@ -49,7 +49,7 @@ export default class GalleryImages {
     })
   }
   
-  @action sort(galleryImageIDs) {
+  @action sort(projectID, galleryImageIDs) {
     let headers = this.sessionsStore.getAuthHeaders()
     axios({
       method: 'POST',
@@ -57,7 +57,7 @@ export default class GalleryImages {
       data: { gallery_image_ids: galleryImageIDs },
       headers: headers
     }).then((response) => {
-      this.fetchIndex()
+      this.fetchIndex(projectID)
     })
   }
 }

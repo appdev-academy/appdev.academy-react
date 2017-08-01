@@ -2,7 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { inject, observer } from 'mobx-react'
 
-import { IMAGE_BASE_URL } from '../../constants'
 import RedButton from '../Buttons/Red'
 
 export default class Row extends React.Component {
@@ -14,20 +13,18 @@ export default class Row extends React.Component {
   
   render() {
     let image = this.props.image
-    let thumbURL = IMAGE_BASE_URL + image.thumb
-    let originalURL = IMAGE_BASE_URL + image.original
     
     return (
       <tr>
         <td>
-          <img src={ thumbURL } />
+          <img src={ image.thumb } />
         </td>
         <td>
           <span>Thumb URL: </span>
-          <a href={ thumbURL }>{ thumbURL} </a>
+          <a href={ image.thumb }>{ image.thumb} </a>
           <br />
           <span>Original URL: </span>
-          <a href={ originalURL }>{ originalURL }</a>
+          <a href={ image.original }>{ image.original }</a>
         </td>
         <td>
           <RedButton
