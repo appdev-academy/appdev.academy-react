@@ -8,6 +8,7 @@ import routes from './routes'
 
 import ArticlesStore from './stores/Articles'
 import DashboardsStore from './stores/Dashboards'
+import GalleryImagesStore from './stores/GalleryImages'
 import ImagesStore from './stores/Images'
 import LessonsStore from './stores/Lessons'
 import PagesStore from './stores/Pages'
@@ -20,6 +21,7 @@ import TopicsStore from './stores/Topics'
 const sessionsStore = new SessionsStore()
 const articlesStore = new ArticlesStore(sessionsStore)
 const dashboardsStore = new DashboardsStore(sessionsStore)
+const galleryImagesStore = new GalleryImagesStore(sessionsStore)
 const imagesStore = new ImagesStore(sessionsStore)
 const lessonsStore = new LessonsStore(sessionsStore)
 const pagesStore = new PagesStore(sessionsStore)
@@ -33,6 +35,7 @@ ReactDOM.render(
     articlesStore={ articlesStore }
     dashboardsStore= { dashboardsStore }
     imagesStore={ imagesStore }
+    galleryImagesStore={ galleryImagesStore }
     lessonsStore={ lessonsStore }
     pagesStore={ pagesStore }
     projectsStore= { projectsStore }

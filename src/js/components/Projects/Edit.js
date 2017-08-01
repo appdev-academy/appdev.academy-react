@@ -3,7 +3,9 @@ import { browserHistory } from 'react-router'
 import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
+import GalleryImages from '../GalleryImages/Index'
 
+@inject('galleryImagesStore')
 @inject('projectsStore')
 @observer
 export default class Edit extends React.Component {
@@ -41,12 +43,20 @@ export default class Edit extends React.Component {
   }
   
   render() {
+    let projectID = this.props.params.projectID
+    
     return (
-      <Form
-        errors={ this.state.errors }
-        handleSubmit={ this.handleSubmit.bind(this) }
-        ref='projectForm'
-      />
+      <div>
+        <Form
+          errors={ this.state.errors }
+          handleSubmit={ this.handleSubmit.bind(this) }
+          ref='projectForm'
+        />
+        <GalleryImages
+          galleryImagesStore={ this.props.galleryImagesStore }
+          projectID={ projectID }
+        />
+      </div>
     )
   }
 }
