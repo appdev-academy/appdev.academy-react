@@ -1,10 +1,12 @@
 import React from 'react'
 import { browserHistory } from 'react-router'
-import { inject } from 'mobx-react'
+import { inject, observer } from 'mobx-react'
 
 import Form from './Form'
 
 @inject('projectsStore')
+@inject('tagsStore')
+@observer
 export default class New extends React.Component {
   
   constructor(props) {
@@ -31,8 +33,11 @@ export default class New extends React.Component {
   render() {
     return (
       <Form
+        tagsStore={ this.props.tagsStore }
+        allTags={ this.props.tagsStore.tags }
         errors={ this.state.errors }
         handleSubmit={ this.handleSubmit.bind(this) }
+        ref='projectForm'
       />
     )
   }

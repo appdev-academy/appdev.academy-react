@@ -7,6 +7,7 @@ import GalleryImages from '../GalleryImages/Index'
 
 @inject('galleryImagesStore')
 @inject('projectsStore')
+@inject('tagsStore')
 @observer
 export default class Edit extends React.Component {
   
@@ -48,6 +49,8 @@ export default class Edit extends React.Component {
     return (
       <div>
         <Form
+          tagsStore={ this.props.tagsStore }
+          allTags={ this.props.tagsStore.tags }
           errors={ this.state.errors }
           handleSubmit={ this.handleSubmit.bind(this) }
           ref='projectForm'

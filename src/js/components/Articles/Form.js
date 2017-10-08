@@ -74,13 +74,13 @@ export default class Form extends React.Component {
       id: tagID,
       title: tag
     });
-    this.setState({tags: tags});
+    this.setState({ tags: tags });
   }
   
   deleteTag(index) {
     let tags = this.state.tags;
     tags.splice(index, 1);
-    this.setState({tags: tags});
+    this.setState({ tags: tags });
   }
   
   dragTag(tag, currentPosition, newPosition) {

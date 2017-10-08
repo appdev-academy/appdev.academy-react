@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router'
+
+import ClassNames from 'classnames'
 import MarkdownIt from 'markdown-it'
 import Textarea from 'react-textarea-autosize'
-import ClassNames from 'classnames'
+import { WithContext as ReactTags } from 'react-tag-input'
 
 import videoPlugin from '../../plugins/video'
 import ErrorsList from '../ErrorsList'
@@ -22,8 +24,13 @@ export default class Form extends React.Component {
       htmlPreview: '',
       content: '',
       htmlContent: '',
-      showType: 'editor'
+      showType: 'editor',
+      tags: []
     }
+  }
+  
+  componentDidMount() {
+    this.props.tagsStore.fetchIndex()
   }
   
   setProject(project) {
@@ -33,7 +40,8 @@ export default class Form extends React.Component {
         preview: project.preview,
         htmlPreview: markdown.render(project.preview),
         content: project.content,
-        htmlContent: markdown.render(project.content)
+        htmlContent: markdown.render(project.content),
+        tags: project.tags
       })
     }
   }
@@ -56,6 +64,31 @@ export default class Form extends React.Component {
     })
   }
   
+  
+  // Tags management
+  addTag(tag) {
+    let tags = this.state.tags
+    let tagID = Math.floor(100000 * Math.random())
+    tags.push({
+      id: tagID,
+      title: tag
+    });
+    this.setState({ tags: tags });
+  }
+  
+  deleteTag(index) {
+    let tags = this.state.tags;
+    tags.splice(index, 1);
+    this.setState({ tags: tags });
+  }
+  
+  dragTag(tag, currentPosition, newPosition) {
+    let tags = this.state.tags;
+    tags.splice(currentPosition, 1);
+    tags.splice(newPosition, 0, tag);
+    this.setState({ tags: tags });
+  }
+  
   handleSubmit(event) {
     event.preventDefault()
     let projectParams = {
@@ -63,7 +96,8 @@ export default class Form extends React.Component {
       preview: this.state.preview,
       html_preview: this.state.htmlPreview,
       content: this.state.content,
-      html_content: this.state.htmlContent
+      html_content: this.state.htmlContent,
+      tags_titles: this.state.tags.map(tag => tag.title).join(',')
     }
     this.props.handleSubmit(projectParams)
   }
@@ -92,11 +126,25 @@ export default class Form extends React.Component {
       'half-width': this.state.showType == 'editor'
     })
     
+    let suggestions = this.props.allTags.map(tag => tag.title)
+    
     return (
       <div className='column'>
         <ErrorsList errors={ this.props.errors } />
         <div className='form-group'>
           <input type='text' ref='title' className='title' autoFocus={ true } />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='tags'>Tags</label>
+          <ReactTags
+            labelField='title'
+            autofocus={ false }
+            tags={ this.state.tags }
+            suggestions={ suggestions }
+            handleDelete={ this.deleteTag.bind(this) }
+            handleAddition={ this.addTag.bind(this) }
+            handleDrag={ this.dragTag.bind(this) }
+          />
         </div>
         <div className='buttons center'>
           <BlueButton
@@ -121,6 +169,7 @@ export default class Form extends React.Component {
           <div className={ previewClasses } dangerouslySetInnerHTML={{ __html: this.state.htmlContent }} />
         </div>
         <div className='actions center'>
+          <h3>Actions</h3>
           <GreenButton
             title='Save'
             onClick={ this.handleSubmit.bind(this) }
