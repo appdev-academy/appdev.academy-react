@@ -24,4 +24,49 @@ export default class Tags {
       }
     })
   }
+  
+  @action fetchShow(id) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    let request = axios({
+      method: 'GET',
+      url: `${API_URL}/tags/${id}`,
+      data: null,
+      headers: headers
+    })
+    return request
+  }
+  
+  @action create(params) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    let request = axios({
+      method: 'POST',
+      url: `${API_URL}/tags`,
+      data: params,
+      headers: headers
+    })
+    return request
+  }
+  
+  @action update(id, params) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    let request = axios({
+      method: 'PUT',
+      url: `${API_URL}/tags/${id}`,
+      data: params,
+      headers: headers
+    })
+    return request
+  }
+  
+  @action delete(id) {
+    let headers = this.sessionsStore.getAuthHeaders()
+    axios({
+      method: 'DELETE',
+      url: `${API_URL}/tags/${id}`,
+      data: null,
+      headers: headers
+    }).then((response) => {
+      this.fetchIndex()
+    })
+  }
 }

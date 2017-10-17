@@ -24,6 +24,11 @@ import Pages from './components/Pages/Index'
 import Page from './components/Pages/Show'
 import EditPage from './components/Pages/Edit'
 
+// Tags
+import Tags from './components/Tags/Index'
+import NewTag from './components/Tags/New'
+import EditTag from './components/Tags/Edit'
+
 // Projects
 import Projects from './components/Projects/Index'
 import Project from './components/Projects/Show'
@@ -65,6 +70,11 @@ export default (
       <Route path='new' component={ NewProject } />
       <Route path=':projectID/edit' component={ EditProject } />
       <Route path=':projectID' component={ Project } />
+    </Route>
+    <Route path='tags'>
+      <IndexRoute component={ Tags } />
+      <Route path='new' component={ NewTag } />
+      <Route path=':tagID/edit' component={ EditTag } />
     </Route>
     <Route path='topics'>
       <IndexRoute component={ Topics } />
