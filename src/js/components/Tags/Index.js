@@ -60,6 +60,8 @@ export default class Index extends React.Component {
               <td>ID</td>
               <td>Title</td>
               <td>Slug</td>
+              <td>Articles</td>
+              <td>Projects</td>
               <td>Actions</td>
             </tr>
           </thead>
