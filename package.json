@@ -7,6 +7,7 @@
   "repository": "https://github.com/appdev-academy/appdev.academy-react",
   "dependencies": {
     "axios": "latest",
+    "babel-core": "^6.26.0",
     "classnames": "latest",
     "history": "latest",
     "markdown-it": "latest",
