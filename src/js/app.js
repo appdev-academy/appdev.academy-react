@@ -8,6 +8,7 @@ import routes from './routes'
 
 import ArticlesStore from './stores/Articles'
 import DashboardsStore from './stores/Dashboards'
+import EmployeesStore from './stores/Employees'
 import GalleryImagesStore from './stores/GalleryImages'
 import ImagesStore from './stores/Images'
 import LessonsStore from './stores/Lessons'
@@ -21,6 +22,7 @@ import TopicsStore from './stores/Topics'
 const sessionsStore = new SessionsStore()
 const articlesStore = new ArticlesStore(sessionsStore)
 const dashboardsStore = new DashboardsStore(sessionsStore)
+const employeesStore = new EmployeesStore(sessionsStore)
 const galleryImagesStore = new GalleryImagesStore(sessionsStore)
 const imagesStore = new ImagesStore(sessionsStore)
 const lessonsStore = new LessonsStore(sessionsStore)
@@ -33,16 +35,17 @@ const topicsStore = new TopicsStore(sessionsStore)
 ReactDOM.render(
   <Provider
     articlesStore={ articlesStore }
-    dashboardsStore= { dashboardsStore }
+    dashboardsStore={ dashboardsStore }
+    employeesStore={ employeesStore }
     imagesStore={ imagesStore }
     galleryImagesStore={ galleryImagesStore }
     lessonsStore={ lessonsStore }
     pagesStore={ pagesStore }
-    projectsStore= { projectsStore }
-    screencastsStore = { screencastsStore }
+    projectsStore={ projectsStore }
+    screencastsStore={ screencastsStore }
     sessionsStore={ sessionsStore }
-    tagsStore= { tagsStore }
-    topicsStore= { topicsStore }
+    tagsStore={ tagsStore }
+    topicsStore={ topicsStore }
   >
     <Router history={ browserHistory } routes={ routes } />
   </Provider>,
