@@ -18,9 +18,9 @@ export default class Edit extends React.Component {
   componentDidMount() {
     let employeeID = this.props.params.employeeID
     let employeeForm = this.refs.employeeForm
-    this.props.employeeStore.fetchShow(employeeID).then((response) => {
+    this.props.employeesStore.fetchShow(employeeID).then((response) => {
       if (response.status == 200) {
-        employeeForm.setEmployee(response.data)
+        employeeForm.setEmployee(response.data.employee)
       }
     })
   }

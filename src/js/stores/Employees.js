@@ -21,7 +21,7 @@ export default class Employees {
       headers: headers
     }).then((response) => {
       if (response.status == 200) {
-        this.employees = response.data
+        this.employees = response.data.employees
       }
     })
   }

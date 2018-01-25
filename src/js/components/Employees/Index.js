@@ -64,7 +64,7 @@ export default class Index extends React.Component {
     return (
       <div className='employees'>
         <h2 className='center'>Employees</h2>
-        <Link className='button blue' to='/employee/new'>+ New Employee</Link>
+        <Link className='button blue' to='/employees/new'>+ New Employee</Link>
         <br />
         <br />
         <table className='admin'>
@@ -72,6 +72,9 @@ export default class Index extends React.Component {
             <tr>
               <td>ID</td>
               <td>Title</td>
+              <td>First name</td>
+              <td>Last name</td>
+              <td>Profile picture</td>
               <td>Position</td>
               <td>Actions</td>
               <td>Publish</td>

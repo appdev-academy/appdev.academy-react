@@ -84,6 +84,9 @@ export default class TableRow extends React.Component {
       <tr key={ employee.id }>
         <td>{ employee.id }</td>
         <td>{ employee.title }</td>
+        <td>{ employee.first_name }</td>
+        <td>{ employee.last_name }</td>
+        <td><img className='profile-picture' src={ employee.profile_picture } /></td>
         <td>{ employee.position }</td>
         <td className='actions left'>
           <Link className='button blue' to={ `/employees/${employee.id}` }>Show</Link>

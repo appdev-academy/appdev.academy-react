@@ -17,7 +17,7 @@ export default class New extends React.Component {
   
   handleSubmit(employeeParams) {
     this.props.employeesStore.create(employeeParams).then((response) => {
-      if (response.status == 200) {
+      if (response.status == 201) {
         browserHistory.push('/employees')
       }
     }).catch((error) => {
