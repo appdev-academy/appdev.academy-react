@@ -16,6 +16,12 @@ import Article from './components/Articles/Show'
 import NewArticle from './components/Articles/New'
 import EditArticle from './components/Articles/Edit'
 
+// Employees
+import Employees from './components/Employees/Index'
+import Employee from './components/Employees/Show'
+import NewEmployee from './components/Employees/New'
+import EditEmployee from './components/Employees/Edit'
+
 // Images
 import Images from './components/Images/Index'
 
@@ -58,6 +64,12 @@ export default (
       <Route path='new' component={ NewArticle } />
       <Route path=':articleID/edit' component={ EditArticle } />
       <Route path=':articleID' component={ Article } />
+    </Route>
+    <Route path='employees'>
+      <IndexRoute component={ Employees } />
+      <Route path='new' component={ NewEmployee } />
+      <Route path=':employeeID/edit' component={ EditEmployee } />
+      <Route path=':employeeID' component={ Employee } />
     </Route>
     <Route path='images' component={ Images } />
     <Route path='pages'>

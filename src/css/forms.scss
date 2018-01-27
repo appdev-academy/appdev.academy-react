@@ -24,6 +24,30 @@ textarea {
   }
 }
 
+.form-group.employee-picture {
+  img {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    padding: 10px 0px;
+    display: block;
+    cursor: pointer;
+  }
+  
+  img::after {
+    content: '+';
+    font-size: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  input[type=file] {
+    display: none;
+  }
+}
+
 input[type=text].title {
   border: none;
   outline: none;
