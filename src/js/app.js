@@ -17,6 +17,7 @@ import ProjectsStore from './stores/Projects'
 import ScreencastsStore from './stores/Screencasts'
 import SessionsStore from './stores/Sessions'
 import TagsStore from './stores/Tags'
+import TestimonialsStore from './stores/Testimonials'
 import TopicsStore from './stores/Topics'
 
 const sessionsStore = new SessionsStore()
@@ -30,6 +31,7 @@ const pagesStore = new PagesStore(sessionsStore)
 const projectsStore = new ProjectsStore(sessionsStore)
 const screencastsStore = new ScreencastsStore(sessionsStore)
 const tagsStore = new TagsStore(sessionsStore)
+const testimonialsStore = new TestimonialsStore(sessionsStore)
 const topicsStore = new TopicsStore(sessionsStore)
 
 ReactDOM.render(
@@ -45,6 +47,7 @@ ReactDOM.render(
     screencastsStore={ screencastsStore }
     sessionsStore={ sessionsStore }
     tagsStore={ tagsStore }
+    testimonialsStore={ testimonialsStore }
     topicsStore={ topicsStore }
   >
     <Router history={ browserHistory } routes={ routes } />
