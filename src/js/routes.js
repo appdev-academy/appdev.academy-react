@@ -25,15 +25,15 @@ import EditEmployee from './components/Employees/Edit'
 // Images
 import Images from './components/Images/Index'
 
+// Lessons
+import Lessons from './components/Lessons/Index'
+import NewLesson from './components/Lessons/New'
+import EditLesson from './components/Lessons/Edit'
+
 // Pages
 import Pages from './components/Pages/Index'
 import Page from './components/Pages/Show'
 import EditPage from './components/Pages/Edit'
-
-// Tags
-import Tags from './components/Tags/Index'
-import NewTag from './components/Tags/New'
-import EditTag from './components/Tags/Edit'
 
 // Projects
 import Projects from './components/Projects/Index'
@@ -41,20 +41,26 @@ import Project from './components/Projects/Show'
 import NewProject from './components/Projects/New'
 import EditProject from './components/Projects/Edit'
 
-// Topics
-import Topics from './components/Topics/Index'
-import NewTopic from './components/Topics/New'
-import EditTopic from './components/Topics/Edit'
-
 // Screencasts
 import Screencasts from './components/Screencasts/Index'
 import NewScreencast from './components/Screencasts/New'
 import EditScreencast from './components/Screencasts/Edit'
 
-// Lessons
-import Lessons from './components/Lessons/Index'
-import NewLesson from './components/Lessons/New'
-import EditLesson from './components/Lessons/Edit'
+// Tags
+import Tags from './components/Tags/Index'
+import NewTag from './components/Tags/New'
+import EditTag from './components/Tags/Edit'
+
+// Testimonials
+import Testimonials from './components/Testimonials/Index'
+import Testimonial from './components/Testimonials/Show'
+import NewTestimonial from './components/Testimonials/New'
+import EditTestimonial from './components/Testimonials/Edit'
+
+// Topics
+import Topics from './components/Topics/Index'
+import NewTopic from './components/Topics/New'
+import EditTopic from './components/Topics/Edit'
 
 export default (
   <Route path='/' component={ Root }>
@@ -87,6 +93,12 @@ export default (
       <IndexRoute component={ Tags } />
       <Route path='new' component={ NewTag } />
       <Route path=':tagID/edit' component={ EditTag } />
+    </Route>
+    <Route path='testimonials'>
+      <IndexRoute component={ Testimonials } />
+      <Route path='new' component={ NewTestimonial } />
+      <Route path=':testimonialID/edit' component={ EditTestimonial } />
+      <Route path=':testimonialID' component={ Testimonial } />
     </Route>
     <Route path='topics'>
       <IndexRoute component={ Topics } />

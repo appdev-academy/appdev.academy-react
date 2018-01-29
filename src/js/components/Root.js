@@ -55,6 +55,7 @@ export default class Root extends React.Component {
           <Link to={ '/tags' } activeClassName='active'>Tags</Link>
           <Link to={ '/topics' } activeClassName='active'>Topics</Link>
           <Link to={ '/employees' } activeClassName='active'>Employees</Link>
+          <Link to={ '/testimonials' } activeClassName='active'>Testimonials</Link>
           <a href='#logout' onClick={ () => { this.signOut() } }>Sign Out</a>
         </div>
       )
