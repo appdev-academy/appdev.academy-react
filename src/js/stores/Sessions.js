@@ -31,9 +31,9 @@ export default class Sessions {
       url: `${API_URL}/sessions/destroy`,
       headers: headers
     }).then((response) => {
-      if (response.status == 200) {
-        this.removeAccessToken()
-      }
+      this.removeAccessToken()
+    }).catch((error) => {
+      this.removeAccessToken()
     })
   }
   
